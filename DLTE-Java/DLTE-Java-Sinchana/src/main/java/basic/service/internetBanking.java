@@ -2,9 +2,11 @@ package basic.service;
 import java.util.Scanner;
 public class internetBanking {
     public static void main(String[] args) {
+        //initialization
         String userName="", userPass="", userVerCode="",userEmail="", resName="", resAcc="", resPh="";
         Long userOtp=0L, amount=0L, transferOtp=0L;
         Scanner scanner=new Scanner(System.in);
+        //required inputs:password,email,oto,verification code...
         System.out.println("-------Welcome to Internet Banking----------");
         System.out.println("Fill your name");
         userName=scanner.nextLine();

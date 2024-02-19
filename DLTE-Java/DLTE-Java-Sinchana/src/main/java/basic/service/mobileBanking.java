@@ -3,14 +3,16 @@ import java.util.Scanner;
 
 public class mobileBanking {
     public static void main(String[] args) {
+        //initialization
         String userPIN= "" , destName="", destPh="";
         Long userOto=0L,amount=0L,transferOtp=0L;
         Scanner scanner=new Scanner(System.in);
+        //required inputs:pin,recipient name
         System.out.println("-------Welcome to Mobile Banking--------");
         System.out.println("Enter PIN");
         userPIN=scanner.nextLine();
         System.out.println("---------Enter recipient details------------");
-        System.out.println("Fill recipient name/account number/phone number");
+        System.out.println("Fill recipient name");
         destName=scanner.nextLine();
         System.out.println("Enter amount");
         amount=scanner.nextLong();

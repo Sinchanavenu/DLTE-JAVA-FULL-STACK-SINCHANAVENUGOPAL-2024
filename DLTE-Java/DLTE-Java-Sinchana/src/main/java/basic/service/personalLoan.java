@@ -3,10 +3,11 @@ import java.util.Scanner;
 
 public class personalLoan {
     public static void main(String[] args) {
+        //initialization
         String borrowerName="", borrowerPan="", borrowerAddress="", borrowerEmail="", borrowerIncometype="";
         Long mobileNumber=0L, aadhar=0L, salary=0L;
         Scanner scanner= new Scanner(System.in);
-
+        //required inputs: name,salary,aadhaar,pan...
         System.out.println("-----------Welcome to MyBank---------------");
 
         System.out.println("Fill your name ");
