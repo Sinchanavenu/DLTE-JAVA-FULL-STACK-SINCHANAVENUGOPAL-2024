@@ -16,6 +16,6 @@ public class mobileBanking {
         amount=scanner.nextLong();
         System.out.println("Enter UPI Pin");
         transferOtp=scanner.nextLong();
-        System.out.println("The amount of Rs=" +amount+ "is transferred to " +destName+ "sucessfully");
+        System.out.println("The amount of Rs=" +amount+ "is transferred to " +destName+ " sucessfully");
     }
 }
