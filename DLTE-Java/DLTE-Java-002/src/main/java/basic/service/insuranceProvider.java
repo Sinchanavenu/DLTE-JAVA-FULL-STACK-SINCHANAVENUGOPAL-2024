@@ -31,9 +31,10 @@ public class insuranceProvider {
             System.out.println("Starhealth insurance is suggested");
         }
     }
-    public static boolean containsElement(String[] array, String element){
+    public static boolean containsElement(String[] array, String feature){
+        //declaration of string array variable
         for(String str:array){
-            if(str.equals(element)){
+            if(str.equals(feature)){
                 return true;
             }
         }
