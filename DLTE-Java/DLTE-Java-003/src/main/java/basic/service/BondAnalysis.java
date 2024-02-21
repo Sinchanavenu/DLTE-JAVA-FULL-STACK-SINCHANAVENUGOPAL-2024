@@ -2,6 +2,7 @@ package basic.service;
 
 public class BondAnalysis {
     public static void main(String[] args) {
+        //initialization
         Bond bondArray[] = {
                 new Bond(2000,6.0,"Payable","Sinchana",5),
                 new Bond(5000,10.0,"Payable","Zuni",3),
