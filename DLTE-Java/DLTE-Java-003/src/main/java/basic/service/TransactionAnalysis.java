@@ -23,6 +23,7 @@ based on amount in ascending
 
 public class TransactionAnalysis {
     public static void main(String[] args) {
+        //adding data
         Transaction myTransaction[] = {
                         new Transaction(new Date(2024,04,04),2500,"Sinchana","Friend"),
                         new Transaction(new Date(2024,04,10),5500,"Sahana","Family"),
@@ -86,6 +87,7 @@ public class TransactionAnalysis {
         }
 
     }
+    //filter date based on start and end day
     public void filterDate(Transaction[] myTransaction, int startDate, int endDate){
         System.out.println("Transaction between the given dates " +startDate+ " and" +endDate);
         for(Transaction each: myTransaction){
@@ -94,6 +96,7 @@ public class TransactionAnalysis {
             }
         }
     }
+    //display min transaction amount
     public void minimumAmount(Transaction[] myTransaction) {
         int amount= myTransaction[0].getAmountInTransaction();
         for(Transaction each: myTransaction){
@@ -108,6 +111,7 @@ public class TransactionAnalysis {
             }
         }
     }
+    //display max transaction amount
     public void maximumAmount(Transaction[] myTransaction){
         int amount= myTransaction[0].getAmountInTransaction();
         for(Transaction each: myTransaction){
@@ -122,6 +126,7 @@ public class TransactionAnalysis {
             }
         }
     }
+    //display total number of transactions by a person
     public void totalTransaction(Transaction[] myTransaction, String name){
         int transactionCount=0;
         for(Transaction each: myTransaction){
@@ -131,6 +136,7 @@ public class TransactionAnalysis {
         }
         System.out.println("Number of transactions made to " +name+ " is " +transactionCount);
     }
+    //sort amount in ascending order
     public void sortAmount(Transaction[] myTransaction){
         System.out.println("Before sorting amount:");
         for(Transaction each: myTransaction){
@@ -150,6 +156,7 @@ public class TransactionAnalysis {
             System.out.println(each.getAmountInTransaction());
         }
     }
+    //sort beneficiary in ascending order
     public void sortBeneficiary(Transaction[] myTransaction){
         System.out.println("Before sorting amount:");
         for(Transaction each: myTransaction){
