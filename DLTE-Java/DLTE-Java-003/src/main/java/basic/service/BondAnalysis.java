@@ -4,10 +4,10 @@ public class BondAnalysis {
     public static void main(String[] args) {
         //initialization
         Bond bondArray[] = {
-                new Bond(2000,6.0,"Payable","Sinchana",5),
-                new Bond(5000,10.0,"Payable","Zuni",3),
-                new Bond(7000,8.0,"Not Payable","Ninadha",2),
-                new Bond(4000,5.0,"Payable","Sherley",4)
+                new Bond("Callable Bond",2000,6.0,"Payable","Sinchana",5),
+                new Bond("Municipal Bond",5000,10.0,"Payable","Zuni",3),
+                new Bond("Corporate Bond",7000,8.0,"Not Payable","Ninadha",2),
+                new Bond("LIC Bond",4000,5.0,"Payable","Sherley",4)
         };
         BondAnalysis bond=new BondAnalysis();
         bond.sort(bondArray);
