@@ -1,7 +1,7 @@
 package basic.service;
 import java.util.Scanner;
 import java.util.regex.*;
-/*Personal details: name, aadhaar, pan, address, mobile, email
+/*Personal details: name, aadhaar, pan, mobile, email
 Income: salaried, self employed
 
 razaksrmd@mybank.com
@@ -63,9 +63,9 @@ public class carloanApplication {
         pattern=Pattern.compile(mobileExpresion);
         matcher=pattern.matcher(mobile);
         if(matcher.matches())
-            System.out.println("Valid PAN Number");
+            System.out.println("Valid Phone Number");
         else
-            System.out.println("Invalid PAN Number");
+            System.out.println("Invalid Phone Number");
         System.out.println("Dear " +borrowerName+ " thanks for showing interest in taking a car loan. We will send you further information at " +borrowerEmail+ " or sms to " +mobile);
     }
     public static boolean isValidEmail(String email) {
