@@ -13,10 +13,13 @@ public class insuranceProvider {
         Scanner scanner=new Scanner(System.in);
         //required inputs:
         System.out.println("----------Welcome to Insurance Provider---------------");
-        System.out.println("Enter the insurance features required by the customer");
+        System.out.println("Enter the required feature");
         feature=scanner.next();
+
+
+
         //process
-        if(containsElement(bajajInsurance,feature)){
+        if(containsElement(bajajInsurance,feature)) {
             System.out.println("Bajaj insurance is suggested");
         }
         if(containsElement(adityaBirla,feature))
