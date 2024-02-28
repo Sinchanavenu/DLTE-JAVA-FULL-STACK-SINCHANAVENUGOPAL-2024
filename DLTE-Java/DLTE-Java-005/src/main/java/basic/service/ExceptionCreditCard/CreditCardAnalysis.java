@@ -19,7 +19,7 @@ public class CreditCardAnalysis {
         //process
         while (true) {
             System.out.println("----Credit Card Analysis-----");
-            System.out.println("Choose 1 to find customer card limit\n" + "Choose 2 to find date of bill payment\n" + "Choose 3 for updating pin number\n" + "Choose 4 to update limit whose bill generation date is\n" + "Choose 5 to exit");
+            System.out.println("Choose 1 to find customer card limit\n" + "Choose 2 to find date of bill payment\n" +  "Choose 3 to exit");
             int choice;
             Scanner scanner = new Scanner(System.in);
             choice = scanner.nextInt();
@@ -52,11 +52,6 @@ public class CreditCardAnalysis {
                         break;
                     }
                 case 3:
-                    analysis.UpdatePIN(myBank);
-                    break;
-                case 4:
-                    analysis.UpdateLimit(myBank);
-                case 5:
                     exit(0);
             }
         }
@@ -92,41 +87,6 @@ public class CreditCardAnalysis {
         }
         if(flag){
             throw new MyBankCreditCardException();
-        }
-    }
-    //changing pin number
-    public void UpdatePIN(CreditCard[] customers) {
-        int CurrentPin, NewPin;
-        Long CreditCardNumber = 0L;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter your card number for changing your password");
-        CreditCardNumber = scanner.nextLong();
-        for (CreditCard each : customers) {
-            if (each.getCreditCardNumber().equals(CreditCardNumber)) {
-                System.out.println("Enter your current pin");
-                CurrentPin = scanner.nextInt();
-                if (CurrentPin == each.getCreditCardPin()) {
-                    System.out.println("Enter your new pin");
-                    NewPin = scanner.nextInt();
-                    each.setCreditCardPin(NewPin);
-                    System.out.println("New pin is set");
-                } else {
-                    System.out.println("Entered pin is wrong");
-                }
-            }
-        }
-    }
-    //5% increase in limit
-    public void UpdateLimit(CreditCard[] customers) {
-        double newCardLimit;
-        int roundOfnewCardLimit;
-        for (CreditCard each : customers) {
-            if (each.getDateOfBillGeneration().getDate() == 5) {
-                newCardLimit=(each.getCreditCardLimit()*0.05) + each.getCreditCardLimit();
-                roundOfnewCardLimit=(int) Math.round(newCardLimit);
-                each.setCreditCardLimit(roundOfnewCardLimit);
-                System.out.println("Successfully updated");
-            }
         }
     }
 }
