@@ -1,40 +1,43 @@
-package basic.service;
-
+package basic.service.Review1a;
+/*
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class EmployeeDetails {
+
     public static void main(String[] args) {
-        String employeeName, employeeEmail, employeePAN, employeeHouseName, employeeStreetName, employeeCityName, employeeStateName, employeeHouseName1, employeeStreetName1, employeeCityName1, employeeStateName1;
-        Long employeeContact, employeeAadhar;
-        Integer employeePinCode, employeePinCode1;
+        String employeeName = null, employeeEmail, employeePAN, employeeHouseName = null, employeeStreetName = null, employeeCityName = null, employeeStateName = null, employeeHouseName1, employeeStreetName1, employeeCityName1, employeeStateName1;
+        Long employeePinCode = null, employeePinCode1;
+        Integer employeeContact, employeeAadhar;
+        CurrentAddress address=new CurrentAddress();
+        PermanentAddress address1=new PermanentAddress();
         Scanner scanner=new Scanner(System.in);
         System.out.println("----Employee Details-----");
         System.out.println("Enter the employee name");
         employeeName=scanner.nextLine();
-        System.out.println("Enter Employee current address");
+        System.out.println("Employee current address");
         System.out.println("Enter the House Name");
-        employeeHouseName=scanner.nextLine();
+        address.setEmployeeHouseName(scanner.nextLine());
         System.out.println("Enter the street name");
-        employeeStreetName=scanner.nextLine();
+        address.setEmployeeStreetName(scanner.nextLine());
         System.out.println("Enter the city name");
-        employeeCityName=scanner.nextLine();
+        address.setEmployeeCityName(scanner.nextLine());
         System.out.println("Enter the state name");
-        employeeStateName=scanner.nextLine();
+        address.setEmployeeStateName(scanner.nextLine());
         System.out.println("Enter the pin code");
-        employeePinCode=scanner.nextInt();
-        System.out.println("Enter the permanent address of the employee");
+        address.setEmployeePinCode(scanner.nextLong());
+        System.out.println("Permanent address of the employee");
         System.out.println("Enter the House Name");
-        employeeHouseName1=scanner.nextLine();
+        address1.setEmployeeHouseName1(scanner.nextLine());
         System.out.println("Enter the street name");
-        employeeStreetName1=scanner.nextLine();
+        address1.setEmployeeStreetName1(scanner.nextLine());
         System.out.println("Enter the city name");
-        employeeCityName1=scanner.nextLine();
+        address1.setEmployeeCityName1(scanner.nextLine());
         System.out.println("Enter the state name");
-        employeeStateName1=scanner.nextLine();
+        address1.setEmployeeStateName1(scanner.nextLine());
         System.out.println("Enter the pin code");
-        employeePinCode1=scanner.nextInt();
+        address1.setEmployeePinCode1(scanner.nextLong());
         System.out.println("Enter the employee PAN number");
         employeePAN=scanner.next();
         System.out.println("Enter employee email");
@@ -49,9 +52,17 @@ public class EmployeeDetails {
             System.out.println("Invalid email");
         }
         System.out.println("Enter the phone number");
-        employeeContact=scanner.nextLong();
+        employeeContact=scanner.nextInt();
         System.out.println("Enter the aadhar number");
-        employeeAadhar=scanner.nextLong();
-        System.out.println("Employee " +employeeName+ " current address: " +employeeCurrentAddress+ " and permanent address : " +employeePermanentAddress);
+        employeeAadhar=scanner.nextInt();
+        int choice;
+        choice=scanner.nextInt();
+        switch(choice) {
+            case 1:
+                address.CurrentDetails();
+            break;
+        }
     }
 }
+
+ */
