@@ -11,6 +11,3 @@ public class App
         System.out.println( "Hello World!" );
     }
 }
-/*
- employees detail along with 2 address>>permanent and current address;
- */
