@@ -8,6 +8,16 @@ public class Transaction {
     private Integer amountInTransaction;
     private String remarks;
 
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "dateOfTransaction=" + dateOfTransaction +
+                ", transactionTo='" + transactionTo + '\'' +
+                ", amountInTransaction=" + amountInTransaction +
+                ", remarks='" + remarks + '\'' +
+                '}';
+    }
+
     public Transaction(Date dateOfTransaction, String transactionTo, Integer amountInTransaction, String remarks) {
         this.dateOfTransaction = dateOfTransaction;
         this.transactionTo = transactionTo;
