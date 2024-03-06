@@ -11,3 +11,29 @@ select min(transaction_amount) from Transaction;
 select max(transaction_amount) from Transaction;
 select count(transaction_to) from Transaction where transaction_to='Sahana';
 select * from Transaction where transaction_remarks='Friend';
+
+//Create view's to perform all these analysis
+
+Filter based on given ranges of date
+least amount transferred
+maximum amount transferred
+number of transaction made to particular beneficiary
+filter based on particular remarks
+
+UPDATED CODE WITH VIEWS
+
+select * from transaction;
+create view range_date as select * from transaction where transaction_date between '08-Feb-2024' and '19-Feb-2024';
+select * from range_date;
+
+create view min_transaction as select min(transaction_amount) as min_amount from transaction;
+select * min_transaction;
+
+create view max_transaction as select max(transaction_amount) as max_amount from transaction;
+select * max_transaction;
+
+create view transaction_count as select count(transaction_to) as transaction_to from transaction where transaction_to='Zoya';
+select * from transaction_count;
+
+create view remarks as select * from transaction where transaction_remarks='Emergency';
+select * from remarks;
