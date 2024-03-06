@@ -1,59 +1,44 @@
 package basic.service.ExceptionHandling;
 
+import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Gpay extends AccountDetails {
-    String userName;
-    Integer pin;
+    private String upiPin;
+    private String userName;
+    ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
+    Logger logger= Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public Integer getPin() {
-        return pin;
-    }
-
-    public void setPin(Integer pin) {
-        this.pin = pin;
-    }
-
-    public Gpay(Long accountNumber, Long accountBalance, String accountHolder, String userName, Integer pin) {
+    public Gpay(Long accountNumber, Long accountBalance, String accountHolder, String upiPin) {
         super(accountNumber, accountBalance, accountHolder);
-        this.userName = userName;
-        this.pin = pin;
+        this.upiPin=upiPin;
+        this.userName=accountHolder;
     }
-
-    public void payBill(String billerName, Long billedAmount, String billType) {
-        int pinNumber = 0;
-        int count = 0;
-        while (count < 5) {
-            System.out.println("Enter the upi pin number");
-            Scanner scanner = new Scanner(System.in);
-            pinNumber = scanner.nextInt();
-            if (pinNumber == getPin()) {
-                if (billedAmount <= getAccountBalance()) {
-                    System.out.println("Bill paid: " + "Biller name: " + billerName + " Bill amount: " + billedAmount + " Bill Type: " + billType);
-                    setAccountBalance(getAccountNumber() - billedAmount);
-                    System.out.println(getAccountBalance());
-                    break;
-                } else {
-                    System.out.println("Insufficient balance");
-                }
-            } else {
-                count++;
-                throw new MyBankException();
-                payBill(String billerName, Long billedAmount, String billType);
-            }
+    public boolean validatePin(String newPin) throws MyBankException{
+        if(!upiPin.equals(newPin)){
+            logger.log(Level.WARNING,"Invalid UPI Pin entered");
+            throw new MyBankException("pin.invalid");
         }
-            if (count >= 5) {
-                throw new MyBankException();
+        return true;
+    }
+    public void payBill(String billerName, double billedAmount, String billType, String upiPin ){
+        try{
+            validatePin(upiPin);
+            if(getAccountBalance()>=billedAmount){
+                logger.log(Level.INFO,"Bill payment successful to " +billerName+ " of amount " +billedAmount+ " for " +billType );
             }
-
-
+            else{
+                logger.log(Level.WARNING,"Insufficient balance");
+                throw new MyBankException("pin.invalid");
+            }
+        }catch (MyBankException exception){
+            logger.log(Level.WARNING,exception.toString());
+            throw exception;
+        }
+    }
 }
+
+
 
