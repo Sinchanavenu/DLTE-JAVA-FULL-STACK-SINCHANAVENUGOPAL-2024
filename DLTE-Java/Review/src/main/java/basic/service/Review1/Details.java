@@ -70,6 +70,9 @@ public class Details {
         this.employeeEmail = employeeEmail;
     }
 
+    public Object getAllEmployeeFirstName() {
+        return employeeFirstName;
+    }
 }
 
 class CurrentAddress {
@@ -131,6 +134,14 @@ class CurrentAddress {
         this.stateName = stateName;
         this.pinCode = pinCode;
     }
+
+    //public String getAllHouseName() {
+     //   return houseName;
+   // }
+
+    public Object getAll() {
+        return houseName+streetName+cityName+stateName+pinCode;
+    }
 }
 
     class PermanentAddress {
@@ -191,5 +202,9 @@ class CurrentAddress {
             this.cityName1 = cityName1;
             this.stateName1 = stateName1;
             this.pinCode1 = pinCode1;
+        }
+
+        public Object getAll() {
+            return houseName1+stateName1+cityName1+stateName1+pinCode1;
         }
     }

@@ -38,10 +38,10 @@ public class App
                         String[] properties=userInput.split(",");
                         int size= properties.length;
                         for(int index=0;index<size;index++){
-                            if(properties[index].equalsIgnoreCase("Username")){
-                                System.out.println("Enter the new username ");
-                                userDetails.setUserName(scanner.nextLine());
-                            }
+//                            if(properties[index].equalsIgnoreCase("Username")){
+//                                System.out.println("Enter the new username ");
+//                                userDetails.setUserName(scanner.nextLine());
+//                            }
                             if(properties[index].equalsIgnoreCase("password")){
                                 System.out.println("Enter the old password");
                                 if(userDetails.getPassword().equals(scanner.next())){

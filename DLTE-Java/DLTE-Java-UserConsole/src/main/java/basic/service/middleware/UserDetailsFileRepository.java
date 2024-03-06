@@ -6,6 +6,7 @@ import basic.service.remotes.UserDetailsRepository;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.FileHandler;
@@ -28,6 +29,8 @@ public class UserDetailsFileRepository implements UserDetailsRepository {
         }
         catch (IOException ioException){}
     }
+
+   // private void
 
     private void writeIntoFile(){
         try{
@@ -85,5 +88,15 @@ public class UserDetailsFileRepository implements UserDetailsRepository {
         logger.log(Level.FINE,resourceBundle.getString("user.update.ok"));
         System.out.println(resourceBundle.getString("user.update.ok"));
 
+    }
+    public void addUsers(UserDetails userDetails){
+        readFromFile();
+        userDetailsList.add(new UserDetails("sinchana","sin123",new Date(2002,03,20),"udupi","sinchana@gmail.com",7338296738L));
+        userDetailsList.add(new UserDetails("annapoorna","anna123",new Date(2002,06,24),"karkala","anna@gmail.com",8765296738L));
+        writeIntoFile();
+    }
+
+    public boolean verifyPassword(String userName, String password){
+        UserDetails account= userDetailsList.stream().filter(each -> each.getUserName().equals())
     }
 }

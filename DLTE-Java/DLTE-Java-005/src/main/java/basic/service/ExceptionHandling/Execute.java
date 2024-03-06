@@ -13,7 +13,8 @@ public class Execute {
         gpay[0]=new Gpay(3456132584L,654240L,"Sahana","sahana",6100);
         Scanner scanner=new Scanner(System.in);
         Scanner scanner1=new Scanner(System.in);
-        while(true){
+        int count=0;
+        while(count<5){
             System.out.println("1.PayBills\n 2.Exit");
             int choice=scanner.nextInt();
             switch(choice){
@@ -23,7 +24,7 @@ public class Execute {
                         break;
                     } catch(MyBankException exception){
                         logger.log(Level.WARNING,exception.toString());
-                    }
+                        }
                 case 2:
                     System.exit(0);
             }

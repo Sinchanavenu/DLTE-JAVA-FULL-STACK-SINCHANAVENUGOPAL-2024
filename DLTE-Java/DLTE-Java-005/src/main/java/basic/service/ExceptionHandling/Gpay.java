@@ -27,10 +27,11 @@ public class Gpay extends AccountDetails {
         this.userName = userName;
         this.pin = pin;
     }
-    public void payBill(String billerName,Long billedAmount, String billType){
-        int pinNumber=0;
-        int count=0;
-        while(count < 5) {
+
+    public void payBill(String billerName, Long billedAmount, String billType) {
+        int pinNumber = 0;
+        int count = 0;
+        while (count < 5) {
             System.out.println("Enter the upi pin number");
             Scanner scanner = new Scanner(System.in);
             pinNumber = scanner.nextInt();
@@ -45,10 +46,14 @@ public class Gpay extends AccountDetails {
                 }
             } else {
                 count++;
+                throw new MyBankException();
+                payBill(String billerName, Long billedAmount, String billType);
             }
         }
-        if(count>=5){
-            throw new MyBankException();
-        }
-    }
+            if (count >= 5) {
+                throw new MyBankException();
+            }
+
+
 }
+
