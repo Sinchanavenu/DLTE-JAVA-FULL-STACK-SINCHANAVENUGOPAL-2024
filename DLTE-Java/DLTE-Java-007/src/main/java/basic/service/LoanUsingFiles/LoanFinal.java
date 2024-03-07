@@ -1,10 +1,11 @@
-/*package basic.service.LoanUsingFiles;
+package basic.service.LoanUsingFiles;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LoanFinal implements MyBank {
+    ArrayList<Loan> loans=loan;
 
     public static void main(String[] args) {
         MyBank myBank= new LoanFinal();
@@ -86,6 +87,35 @@ public class LoanFinal implements MyBank {
         }
         return closedLoan;
     }
+
+    @Override
+    public void writeIntoFile() {
+
+    }
+
+    @Override
+    public void readFromFile() {
+
+    }
+
+    @Override
+    public void addNewLoan(Loan loan) {
+        try{
+            readFromFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void checkAvailableLoans() {
+
+    }
+
+    @Override
+    public void checkOnlyClosedLoans() {
+
+    }
 }
 
- */
+

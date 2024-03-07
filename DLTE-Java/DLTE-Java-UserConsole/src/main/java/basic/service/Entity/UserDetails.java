@@ -1,14 +1,24 @@
 package basic.service.Entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class UserDetails {
+public class UserDetails implements Serializable {
     private String userName;
     private String password;
     private Date dateOfBirth;
     private String address;
-    private String emailID;
-    private Long phoneNumber;
+    private String emailId;
+    private long phoneNumber;
+
+    public UserDetails(String userName, String password, Date dateOfBirth, String address, String emailId, long phoneNumber) {
+        this.userName = userName;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.emailId = emailId;
+        this.phoneNumber = phoneNumber;
+    }
 
     @Override
     public String toString() {
@@ -17,65 +27,57 @@ public class UserDetails {
                 ", password='" + password + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", address='" + address + '\'' +
-                ", emailID='" + emailID + '\'' +
+                ", emailId='" + emailId + '\'' +
                 ", phoneNumber=" + phoneNumber +
                 '}';
     }
 
-    public String getUserName() {
+    public String getuserName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public void setuserName(String userName) {
         this.userName = userName;
     }
 
-    public String getPassword() {
+    public String getpassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setpassword(String password) {
         this.password = password;
     }
 
-    public Date getDateOfBirth() {
+    public Date getdateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setdateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getAddress() {
+    public String getaddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setaddress(String address) {
         this.address = address;
     }
 
-    public String getEmailID() {
-        return emailID;
+    public String getemailId() {
+        return emailId;
     }
 
-    public void setEmailID(String emailID) {
-        this.emailID = emailID;
+    public void setemailId(String emailId) {
+        this.emailId = emailId;
     }
 
-    public Long getPhoneNumber() {
+    public long getphoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Long phoneNumber) {
+    public void setphoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public UserDetails(String userName, String password, Date dateOfBirth, String address, String emailID, Long phoneNumber) {
-        this.userName = userName;
-        this.password = password;
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-        this.emailID = emailID;
-        this.phoneNumber = phoneNumber;
-    }
 }

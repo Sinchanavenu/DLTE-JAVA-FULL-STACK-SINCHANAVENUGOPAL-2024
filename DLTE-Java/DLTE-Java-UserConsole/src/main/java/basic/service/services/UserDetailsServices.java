@@ -5,30 +5,55 @@ import basic.service.exceptions.UserDetailsException;
 import basic.service.remotes.StorageTarget;
 import basic.service.remotes.UserDetailsRepository;
 
+import java.util.List;
+
 public class UserDetailsServices {
     UserDetailsRepository userDetailsRepository;
-
-    //    public CreditCardServices(StorageTarget storageTarget){
-//        creditCardRepository=storageTarget.getCreditCardRepository();
-//    }
+    StorageTarget storageTarget;
     public UserDetailsServices(StorageTarget storageTarget) {
-//       creditCardRepository=new CreditCardFileRepository("mybank-userdetails.doc");
         userDetailsRepository = storageTarget.getUserDetailsRepository();
     }
-
-    public void callSave(UserDetails userDetails) {
+    public UserDetails getUserDetailsByUsername(String username) {
         try {
-            userDetailsRepository.save(userDetails);
-        } catch (UserDetailsException userDetailsException) {
-            throw userDetailsException;
+            List<UserDetails> userDetailsList = storageTarget.getUserDetailsRepository().getAllUserDetails();
+
+            return userDetailsList.stream()
+                    .filter(userDetails -> userDetails.getuserName().equals(username))
+                    .findFirst()
+                    .orElse(null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
+    public void callAddUsers() {
+        try {
+            userDetailsRepository.addUsers();
+        } catch (Exception e) {
+        }
+    }
+
+//    public void callSave(UserDetails userDetails) {
+//        try {
+//            userDetailsRepository.save(userDetails);
+//        } catch (UserDetailsException userDetailsException) {
+//            throw userDetailsException;
+//        }
+//    }
 
     public void callUpdate(UserDetails userDetails) {
         try {
             userDetailsRepository.update(userDetails);
         } catch (UserDetailsException userDetailsException) {
             throw userDetailsException;
+        }
+    }
+
+    public UserDetails callVerifyPassword(String username, String password) {
+        try {
+            return (UserDetails) userDetailsRepository.verifyPassword(username, password);
+        } catch (Exception e) {
+            return null;
         }
     }
 }
