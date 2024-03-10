@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 public class LoanFinal implements MyBank {
 
     public static void main(String[] args) {
+        //initialization
         MyBank myBank= new LoanFinal();
         ArrayList<Loan> loan= new ArrayList<>();
         LoanFinal loanFinal=new LoanFinal();
@@ -17,6 +18,7 @@ public class LoanFinal implements MyBank {
             System.out.println("1.Add Loans\n 2.Check Loan\n 3.Check closed loan");
             int choice=scanner.nextInt();
             switch (choice){
+                //process
                 case 1:
                     System.out.println("Enter the loan number");
                     Long loanNumber=scanner.nextLong();
@@ -54,6 +56,7 @@ public class LoanFinal implements MyBank {
     }
 
     @Override
+    //writing into file
     public void writeIntoFile() {
         try{
             ObjectOutputStream objectOutputStream=new ObjectOutputStream(new FileOutputStream("loan.txt"));
@@ -67,6 +70,7 @@ public class LoanFinal implements MyBank {
     }
 
     @Override
+    //reading from file
     public void readFromFile() {
         try{
             ObjectInputStream objectInputStream=new ObjectInputStream(new FileInputStream("loan.txt"));
@@ -83,6 +87,7 @@ public class LoanFinal implements MyBank {
     }
 
     @Override
+    //adding nee loan entries
     public void addNewLoan(Loan loan) {
         readFromFile();
         loans.add(loan);
@@ -92,6 +97,7 @@ public class LoanFinal implements MyBank {
 
 
     @Override
+    //checking for open loans
     public void checkAvailableLoans() {
         for(Loan loan:loans){
             if(loan.getLoanStatus().equalsIgnoreCase("open")){
@@ -103,6 +109,7 @@ public class LoanFinal implements MyBank {
 
     @Override
     public void checkOnlyClosedLoans() {
+        //checking for closed loans
         for(Loan loan:loans){
             if(loan.getLoanStatus().equalsIgnoreCase("closed")){
                 System.out.println(loan);
