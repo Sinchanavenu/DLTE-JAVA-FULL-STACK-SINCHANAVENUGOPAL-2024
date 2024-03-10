@@ -2,10 +2,11 @@ package basic.service.LoanUsingFiles;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class LoanFinal implements MyBank {
-    ArrayList<Loan> loans=loan;
 
     public static void main(String[] args) {
         MyBank myBank= new LoanFinal();
@@ -17,14 +18,32 @@ public class LoanFinal implements MyBank {
             int choice=scanner.nextInt();
             switch (choice){
                 case 1:
-                    System.out.println("Enter the number of loans");
-                    int totalLoan=scanner.nextInt();
-                    myBank.addNewLoan(loan,newloan );
+                    System.out.println("Enter the loan number");
+                    Long loanNumber=scanner.nextLong();
+                    System.out.println("Enter the loan amount");
+                    Long loanAmount=scanner.nextLong();
+                    System.out.println("Enter the loan date");
+                    String loanDate=scanner.next();
+                    System.out.println("Enter loan status");
+                    String loanStatus=scanner.next();
+                    System.out.println("Enter the name");
+                    String borrowerName=scanner.next();
+                    System.out.println("Enter the phone number");
+                    Long borrowerContact=scanner.nextLong();
+                    Loan loanData=new Loan(loanNumber,loanAmount,loanDate,loanStatus,borrowerName,borrowerContact);
+                    try{
+                        myBank.addNewLoan(loanData);
+                        System.out.println("Loan added");
+                    } catch (Exception e) {
+                        System.out.println("Could not add loan" +e.getMessage());
+                    }
                     break;
                 case 2:
+                    System.out.println("Opened loans:");
                     loanFinal.checkAvailableLoans();
                     break;
                 case 3:
+                    System.out.println("Closed loans");
                     loanFinal.checkOnlyClosedLoans();
                     break;
                 default:
@@ -34,86 +53,61 @@ public class LoanFinal implements MyBank {
         }
     }
 
-
     @Override
-    public ArrayList<Loan> readLoanFromFile(String filePath) throws FileNotFoundException {
-        ArrayList<Loan> loan= new ArrayList<>();
-        try(ObjectInputStream objectInputStream= new ObjectInputStream((new FileInputStream(filePath)))){
-            loan=(ArrayList<Loan>) objectInputStream.readObject();
-        } catch (IOException | ClassNotFoundException e) {
+    public void writeIntoFile() {
+        try{
+            ObjectOutputStream objectOutputStream=new ObjectOutputStream(new FileOutputStream("loan.txt"));
+            objectOutputStream.writeObject(loans);
+            objectOutputStream.close();
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
-        return loan;
-    }
-
-    @Override
-    public void writeLoanToFile(ArrayList<Loan> loan, String filePath) throws FileNotFoundException {
-        try(ObjectOutputStream objectOutputStream= new ObjectOutputStream(new FileOutputStream(filePath))){
-            objectOutputStream.writeObject(loan);
-            System.out.println("Loan written to file" +filePath);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-    }
-
-    @Override
-    public void addNewLoan(ArrayList<Loan> loan, Loan newLoan) throws FileNotFoundException {
-        loan.add(newLoan);
-        writeLoanToFile(loan, "newloan.txt");
-
-    }
-
-    @Override
-    public ArrayList<Loan> checkAvailableLoans(ArrayList<Loan> loanStatus) throws FileNotFoundException {
-        ArrayList<Loan> availableLoan = new ArrayList<>();
-        loanStatus = readLoanFromFile("newloan.txt");
-        for(Loan loan: loanStatus){
-            if ("open".equals(loan.getLoanStatus())){
-                availableLoan.add(loan);
-            }
-        }
-        return availableLoan;
-    }
-
-    @Override
-    public ArrayList<Loan> checkOnlyClosedLoans(ArrayList<Loan> loan) {
-        ArrayList<Loan> closedLoan = new ArrayList<>();
-        loan = readLoanFromFile("newloan.txt");
-        for(Loan each: loan){
-            if ("closed".equals(loan.)){
-                closedLoan.add(loan);
-            }
-        }
-        return closedLoan;
-    }
-
-    @Override
-    public void writeIntoFile() {
-
     }
 
     @Override
     public void readFromFile() {
+        try{
+            ObjectInputStream objectInputStream=new ObjectInputStream(new FileInputStream("loan.txt"));
+            loans.addAll((ArrayList<Loan>)objectInputStream.readObject());
+            objectInputStream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
 
     @Override
     public void addNewLoan(Loan loan) {
-        try{
-            readFromFile();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        readFromFile();
+        loans.add(loan);
+        writeIntoFile();
+
     }
+
 
     @Override
     public void checkAvailableLoans() {
+        for(Loan loan:loans){
+            if(loan.getLoanStatus().equalsIgnoreCase("open")){
+                System.out.println(loan);
+            }
+        }
 
     }
 
     @Override
     public void checkOnlyClosedLoans() {
+        for(Loan loan:loans){
+            if(loan.getLoanStatus().equalsIgnoreCase("closed")){
+                System.out.println(loan);
+            }
+        }
 
     }
 }

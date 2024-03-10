@@ -20,7 +20,7 @@ import java.util.Date;
 public class Loan implements Serializable {
     private Long loanNumber;
     private Long loanAmount;
-    private Date loanDate;
+    private String loanDate;
     private String loanStatus;
     private String borrowerName;
     private Long borrowerContact;
@@ -53,11 +53,11 @@ public class Loan implements Serializable {
         this.loanAmount = loanAmount;
     }
 
-    public Date getLoanDate() {
+    public String getLoanDate() {
         return loanDate;
     }
 
-    public void setLoanDate(Date loanDate) {
+    public void setLoanDate(String loanDate) {
         this.loanDate = loanDate;
     }
 
@@ -85,7 +85,7 @@ public class Loan implements Serializable {
         this.borrowerContact = borrowerContact;
     }
 
-    public Loan(Long loanNumber, Long loanAmount, Date loanDate, String loanStatus, String borrowerName, Long borrowerContact) {
+    public Loan(Long loanNumber, Long loanAmount, String loanDate, String loanStatus, String borrowerName, Long borrowerContact) {
         this.loanNumber = loanNumber;
         this.loanAmount = loanAmount;
         this.loanDate = loanDate;

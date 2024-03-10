@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public interface MyBank {
-    ArrayList<Loan> loan=new ArrayList<>();
+    ArrayList<Loan> loans=new ArrayList<>();
     void writeIntoFile();
     void readFromFile();
     void addNewLoan(Loan loan);
