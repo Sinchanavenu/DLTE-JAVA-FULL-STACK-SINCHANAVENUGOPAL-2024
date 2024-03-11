@@ -3,36 +3,40 @@ package basic.service.middleware;
 import basic.service.Entity.UserDetails;
 import basic.service.exceptions.UserDetailsException;
 import basic.service.remotes.UserDetailsRepository;
+//import com.sun.org.slf4j.internal.Logger;
+//import com.sun.org.slf4j.internal.LoggerFactory;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.*;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 public class UserDetailsFileRepository implements UserDetailsRepository {
     private String filePath;
     private ResourceBundle resourceBundle = ResourceBundle.getBundle("userdetails");
-    private Logger logger = Logger.getLogger(UserDetailsFileRepository.class.getName());
+    //private Logger logger = Logger.getLogger(UserDetailsFileRepository.class.getName());
+    private Logger logger= LoggerFactory.getLogger(UserDetailsFileRepository.class);
     private List<UserDetails> userDetailsList;
     private static Scanner scanner=new Scanner(System.in);
 
     public UserDetailsFileRepository(String url) {
         filePath = url;
         userDetailsList = new ArrayList<>();
-
+        System.setProperty("system.output.ansi.enabled","always");
         try {
             File file = new File(filePath);
             if (!file.exists()) {
                 file.createNewFile();
                 // If the file doesn't exist, create a new file
             }
-
-            FileHandler fileHandler = new FileHandler("User-details-logs.txt",true);
-            SimpleFormatter simpleFormatter = new SimpleFormatter();
-            fileHandler.setFormatter(simpleFormatter);
-            logger.addHandler(fileHandler);
+//            FileHandler fileHandler = new FileHandler("User-details-logs.txt",true);
+//            SimpleFormatter simpleFormatter = new SimpleFormatter();
+//            fileHandler.setFormatter(simpleFormatter);
+//            logger.addHandler(fileHandler);
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -60,14 +64,15 @@ public class UserDetailsFileRepository implements UserDetailsRepository {
         readFromFile();
 
         if (userDetailsList.stream().anyMatch(u -> u.getuserName().equals(userDetails.getuserName()))) {
-            logger.log(Level.WARNING, userDetails.getuserName() + resourceBundle.getString("user.exists"));
+            //logger.log(Level.WARNING, userDetails.getuserName() + resourceBundle.getString("user.exists"));
+            logger.error(userDetails.getuserName()+resourceBundle.getString("user.exists"));
             throw new UserDetailsException(resourceBundle.getString("user.exists"));
         }
 
         userDetailsList.add(userDetails);
         writeIntoFile();
-
-        logger.log(Level.INFO, userDetails.getuserName() + resourceBundle.getString("user.saved"));
+        logger.info(userDetails.getuserName()+resourceBundle.getString("user.saved"));
+        //logger.log(Level.INFO, userDetails.getuserName() + resourceBundle.getString("user.saved"));
         System.out.println(userDetails.getuserName() + resourceBundle.getString("user.saved"));
     }
 
@@ -93,14 +98,16 @@ public class UserDetailsFileRepository implements UserDetailsRepository {
                 .orElse(null);
 
         if (matched == null) {
-            logger.log(Level.WARNING, userDetails.getuserName() + resourceBundle.getString("user.notExists"));
+            //logger.log(Level.WARNING, userDetails.getuserName() + resourceBundle.getString("user.notExists"));
+            logger.error(userDetails.getuserName()+resourceBundle.getString("user.noMatches"));
             throw new UserDetailsException(resourceBundle.getString("user.noMatches"));
         }
         int index = userDetailsList.indexOf(matched);
         userDetailsList.set(index, userDetails);
         writeIntoFile();
         System.out.println("Credential updated for "+userDetails.getuserName());
-        logger.log(Level.FINE, resourceBundle.getString("user.update.ok"));
+        //logger.log(Level.FINE, resourceBundle.getString("user.update.ok"));
+        logger.info(userDetails.getuserName()+resourceBundle.getString("user.update.ok"));
         System.out.println(resourceBundle.getString("user.update.ok"));
     }
 
@@ -115,10 +122,10 @@ public class UserDetailsFileRepository implements UserDetailsRepository {
         try {
             if (account == null) {
                 System.out.println(resourceBundle.getString("username.not.found"));
-                logger.log(Level.WARNING, resourceBundle.getString("username.not.found"));
+                logger.info(getAllUserDetails()+resourceBundle.getString("username.not.found"));
                 return null;
             } else if (!account.getpassword().equals(password)) {
-                logger.log(Level.WARNING, resourceBundle.getString("password.not.matched"));
+                logger.info(getAllUserDetails()+resourceBundle.getString("password.not.matched"));
                 System.out.println(resourceBundle.getString("password.not.matched"));
                 throw new UserDetailsException();
             } else
@@ -126,19 +133,19 @@ public class UserDetailsFileRepository implements UserDetailsRepository {
         }catch(UserDetailsException userDetailsException){
             for(int attempts=2;attempts<=3;){
                 System.out.println(resourceBundle.getString("login.fail")+" Only "+(3-attempts+1)+" attempts left");
-                logger.log(Level.WARNING,resourceBundle.getString("login.fail"));
+                logger.info(getAllUserDetails()+resourceBundle.getString("login.fail"));
                 System.out.println(userDetailsException);
                 String pass=scanner.next();
                 if(account.getpassword().equals(pass)){
                     System.out.println(resourceBundle.getString("login.success"));
-                    logger.log(Level.INFO,resourceBundle.getString("login.success"));
+                    logger.info(getAllUserDetails()+resourceBundle.getString("login.success"));
                     return account;
                 }else{
                     //   System.out.println(resourceBundle.getString("accounts.login.fail")+" Only "+(3-attempts)+" attempts left");;
                     attempts++;
                 }if(attempts>3) {
                     System.out.println(resourceBundle.getString("accounts.no.more.attempts"));
-                    logger.log(Level.WARNING,resourceBundle.getString("accounts.no.more.attempts"));
+                    logger.info(getAllUserDetails()+resourceBundle.getString("accounts.no.more.attempts"));
                 }
             }
         }

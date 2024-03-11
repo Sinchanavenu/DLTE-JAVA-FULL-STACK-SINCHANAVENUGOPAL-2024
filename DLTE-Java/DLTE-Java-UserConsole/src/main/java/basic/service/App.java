@@ -10,8 +10,10 @@ import basic.service.services.UserDetailsServices;
 import java.io.Serializable;
 import java.util.ResourceBundle;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static java.lang.System.exit;
 
@@ -26,7 +28,8 @@ public class App
     private static ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
     private static Scanner scanner=new Scanner(System.in);
     private static UserDetails userDetails;
-    private static Logger logger = Logger.getLogger(UserDetailsFileRepository.class.getName());
+    //private static Logger logger = Logger.getLogger(UserDetailsFileRepository.class.getName());
+    private static Logger logger= LoggerFactory.getLogger(UserDetailsFileRepository.class);
     public static void main( String[] args )
     {
         int option;
@@ -34,6 +37,7 @@ public class App
 
         storageTarget = new FileStorageTarget();
         services = new UserDetailsServices(storageTarget);
+        System.setProperty("logbackConfiguration","logback.xml");
 
         System.out.println(resourceBundle.getString("app.login.menu"));
         option = scanner.nextInt();
@@ -101,7 +105,7 @@ public class App
                     userDetails.setpassword(scanner.nextLine());
                 } else {
                     System.out.println("Password can't be set");
-                    logger.log(Level.WARNING, userDetails.getuserName() + resourceBundle.getString("update.failed"));
+                    logger.info(userDetails.getuserName() + resourceBundle.getString("update.failed"));
                     exit(0);
                 }
             }
@@ -110,7 +114,7 @@ public class App
         try {
             services.callUpdate(userDetails);
             //System.out.println("User details updated successfully.");
-            logger.log(Level.INFO, userDetails.getuserName() + resourceBundle.getString("user.update.done"));
+            logger.info(userDetails.getuserName() + resourceBundle.getString("user.update.done"));
         } catch (UserDetailsException e) {
             System.out.println("Failed to update user details: " + e.getMessage());
 
