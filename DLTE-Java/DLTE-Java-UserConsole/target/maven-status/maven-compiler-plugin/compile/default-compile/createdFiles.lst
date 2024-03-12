@@ -1,1 +1,9 @@
+basic\service\middleware\FileStorageTarget$1.class
+basic\service\services\UserDetailsServices.class
+basic\service\remotes\StorageTarget.class
 basic\service\App.class
+basic\service\Entity\UserDetails.class
+basic\service\exceptions\UserDetailsException.class
+basic\service\remotes\UserDetailsRepository.class
+basic\service\middleware\UserDetailsFileRepository.class
+basic\service\middleware\FileStorageTarget.class

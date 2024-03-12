@@ -1,1 +1,8 @@
 C:\DLTE-JAVA-FULL-STACK-SINCHANAVENUGOPAL-2024\DLTE-Java\DLTE-Java-UserConsole\src\main\java\basic\service\App.java
+C:\DLTE-JAVA-FULL-STACK-SINCHANAVENUGOPAL-2024\DLTE-Java\DLTE-Java-UserConsole\src\main\java\basic\service\Entity\UserDetails.java
+C:\DLTE-JAVA-FULL-STACK-SINCHANAVENUGOPAL-2024\DLTE-Java\DLTE-Java-UserConsole\src\main\java\basic\service\remotes\UserDetailsRepository.java
+C:\DLTE-JAVA-FULL-STACK-SINCHANAVENUGOPAL-2024\DLTE-Java\DLTE-Java-UserConsole\src\main\java\basic\service\middleware\UserDetailsFileRepository.java
+C:\DLTE-JAVA-FULL-STACK-SINCHANAVENUGOPAL-2024\DLTE-Java\DLTE-Java-UserConsole\src\main\java\basic\service\exceptions\UserDetailsException.java
+C:\DLTE-JAVA-FULL-STACK-SINCHANAVENUGOPAL-2024\DLTE-Java\DLTE-Java-UserConsole\src\main\java\basic\service\remotes\StorageTarget.java
+C:\DLTE-JAVA-FULL-STACK-SINCHANAVENUGOPAL-2024\DLTE-Java\DLTE-Java-UserConsole\src\main\java\basic\service\middleware\FileStorageTarget.java
+C:\DLTE-JAVA-FULL-STACK-SINCHANAVENUGOPAL-2024\DLTE-Java\DLTE-Java-UserConsole\src\main\java\basic\service\services\UserDetailsServices.java

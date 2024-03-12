@@ -49,7 +49,6 @@ public class App
             password = scanner.next();
             userDetails=services.callVerifyPassword(username, password);
             if (userDetails!=null) {
-                // userDetails = new UserDetails("annapoorna","anna@123",new Date(2002,7,6),"karkala","anna@123",9876543210L); // Initialize userDetails here
 
                 while (true) {
                     System.out.println(resourceBundle.getString("app.dashboard.menu"));
@@ -69,6 +68,9 @@ public class App
             } else {
                 System.out.println("Login failed. Exiting...");
             }
+        }
+        else{
+            System.out.println("Option not available");
         }
     }
 
