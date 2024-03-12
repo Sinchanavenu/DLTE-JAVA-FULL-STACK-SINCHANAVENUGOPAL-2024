@@ -21,7 +21,7 @@ Read All: GET service
 Read Transaction which contains amount of given range(min and max) as parameter: GET service
  */
 
-@WebServlet("rest/*")
+@WebServlet("/rest/*")
 public class RestWebService extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

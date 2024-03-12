@@ -1,4 +1,5 @@
 org\middleware\App.class
 org\middleware\EmployeeRepository.class
+org\middleware\EmployeeAddress.class
 org\middleware\Employee.class
 org\middleware\EmployeeDetails.class

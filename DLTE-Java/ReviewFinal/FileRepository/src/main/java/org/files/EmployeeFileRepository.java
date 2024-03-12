@@ -59,6 +59,19 @@ public class EmployeeFileRepository implements EmployeeRepository {
         return null;
     }
 
+    @Override
+    public Employee displayBasedOnPinCode(int pinCode) {
+        try {
+            readFromFile();
+            return employeeList.stream().filter(employee1 -> employee1.getEmployeeAddress().getTemporaryPinCode()==pinCode).findAny().orElse(null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     @Override
     public List<Employee> displayAll() {
