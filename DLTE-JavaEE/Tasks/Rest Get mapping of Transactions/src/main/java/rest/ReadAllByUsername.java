@@ -1,4 +1,4 @@
-package rest;
+/*package rest;
 
 import basic.service.Entity.Transactions;
 import basic.service.middleware.DatabaseTarget;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/rest/byusername")
+@WebServlet("/rest/alluser")
 public class ReadAllByUsername extends HttpServlet {
     UserDetailsServices userDetailsServices;
 
@@ -33,3 +33,5 @@ public class ReadAllByUsername extends HttpServlet {
         resp.getWriter().println(responseData);
     }
 }
+
+ */

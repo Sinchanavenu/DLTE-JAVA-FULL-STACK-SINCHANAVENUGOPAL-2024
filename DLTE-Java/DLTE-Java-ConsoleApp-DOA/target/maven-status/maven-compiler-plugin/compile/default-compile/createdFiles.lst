@@ -1,3 +1,4 @@
+basic\service\middleware\UserDetailsDatabaseRepository.class
 basic\service\Entity\Transactions.class
 basic\service\middleware\DatabaseTarget.class
 basic\service\services\UserDetailsServices.class

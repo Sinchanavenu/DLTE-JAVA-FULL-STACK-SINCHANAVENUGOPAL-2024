@@ -1,4 +1,4 @@
-package rest;
+/*package rest;
 
 import basic.service.Entity.Transactions;
 import basic.service.middleware.DatabaseTarget;
@@ -33,3 +33,5 @@ public class ReadAll extends HttpServlet {
         resp.getWriter().println(responseData);
     }
 }
+
+ */
