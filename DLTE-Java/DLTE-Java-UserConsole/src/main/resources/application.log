@@ -13,3 +13,6 @@
 10:33:50.610 [1;31m[main][0;39m ERROR basic.service.App - [1;31mchoose from given options[0;39m 
 10:33:50.628 [34m[main][0;39m INFO  b.s.m.UserDetailsDatabaseRepository - [34mannapoornaCredentials updated successfully!!![0;39m 
 10:33:50.628 [1;31m[main][0;39m ERROR basic.service.App - [1;31mannapoornaUpdate successfull.[0;39m 
+15:34:42.412 [1;31m[main][0;39m ERROR basic.service.App - [1;31mchoose from given options[0;39m 
+15:34:42.412 [34m[main][0;39m INFO  b.s.m.UserDetailsDatabaseRepository - [34mannapoornaCredentials updated successfully!!![0;39m 
+15:34:42.412 [1;31m[main][0;39m ERROR basic.service.App - [1;31mannapoornaUpdate successfull.[0;39m 

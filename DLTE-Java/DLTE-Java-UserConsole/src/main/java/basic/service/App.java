@@ -176,7 +176,7 @@ public class App
 
         try {
             services.callUpdate(userDetails);
-            logger.error(userDetails.getuserName() + resourceBundle.getString("user.update.done"));
+            logger.error(userDetails.getuserName() + resourceBundle.getString("update.failed"));
         } catch (UserDetailsException e) {
             System.out.println("Failed to update user details: " + e.getMessage());
         }
