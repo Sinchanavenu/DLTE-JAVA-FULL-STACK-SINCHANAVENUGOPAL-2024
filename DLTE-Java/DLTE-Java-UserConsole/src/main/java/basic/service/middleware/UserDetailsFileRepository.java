@@ -26,7 +26,7 @@ public class UserDetailsFileRepository implements UserDetailsRepository {
     public UserDetailsFileRepository(String url) {
         filePath = url;
         userDetailsList = new ArrayList<>();
-        System.setProperty("system.output.ansi.enabled","always");
+        //System.setProperty("system.output.ansi.enabled","always");
         try {
             File file = new File(filePath);
             if (!file.exists()) {
@@ -129,7 +129,7 @@ public class UserDetailsFileRepository implements UserDetailsRepository {
                 System.out.println(resourceBundle.getString("password.not.matched"));
                 throw new UserDetailsException();
             } else
-                return account;
+                return null;
         }catch(UserDetailsException userDetailsException){
             for(int attempts=2;attempts<=3;){
                 System.out.println(resourceBundle.getString("login.fail")+" Only "+(3-attempts+1)+" attempts left");
@@ -149,7 +149,7 @@ public class UserDetailsFileRepository implements UserDetailsRepository {
                 }
             }
         }
-        return null;
+        return account;
     }
 
     @Override

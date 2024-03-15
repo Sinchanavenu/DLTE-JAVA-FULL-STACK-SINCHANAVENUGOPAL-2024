@@ -9,7 +9,8 @@
 
     <!-- Define file appender -->
     <appender name="myLogs" class="ch.qos.logback.core.FileAppender">
-        <file>C:\DLTE-JAVA-FULL-STACK-SINCHANAVENUGOPAL-2024\DLTE-Java</file> <!-- Define log file name and path -->
+        <file>src/main/resources/application.log</file>
+<!--        &lt;!&ndash; Define log file name and path &ndash;&gt;&ndash;&gt;-->
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} %highlight([%thread]) %-5level %logger{36} - %highlight(%msg) %n</pattern>
         </encoder>
@@ -17,8 +18,9 @@
 
     <!-- Root logger settings -->
     <root level="INFO">
+        <appender-ref ref="myLogs" />
         <appender-ref ref="myConsole" />
-        <appender-ref ref="myLogs" /> <!-- Attach file appender -->
+<!--        <appender-ref ref="myLogs" /> &lt;!&ndash; Attach file appender &ndash;&gt;-->
     </root>
 
 </configuration>

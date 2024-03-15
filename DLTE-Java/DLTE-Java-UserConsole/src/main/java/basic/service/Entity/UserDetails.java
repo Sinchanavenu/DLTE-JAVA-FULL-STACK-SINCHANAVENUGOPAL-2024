@@ -11,6 +11,10 @@ public class UserDetails implements Serializable {
     private String emailId;
     private long phoneNumber;
 
+    public UserDetails() {
+
+    }
+
     public UserDetails(String userName, String password, Date dateOfBirth, String address, String emailId, long phoneNumber) {
         this.userName = userName;
         this.password = password;

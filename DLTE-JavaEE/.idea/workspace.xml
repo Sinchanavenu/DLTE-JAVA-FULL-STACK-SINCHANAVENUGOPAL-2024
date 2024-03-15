@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b85910fa-6a35-4ec0-8bdb-ec70b2daf2a0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/src/main/java/basic/service/middleware/DatabaseTarget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/src/main/java/basic/service/remotes/StorageTarget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/src/main/java/basic/service/services/UserDetailsServices.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/src/main/resources/application.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/src/main/resources/database.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/src/main/resources/userdetails.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/classes/application.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/classes/basic/service/middleware/DatabaseTarget.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/classes/basic/service/middleware/UserDetailsDatabaseRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/classes/basic/service/services/UserDetailsServices.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/classes/database.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/classes/userdetails.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/src/main/resources/application.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/classes/application.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/Console.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/src/main/java/org/console/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/src/test/java/org/console/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/target/Console-2.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/target/classes/org/console/App.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/target/surefire-reports/TEST-org.console.AppTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/target/surefire-reports/org.console.AppTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/Console/target/test-classes/org/console/AppTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/DatabaseRepo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/src/main/java/org/database/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/src/main/java/org/database/DatabaseRepositoryImplementation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/src/main/java/org/extra/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/src/main/java/org/extra/EmployeeAddress.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/src/main/java/org/extra/EmployeeDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/src/main/java/org/extra/EmployeeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/src/main/resources/database.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/src/test/java/org/database/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewDatabase/DatabaseRepository/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Console/EmployeeDetails.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Console/src/main/java/org/console/Validation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/logging.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/src/main/java/org/example/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/src/main/resources/information.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/src/main/resources/logback.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/src/test/java/org/example/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/target/classes/org/example/App.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/target/logging-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/target/surefire-reports/TEST-org.example.AppTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/target/surefire-reports/org.example.AppTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java/slf4j/target/test-classes/org/example/AppTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/src/main/java/basic/service/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/src/main/java/basic/service/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/src/main/java/basic/service/entity/UserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/src/main/java/basic/service/Entity/UserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/src/main/java/basic/service/middleware/UserDetailsDatabaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/src/main/java/basic/service/middleware/UserDetailsDatabaseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/src/main/java/basic/service/remotes/UserDetailsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/src/main/java/basic/service/remotes/UserDetailsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/ConsoleAppDAO-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/ConsoleAppDAO-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/classes/basic/service/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/classes/basic/service/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/surefire-reports/TEST-basic.service.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/surefire-reports/TEST-basic.service.AppTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/surefire-reports/basic.service.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-ConsoleApp-DOA/target/surefire-reports/basic.service.AppTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/src/main/java/basic/service/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/src/main/java/basic/service/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/src/main/java/basic/service/Entity/UserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/src/main/java/basic/service/Entity/UserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/src/main/java/basic/service/middleware/UserDetailsFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/src/main/java/basic/service/middleware/UserDetailsFileRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/src/main/java/basic/service/services/UserDetailsServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/src/main/java/basic/service/services/UserDetailsServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/src/main/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/src/main/resources/userdetails.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/src/main/resources/userdetails.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/ConsoleApp-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/ConsoleApp-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/classes/basic/service/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/classes/basic/service/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/classes/basic/service/Entity/UserDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/classes/basic/service/Entity/UserDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/classes/basic/service/middleware/UserDetailsFileRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/classes/basic/service/middleware/UserDetailsFileRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/classes/basic/service/services/UserDetailsServices.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/classes/basic/service/services/UserDetailsServices.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/classes/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/classes/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/classes/userdetails.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/classes/userdetails.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/surefire-reports/TEST-basic.service.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/surefire-reports/TEST-basic.service.AppTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/surefire-reports/basic.service.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/target/surefire-reports/basic.service.AppTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/userdetail.doc" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/DLTE-Java-UserConsole/userdetail.doc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Console/src/main/java/org/console/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Console/src/main/java/org/console/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Console/src/main/java/org/console/CheckData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Console/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Console/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Console/target/Console-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Console/target/Console-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Console/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Console/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Console/target/classes/org/console/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Console/target/classes/org/console/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Console/target/surefire-reports/TEST-org.console.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Console/target/surefire-reports/TEST-org.console.AppTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Console/target/surefire-reports/org.console.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Console/target/surefire-reports/org.console.AppTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/FileRepository/src/main/java/org/files/EmployeeFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/FileRepository/src/main/java/org/files/EmployeeFileRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/FileRepository/target/FileRepository-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/FileRepository/target/FileRepository-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/FileRepository/target/classes/org/files/EmployeeFileRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/FileRepository/target/classes/org/files/EmployeeFileRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/FileRepository/target/surefire-reports/TEST-org.files.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/FileRepository/target/surefire-reports/TEST-org.files.AppTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/FileRepository/target/surefire-reports/org.files.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/FileRepository/target/surefire-reports/org.files.AppTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Middleware/src/main/java/org/middleware/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java/ReviewFinal/Middleware/src/main/java/org/middleware/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tasks/RestWebservice/target/RestWebservices.war" beforeDir="false" afterPath="$PROJECT_DIR$/Tasks/RestWebservice/target/RestWebservices.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tasks/RestWebservice/target/RestWebservices/WEB-INF/classes/rest/service/RestWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Tasks/RestWebservice/target/RestWebservices/WEB-INF/classes/rest/service/RestWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tasks/RestWebservice/target/classes/rest/service/RestWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Tasks/RestWebservice/target/classes/rest/service/RestWebService.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2dfUMpxFtxmSYdrifTB4srKe39e" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b85910fa-6a35-4ec0-8bdb-ec70b2daf2a0" name="Default Changelist" comment="" />
+      <created>1710398581118</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1710398581118</updated>
+      <workItem from="1710398586926" duration="297000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="549" y="164" key="FileChooserDialogImpl" timestamp="1710398871623">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="549" y="164" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1710398871623" />
+    <state x="465" y="234" key="com.intellij.ide.util.TipDialog" timestamp="1710398602431">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="465" y="234" key="com.intellij.ide.util.TipDialog/0.0.1536.816@0.0.1536.816" timestamp="1710398602431" />
+    <state x="209" y="105" key="new project wizard" timestamp="1710398883446">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="209" y="105" key="new project wizard/0.0.1536.816@0.0.1536.816" timestamp="1710398883446" />
+  </component>
+</project>

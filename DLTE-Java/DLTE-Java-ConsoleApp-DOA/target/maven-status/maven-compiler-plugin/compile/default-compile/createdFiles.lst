@@ -1,1 +1,8 @@
+basic\service\Entity\Transactions.class
+basic\service\middleware\DatabaseTarget.class
+basic\service\services\UserDetailsServices.class
+basic\service\remotes\StorageTarget.class
 basic\service\App.class
+basic\service\Entity\UserDetails.class
+basic\service\exceptions\UserDetailsException.class
+basic\service\remotes\UserDetailsRepository.class

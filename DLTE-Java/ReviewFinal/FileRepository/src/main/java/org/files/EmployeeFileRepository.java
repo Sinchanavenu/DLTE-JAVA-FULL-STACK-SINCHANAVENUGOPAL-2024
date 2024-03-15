@@ -10,7 +10,7 @@ import java.util.List;
 
 public class EmployeeFileRepository implements EmployeeRepository {
     List<Employee> employeeList=new ArrayList<>();
-    File filePath=new File("AllDetails.txt");
+    File filePath=new File("EmployeeDetails.txt");
     public void writeIntoFile() throws IOException {
         FileOutputStream fileOutputStream=new FileOutputStream(filePath);
         ObjectOutputStream objectOutputStream=new ObjectOutputStream(fileOutputStream);

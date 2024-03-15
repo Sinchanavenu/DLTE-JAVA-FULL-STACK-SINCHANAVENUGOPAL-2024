@@ -1,107 +1,188 @@
 package basic.service.middleware;
 
-import basic.service.entity.UserDetails;
+import basic.service.Entity.Transactions;
+import basic.service.Entity.UserDetails;
+import basic.service.exceptions.UserDetailsException;
 import basic.service.remotes.UserDetailsRepository;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.FileHandler;
-import java.util.logging.SimpleFormatter;
+import java.util.Scanner;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+//import org.slf4j.event.Level;
 
 public class UserDetailsDatabaseRepository implements UserDetailsRepository {
+    UserDetails userDetails=new UserDetails();
     private Connection connection;
-    //private List<CreditCard> creditCardList=new ArrayList<>();
+    private ResourceBundle resourceBundle = ResourceBundle.getBundle("userdetails");
     private Logger logger= LoggerFactory.getLogger(UserDetailsDatabaseRepository.class);
-    private List<UserDetails> userDetailsList;
-
-    private ResourceBundle resourceBundle=ResourceBundle.getBundle("database");
-    //private Logger logger=Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
+    //private Logger logger = Logger.getLogger(UserDetailsDatabaseRepository.class);
 
-    public UserDetailsDatabaseRepository(Connection connection){
-        try{
-            this.connection=connection;
-            FileHandler fileHandler=new FileHandler("credit-card-logs.txt",true);
-            SimpleFormatter simpleFormatter=new SimpleFormatter();
-            fileHandler.setFormatter(simpleFormatter);
-            //logger.addHandler(fileHandler);
-        }
-        catch (IOException ioException){
-            System.out.println(ioException);
-        }
+    public UserDetailsDatabaseRepository(Connection connection) {
+        this.connection=connection;
+//        try{
+//
+////            FileHandler fileHandler=new FileHandler("User-details-logs.txt",true);
+////            SimpleFormatter simpleFormatter=new SimpleFormatter();
+////            fileHandler.setFormatter(simpleFormatter);
+////            logger.addHandler(fileHandler);
+//        }
+//        catch (IOException ioException){
+//            System.out.println(ioException);
+//        }
     }
 
-    public void save(UserDetails userDetails) {
-        try{
-            String query="insert into mybank_creditcard values(?,?,?,?,?,?,?,?,?)";
-            preparedStatement= connection.prepareStatement(query);
+//    @Override
+//    public void addUsers() {
+//        try {
+//            PreparedStatement statement = connection.prepareStatement("INSERT INTO UserDetails(username, password, dob, address, email, phone) VALUES (?, ?, ?, ?, ?, ?)");
+////            statement.setString(1, "annapoornapai");
+////            statement.setString(2, "anna");
+////            statement.setDate(3, new java.sql.Date(new Date(2002, 7, 6).getTime()));
+////            statement.setString(4, "karkala");
+////            statement.setString(5, "annapoorna@gmail.com");
+////            statement.setLong(6, 9876543210L);
+////            statement.executeUpdate();
+////            statement.close();
+//            logger.log(Level.INFO, "Users added successfully to the database.");
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-            preparedStatement.setString(1,userDetails.getuserName();
-            preparedStatement.setString(2,userDetails.getpassword();
-            preparedStatement.setDate(3,new Date(userDetails.getdateOfBirth().getTime());
-            preparedStatement.setString(4,userDetails.getaddress();
-            preparedStatement.setString(5,userDetails.getemailId();
-            preparedStatement.setLong(6,userDetails.getphoneNumber();
+//    @Override
+//    public void addUsers() {
+//
+//    }
 
-            int result = preparedStatement.executeUpdate();
-            if(result!=0){
-                logger.log(Level.INFO,resourceBundle.getString("record.push.ok"));
-                System.out.println(resourceBundle.getString("record.push.ok"));
-            }
-            else{
-                logger.log(Level.INFO,resourceBundle.getString("record.push.fail"));
-                System.out.println(resourceBundle.getString("record.push.fail"));
-            }
-        }
-        catch (SQLException sqlException){
-            System.out.println(resourceBundle.getString("card.not.ok"));
-        }
-    }
-
-    @Override
-    public void addUsers() {
-
-    }
 
     @Override
     public void update(UserDetails userDetails) {
-        try{
-            String query="update mybank_creditcard set creditcard_limit=?, creditcard_usage=?,creditcard_available=?,creditcard_pin=? where creditcard_number=?";
-            preparedStatement=connection.prepareStatement(query);
-
-            preparedStatement.setInt(1,creditCard.getCardLimit());
-            preparedStatement.setInt(2,creditCard.getCardUsage());
-            preparedStatement.setInt(3,creditCard.getCardAvailable());
-            preparedStatement.setInt(4,creditCard.getCardPin());
-            preparedStatement.setLong(5,creditCard.getCardNumber());
-
-            int result = preparedStatement.executeUpdate();
-            if(result!=0){
-                logger.log(Level.INFO,resourceBundle.getString("card.update.ok"));
-                System.out.println(resourceBundle.getString("card.update.ok"));
+        try {
+            PreparedStatement statement = connection.prepareStatement("UPDATE UserDetails SET password=?, dob=?, address=?, email=?, phone=? WHERE username=?");
+            statement.setString(1, userDetails.getpassword());
+            statement.setDate(2, new java.sql.Date(userDetails.getdateOfBirth().getTime()));
+            statement.setString(3, userDetails.getaddress());
+            statement.setString(4, userDetails.getemailId());
+            statement.setLong(5, userDetails.getphoneNumber());
+            statement.setString(6, userDetails.getuserName());
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated == 0) {
+                logger.error(userDetails.getuserName()+resourceBundle.getString("user.notExists"));
+                throw new UserDetailsException("User does not exist.");
+            } else {
+                logger.info(userDetails.getuserName()+resourceBundle.getString("credential.updated"));
             }
-            else{
-                throw new CreditCardException(resourceBundle.getString("card.update.not.ok"));
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public Object verifyPassword(String username, String password) {
+        int attempts = 3; // Number of attempts allowed
+        Scanner scanner = new Scanner(System.in);
+
+        while (attempts > 0) {
+            try {
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM UserDetails WHERE username=?");
+                statement.setString(1, username);
+                ResultSet resultSet = statement.executeQuery();
+                if (resultSet.next()) {
+                    String storedPassword = resultSet.getString("password");
+                    if (password.equals(storedPassword)) {
+                        UserDetails userDetails = new UserDetails(
+                                resultSet.getString("username"),
+                                resultSet.getString("password"),
+                                resultSet.getDate("dob"),
+                                resultSet.getString("address"),
+                                resultSet.getString("email"),
+                                resultSet.getLong("phone")
+                        );
+                        System.out.println(resourceBundle.getString("login.success"));
+                        return userDetails;
+                    } else {
+                        attempts--;
+                        if (attempts == 0) {
+                            logger.error(userDetails.getuserName()+resourceBundle.getString("account.locked"));
+                            throw new UserDetailsException("Too many failed attempts. Account locked.");
+                        }
+                        System.out.println("Incorrect password. Attempts left: " + attempts);
+                        System.out.print("Enter password: ");
+                        password = scanner.nextLine();
+                    }
+                } else {
+                    logger.error(userDetails.getuserName()+resourceBundle.getString("user.notfound"));
+                    throw new UserDetailsException("Username not found.");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        scanner.close();
+        return null;
+    }
+    @Override
+    public List<Transactions> findAll() {
+        ArrayList<Transactions> transactionArrayList=new ArrayList<>();
+        try{
+            String query="select * from transactions";
+            preparedStatement=connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                Date date=resultSet.getDate(2);
+                if(date!=null)
+                    transactionArrayList.add(new Transactions(date,resultSet.getLong(1),resultSet.getString(5),resultSet.getDouble(3),resultSet.getDouble(4)));
             }
         }
         catch (SQLException sqlException){
             System.out.println(sqlException);
         }
-
+        return transactionArrayList;
     }
 
     @Override
-    public Object verifyPassword(String username, String password) {
-        return null;
+    public List<Transactions> findAllUsers(String username) {
+        ArrayList<Transactions> transactionArrayList=new ArrayList<>();
+        try{
+            String query="select * from transactions where username=?";
+            preparedStatement=connection.prepareStatement(query);
+            preparedStatement.setString(1,username);
+            resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                transactionArrayList.add(new Transactions(resultSet.getDate(2),resultSet.getLong(1),resultSet.getString(5),resultSet.getDouble(3),resultSet.getDouble(4)));
+            }
+        }
+        catch (SQLException sqlException){
+            System.out.println(sqlException);
+        }
+        return transactionArrayList;
     }
+
+
+    @Override
+    public List<Transactions> findAllByDate(Date date, String username) {
+        ArrayList<Transactions> transactionArrayList=new ArrayList<>();
+        try{
+            String query="select * from transactions where username=? and transaction_date=?";
+            preparedStatement=connection.prepareStatement(query);
+            preparedStatement.setString(1,username);
+            preparedStatement.setDate(2, (java.sql.Date) date);
+            resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                transactionArrayList.add(new Transactions(resultSet.getDate(2),resultSet.getLong(1),resultSet.getString(5),resultSet.getDouble(3),resultSet.getDouble(4)));
+            }
+        }
+        catch (SQLException sqlException){
+            System.out.println(sqlException);
+        }
+        return transactionArrayList;
+    }
+
 }
