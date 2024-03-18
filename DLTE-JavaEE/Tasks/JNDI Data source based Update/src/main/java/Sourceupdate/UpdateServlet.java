@@ -27,7 +27,7 @@ public class UpdateServlet extends HttpServlet {
         try {
             // Lookup the data source
             InitialContext context = new InitialContext();
-            DataSource dataSource = (DataSource) context.lookup("java:/Data");
+            DataSource dataSource = (DataSource) context.lookup("java:/OracleDS");
             try (Connection conn = dataSource.getConnection()) {
                 String transactionIdParam = req.getParameter("transactionId");
                 String amountParam = req.getParameter("amount");
