@@ -20,7 +20,7 @@ Create JDBC driver, Data source and bind into JBoss container, then perform foll
 Using JNDI data source perform account update in UpdateServlet
  */
 
-@WebServlet("/jndi/")
+@WebServlet("/update")
 public class UpdateServlet extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,21 +29,22 @@ public class UpdateServlet extends HttpServlet {
             InitialContext context = new InitialContext();
             DataSource dataSource = (DataSource) context.lookup("java:/OracleDS");
             try (Connection conn = dataSource.getConnection()) {
-                String transactionIdParam = req.getParameter("transactionId");
-                String amountParam = req.getParameter("amount");
+                String userNameParam = req.getParameter("username");
+                String phoneParam = req.getParameter("phone");
 
-                if (transactionIdParam != null && amountParam != null) {
-                    int transactionId = Integer.parseInt(transactionIdParam);
-                    int amount = Integer.parseInt(amountParam);
+                if (userNameParam != null && phoneParam != null) {
+                    String username = userNameParam;
+                    //Long amount = Long.parseLong(amountParam);
+                    Long phone= Long.parseLong(phoneParam);
 
-                    String sql = "UPDATE Transactions SET transaction_amount = transaction_amount + ? WHERE transaction_id = ?";
+                    String sql = "UPDATE UserDetails SET phone = ? WHERE username = ?";
                     try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                        stmt.setInt(1, transactionId);
-                        stmt.setInt(3, amount);
+                        stmt.setLong(1, phone);
+                        stmt.setString(2, username);
                         stmt.executeUpdate();
                     }
                 } else {
-                    throw new ServletException("transactionId or amount parameter is null");
+                    throw new ServletException("Username or phone parameter is null");
                 }
             }
         } catch (NamingException | SQLException e) {
