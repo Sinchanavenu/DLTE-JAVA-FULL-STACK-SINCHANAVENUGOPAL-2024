@@ -150,7 +150,9 @@ public class UserDetailsDatabaseRepository implements UserDetailsRepository {
                     }
                     System.out.println("Username not found. Attempts left: " + attempts);
                     System.out.print("Enter username: ");
-                    username = scanner.next();
+                    username = scanner.nextLine();
+                    System.out.print("Enter password: ");
+                    password = scanner.next();
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

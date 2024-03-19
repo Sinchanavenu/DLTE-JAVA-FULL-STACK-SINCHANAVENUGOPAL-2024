@@ -35,10 +35,10 @@ public class AppTest{
         @Test
         public void testCallPasswordValidate_InvalidPassword () {
             // Given
-            String username = "annapoornapai";
-            String password = "anna";
+            String username = "sinchana";
+            String password = "Sinchana@1";
 
-            UserDetails userDetails = new UserDetails("annapoornapai", "anna", new Date("06/07/2002"), "karkala", "annapoorna@gmail.com", 6363276256L);
+            UserDetails userDetails = new UserDetails("sinchana", "Sinchana@1", new Date("12/2/2002"), "mangalore", "sinch12@gmail.com", 9876541230L);
             // When
             when(mockDatabaseRepository.verifyPassword(username, password)).thenReturn(false);
             UserDetails result = services.callVerifyPassword(userDetails.getuserName(), userDetails.getpassword());
