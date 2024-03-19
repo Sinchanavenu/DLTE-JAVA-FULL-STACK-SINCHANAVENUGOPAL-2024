@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="63058383-023b-4a2d-8403-dae1757e502b" name="Default Changelist" comment="" />
+    <list default="true" id="63058383-023b-4a2d-8403-dae1757e502b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO/target/classes/org/example/App.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO/target/classes/org/example/Endpoint.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO/target/classes/org/example/FetchTransactions.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO/target/classes/org/example/TransactionByUsername.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO/target/test-classes/org/example/AppTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO/src/main/java/org/example/Endpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO/src/main/java/org/example/Endpoint.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
