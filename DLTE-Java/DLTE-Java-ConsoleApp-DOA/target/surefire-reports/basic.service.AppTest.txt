@@ -1,4 +1,20 @@
 -------------------------------------------------------------------------------
 Test set: basic.service.AppTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s - in basic.service.AppTest
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.504 s <<< FAILURE! - in basic.service.AppTest
+testUpdate(basic.service.AppTest)  Time elapsed: 0.031 s  <<< FAILURE!
+org.mockito.exceptions.verification.junit.ArgumentsAreDifferent: 
+
+Argument(s) are different! Wanted:
+mockDatabaseRepository.update(
+    UserDetails{userName='sinchana', password='Sinchana@1', dateOfBirth=Sat Dec 02 00:00:00 IST 2028, address='mangalore', emailId='sinch12@gmail.com', phoneNumber=9876541230}
+);
+-> at basic.service.AppTest.testUpdate(AppTest.java:58)
+Actual invocations have different arguments:
+mockDatabaseRepository.update(
+    UserDetails{userName='annapoornapai', password='anna', dateOfBirth=Fri Jun 07 00:00:00 IST 2002, address='karkala', emailId='annapoorna@gmail.com', phoneNumber=6363276256}
+);
+-> at basic.service.services.UserDetailsServices.callUpdate(UserDetailsServices.java:42)
+
+	at basic.service.AppTest.testUpdate(AppTest.java:58)
+

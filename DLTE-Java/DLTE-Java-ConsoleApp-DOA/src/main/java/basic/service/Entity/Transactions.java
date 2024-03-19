@@ -9,6 +9,9 @@ public class Transactions {
     private double amount;
     private double balance;
 
+    public Transactions() {
+    }
+
     public Transactions(Date date, long transactionID, String username, double amount, double balance) {
         this.date = date;
         this.transactionID = transactionID;
