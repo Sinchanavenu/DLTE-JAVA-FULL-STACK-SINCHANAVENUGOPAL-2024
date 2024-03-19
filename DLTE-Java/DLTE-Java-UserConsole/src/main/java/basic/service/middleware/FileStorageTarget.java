@@ -8,7 +8,7 @@ public class FileStorageTarget implements StorageTarget {
         @Override
         public UserDetailsRepository getUserDetailsRepository()
         {
-            return new UserDetailsFileRepository("userdetail.doc") {
+            return new UserDetailsFileRepository("userdetails.doc") {
             };
         }
     }

@@ -38,6 +38,7 @@ public class App
         int option;
         String username, password;
         storageTarget = new DatabaseTarget();
+        //storageTarget= new FileStorageTarget();
         services = new UserDetailsServices(storageTarget);
 
         System.out.println(resourceBundle.getString("app.login.menu"));
@@ -171,12 +172,13 @@ public class App
             }
             else{
                 logger.error(resourceBundle.getString("choose.different"));
+                updateUserDetails();
             }
         }
 
         try {
             services.callUpdate(userDetails);
-            logger.error(userDetails.getuserName() + resourceBundle.getString("update.failed"));
+            logger.error(userDetails.getuserName() + resourceBundle.getString("credential.updated"));
         } catch (UserDetailsException e) {
             System.out.println("Failed to update user details: " + e.getMessage());
         }

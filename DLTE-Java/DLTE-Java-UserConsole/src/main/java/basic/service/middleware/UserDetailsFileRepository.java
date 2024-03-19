@@ -76,17 +76,17 @@ public class UserDetailsFileRepository implements UserDetailsRepository {
         System.out.println(userDetails.getuserName() + resourceBundle.getString("user.saved"));
     }
 
-    @Override
-    public void addUsers() {
-        readFromFile();
-        userDetailsList.add(new UserDetails("annapoornapai", "annap@123", new Date(2002, 7, 6), "karkala", "annapoorna@gmail.com", 9876543210L));
-        userDetailsList.add(new UserDetails("sinchanavenu", "sinchanav@123", new Date(2002, 8, 5), "mulki", "sinchanaa@gmail.com", 9876547680L));
-        userDetailsList.add(new UserDetails("shreyam", "shre@123", new Date(2002, 11, 12), "moodbidri", "shreya@gmail.com", 9876512345L));
-        userDetailsList.add(new UserDetails("akshatha", "aksh@123", new Date(2002, 11, 20), "karkala", "akshatha@gmail.com", 9765443210L));
-        userDetailsList.add(new UserDetails("arundhathi","aruparu",new Date(2003,2,8),"Biloor","aru@gmail.com", 9282983228L));
-        writeIntoFile();
-
-    }
+//    @Override
+//    public void addUsers() {
+//        readFromFile();
+////        userDetailsList.add(new UserDetails("annapoornapai", "annap@123", new Date(2002, 7, 6), "karkala", "annapoorna@gmail.com", 9876543210L));
+////        userDetailsList.add(new UserDetails("sinchanavenu", "sinchanav@123", new Date(2002, 8, 5), "mulki", "sinchanaa@gmail.com", 9876547680L));
+////        userDetailsList.add(new UserDetails("shreyam", "shre@123", new Date(2002, 11, 12), "moodbidri", "shreya@gmail.com", 9876512345L));
+////        userDetailsList.add(new UserDetails("akshatha", "aksh@123", new Date(2002, 11, 20), "karkala", "akshatha@gmail.com", 9765443210L));
+////        userDetailsList.add(new UserDetails("arundhathi","aruparu",new Date(2003,2,8),"Biloor","aru@gmail.com", 9282983228L));
+//        writeIntoFile();
+//
+//    }
 
     @Override
     public void update(UserDetails userDetails) {

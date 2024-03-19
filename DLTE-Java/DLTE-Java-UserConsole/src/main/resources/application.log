@@ -19,3 +19,29 @@
 15:36:23.427 [1;31m[main][0;39m ERROR basic.service.App - [1;31mchoose from given options[0;39m 
 15:36:23.444 [34m[main][0;39m INFO  b.s.m.UserDetailsDatabaseRepository - [34mannapoornaCredentials updated successfully!!![0;39m 
 15:36:23.444 [1;31m[main][0;39m ERROR basic.service.App - [1;31mannapoornaUpdate failed.[0;39m 
+14:24:50.408 [1;31m[main][0;39m ERROR b.s.m.UserDetailsDatabaseRepository - [1;31mnullentered wrong username[0;39m 
+14:25:20.241 [1;31m[main][0;39m ERROR b.s.m.UserDetailsDatabaseRepository - [1;31mnullToo many attempts. Yur account has been blocked[0;39m 
+14:26:16.741 [1;31m[main][0;39m ERROR basic.service.App - [1;31mchoose from given options[0;39m 
+14:26:16.741 [34m[main][0;39m INFO  b.s.m.UserDetailsDatabaseRepository - [34mannapoornaCredentials updated successfully!!![0;39m 
+14:26:16.741 [1;31m[main][0;39m ERROR basic.service.App - [1;31mannapoornaUpdate failed.[0;39m 
+14:30:03.386 [1;31m[main][0;39m ERROR b.s.m.UserDetailsDatabaseRepository - [1;31mnullentered wrong username[0;39m 
+14:30:33.670 [1;31m[main][0;39m ERROR basic.service.App - [1;31mchoose from given options[0;39m 
+14:30:33.670 [1;31m[main][0;39m ERROR basic.service.App - [1;31mannapoornaUpdate failed.[0;39m 
+14:33:03.511 [1;31m[main][0;39m ERROR basic.service.App - [1;31mannapoornaUpdate failed.[0;39m 
+14:33:03.516 [1;31m[main][0;39m ERROR basic.service.App - [1;31mannapoornaUpdate failed.[0;39m 
+14:35:57.790 [1;31m[main][0;39m ERROR basic.service.App - [1;31mannapoornaupadted successfully[0;39m 
+16:46:02.936 [34m[main][0;39m INFO  b.s.m.UserDetailsFileRepository - [34m[]Username not found.[0;39m 
+16:46:54.953 [34m[main][0;39m INFO  b.s.m.UserDetailsFileRepository - [34m[]Username not found.[0;39m 
+16:47:31.608 [34m[main][0;39m INFO  b.s.m.UserDetailsFileRepository - [34m[]Username not found.[0;39m 
+16:47:54.285 [34m[main][0;39m INFO  b.s.m.UserDetailsFileRepository - [34m[]Username not found.[0;39m 
+16:48:57.866 [34m[main][0;39m INFO  b.s.m.UserDetailsFileRepository - [34m[]Username not found.[0;39m 
+16:52:32.818 [34m[main][0;39m INFO  b.s.m.UserDetailsFileRepository - [34m[]Username not found.[0;39m 
+16:53:09.293 [34m[main][0;39m INFO  b.s.m.UserDetailsFileRepository - [34m[]Username not found.[0;39m 
+16:54:50.342 [34m[main][0;39m INFO  b.s.m.UserDetailsFileRepository - [34m[]Username not found.[0;39m 
+16:55:07.646 [34m[main][0;39m INFO  b.s.m.UserDetailsFileRepository - [34m[]Username not found.[0;39m 
+17:02:01.977 [34m[main][0;39m INFO  b.s.m.UserDetailsFileRepository - [34m[]Username not found.[0;39m 
+17:38:04.258 [34m[main][0;39m INFO  b.s.m.UserDetailsFileRepository - [34m[]Username not found.[0;39m 
+17:39:41.281 [34m[main][0;39m INFO  b.s.m.UserDetailsFileRepository - [34m[]Username not found.[0;39m 
+17:51:26.098 [1;31m[main][0;39m ERROR b.s.m.UserDetailsDatabaseRepository - [1;31mnullentered wrong username[0;39m 
+17:53:38.573 [1;31m[main][0;39m ERROR b.s.m.UserDetailsDatabaseRepository - [1;31mshssToo many attempts. Yur account has been blocked[0;39m 
+18:06:27.460 [1;31m[main][0;39m ERROR b.s.m.UserDetailsDatabaseRepository - [1;31mannapoornaToo many attempts. Yur account has been blocked[0;39m 

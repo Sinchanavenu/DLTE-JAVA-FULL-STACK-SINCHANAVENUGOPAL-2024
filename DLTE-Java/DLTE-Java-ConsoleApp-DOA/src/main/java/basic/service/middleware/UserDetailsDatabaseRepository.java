@@ -59,9 +59,10 @@ public class UserDetailsDatabaseRepository implements UserDetailsRepository {
             if (rowsUpdated == 0) {
                 logger.error(userDetails.getuserName()+resourceBundle.getString("user.notExists"));
                 throw new UserDetailsException("User does not exist.");
-            } else {
-                logger.info(userDetails.getuserName()+resourceBundle.getString("credential.updated"));
             }
+//            else {
+//                logger.info(userDetails.getuserName()+resourceBundle.getString("credential.updated"));
+//            }
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -69,10 +70,51 @@ public class UserDetailsDatabaseRepository implements UserDetailsRepository {
     }
     @Override
     public Object verifyPassword(String username, String password) {
+//        int attempts = 3; // Number of attempts allowed
+//        Scanner scanner = new Scanner(System.in);
+//
+//        while (attempts > 0) {
+//            try {
+//                PreparedStatement statement = connection.prepareStatement("SELECT * FROM UserDetails WHERE username=?");
+//                statement.setString(1, username);
+//                ResultSet resultSet = statement.executeQuery();
+//                if (resultSet.next()) {
+//                    String storedPassword = resultSet.getString("password");
+//                    if (password.equals(storedPassword)) {
+//                        UserDetails userDetails = new UserDetails(
+//                                resultSet.getString("username"),
+//                                resultSet.getString("password"),
+//                                resultSet.getDate("dob"),
+//                                resultSet.getString("address"),
+//                                resultSet.getString("email"),
+//                                resultSet.getLong("phone")
+//                        );
+//                        System.out.println(resourceBundle.getString("login.success"));
+//                        return userDetails;
+//                    } else {
+//                        attempts--;
+//                        if (attempts == 0) {
+//                            logger.error(userDetails.getuserName()+resourceBundle.getString("account.locked"));
+//                            throw new UserDetailsException("Too many failed attempts. Account locked.");
+//                        }
+//                        System.out.println("Incorrect password. Attempts left: " + attempts);
+//                        System.out.print("Enter password: ");
+//                        password = scanner.nextLine();
+//                    }
+//                } else {
+//                    logger.error(userDetails.getuserName()+resourceBundle.getString("user.notfound"));
+//                    throw new UserDetailsException("Username not found.");
+//                }
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        scanner.close();
+//        return null;
         int attempts = 3; // Number of attempts allowed
         Scanner scanner = new Scanner(System.in);
 
-        while (attempts > 0) {
+        while (true) {
             try {
                 PreparedStatement statement = connection.prepareStatement("SELECT * FROM UserDetails WHERE username=?");
                 statement.setString(1, username);
@@ -93,7 +135,7 @@ public class UserDetailsDatabaseRepository implements UserDetailsRepository {
                     } else {
                         attempts--;
                         if (attempts == 0) {
-                            logger.error(userDetails.getuserName()+resourceBundle.getString("account.locked"));
+                            logger.error(username + resourceBundle.getString("account.locked"));
                             throw new UserDetailsException("Too many failed attempts. Account locked.");
                         }
                         System.out.println("Incorrect password. Attempts left: " + attempts);
@@ -101,15 +143,19 @@ public class UserDetailsDatabaseRepository implements UserDetailsRepository {
                         password = scanner.nextLine();
                     }
                 } else {
-                    logger.error(userDetails.getuserName()+resourceBundle.getString("user.notfound"));
-                    throw new UserDetailsException("Username not found.");
+                    attempts--;
+                    if (attempts == 0) {
+                        logger.error(username + resourceBundle.getString("account.locked"));
+                        throw new UserDetailsException("Too many failed attempts. Account locked.");
+                    }
+                    System.out.println("Username not found. Attempts left: " + attempts);
+                    System.out.print("Enter username: ");
+                    username = scanner.next();
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        scanner.close();
-        return null;
     }
     @Override
     public List<Transactions> findAll() {

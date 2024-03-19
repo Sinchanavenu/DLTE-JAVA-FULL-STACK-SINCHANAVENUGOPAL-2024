@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi:"http://www.w3.org/2001/XMLSchema-instance" xsi:schema/beans http://www.>
+    <bean id="branch1" class="di.ioc.Branch"/>
+    <bean id="branch2" class="di.ioc.Branch"/>
+        <property name="branchID" value="11610"> </property>
+    </bean>
+    <bean id="branch3" class="di.ioc.Branch"/>
+
+</beans>
