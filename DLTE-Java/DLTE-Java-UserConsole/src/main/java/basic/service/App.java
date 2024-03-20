@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 //import java.util.logging.Logger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.event.Level;
 
 import static java.lang.System.exit;
 
@@ -68,6 +69,8 @@ public class App
                         case 6:
                             System.out.println("Thank You for choosing our Bank");
                             exit(0);
+                        case 7:
+                            addUsers();
                         default:
                             System.out.println("Invalid option. Please try again.");
                     }
@@ -82,7 +85,9 @@ public class App
         System.out.println("Username:"+userDetails.getuserName()+"\nDate of Birth:"+userDetails.getdateOfBirth()+"\nPhone Number:"+userDetails.getphoneNumber()+"\nAddress:"+userDetails.getaddress()
                 +"\nEmail Id:"+userDetails.getemailId());
     }
+        private static void addUsers(){
 
+        }
         private static void updateUserDetails() {
         System.out.println("Enter the details you wish to update among \npassword\n address\n email\n phone");
         String userInput = scanner.next();
@@ -182,6 +187,12 @@ public class App
         } catch (UserDetailsException e) {
             System.out.println("Failed to update user details: " + e.getMessage());
         }
+            try {
+                services.calladdusers();
+                logger.error(userDetails.getuserName() + resourceBundle.getString("user.update.done"));
+            } catch (UserDetailsException e) {
+                System.out.println("Failed to update user details: " + e.getMessage());
+            }
     }
 }
 

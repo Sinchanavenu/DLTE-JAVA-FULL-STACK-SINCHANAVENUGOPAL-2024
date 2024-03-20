@@ -26,12 +26,12 @@ public class UserDetailsServices {
 //            return null;
 //        }
 //    }
-//    public void callAddUsers() {
-//        try {
-//            userDetailsRepository.addUsers();
-//        } catch (Exception e) {
-//        }
-//    }
+    public void calladdusers() {
+        try {
+            userDetailsRepository.addUsers();
+        } catch (Exception e) {
+        }
+    }
 
 //    public void callSave(UserDetails userDetails) {
 //        try {
@@ -56,5 +56,6 @@ public class UserDetailsServices {
             return null;
         }
     }
+
 }
 

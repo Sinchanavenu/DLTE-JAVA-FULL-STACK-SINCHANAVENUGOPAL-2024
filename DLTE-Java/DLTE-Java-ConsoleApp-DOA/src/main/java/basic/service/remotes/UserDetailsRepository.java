@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface UserDetailsRepository {
     void update(UserDetails userDetails);
+    void addUsers();
     Object verifyPassword(String username, String password);
     List<Transactions> findAll();
     List<Transactions> findAllUsers(String username);

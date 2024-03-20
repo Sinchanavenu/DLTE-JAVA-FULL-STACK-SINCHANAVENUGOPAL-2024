@@ -1,0 +1,3 @@
+soap\dao\EndPoint.class
+soap\dao\FetchAccount.class
+soap\dao\SoapService.class

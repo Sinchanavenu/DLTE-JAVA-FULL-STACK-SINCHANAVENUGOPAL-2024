@@ -44,3 +44,4 @@
 17:39:41.281 [34m[main][0;39m INFO  b.s.m.UserDetailsFileRepository - [34m[]Username not found.[0;39m 
 17:51:26.098 [1;31m[main][0;39m ERROR b.s.m.UserDetailsDatabaseRepository - [1;31mnullentered wrong username[0;39m 
 17:53:38.573 [1;31m[main][0;39m ERROR b.s.m.UserDetailsDatabaseRepository - [1;31mshssToo many attempts. Yur account has been blocked[0;39m 
+18:06:27.460 [1;31m[main][0;39m ERROR b.s.m.UserDetailsDatabaseRepository - [1;31mannapoornaToo many attempts. Yur account has been blocked[0;39m 

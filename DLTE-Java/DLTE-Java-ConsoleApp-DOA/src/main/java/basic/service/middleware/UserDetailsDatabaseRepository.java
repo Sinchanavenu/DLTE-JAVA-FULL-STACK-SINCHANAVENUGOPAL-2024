@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.event.Level;
 //import org.slf4j.event.Level;
 
 public class UserDetailsDatabaseRepository implements UserDetailsRepository {
@@ -39,10 +40,23 @@ public class UserDetailsDatabaseRepository implements UserDetailsRepository {
     }
 
 
-//    @Override
-//    public void addUsers() {
-//
-//    }
+    @Override
+    public void addUsers() {
+        try {
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO UserDetails(username, password, dob, address, email, phone) VALUES (?, ?, ?, ?, ?, ?)");
+            statement.setString(1, "sinchanavenu");
+            statement.setString(2, "sinch");
+            statement.setDate(3, new java.sql.Date(new Date(2002, 6, 20).getTime()));
+            statement.setString(4, "");
+            statement.setString(5, "sinchana@gmail.com");
+            statement.setLong(6, 7338296738L);
+            statement.executeUpdate();
+            statement.close();
+            logger.info( resourceBundle.getString("Users added successfully to the database."));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     @Override

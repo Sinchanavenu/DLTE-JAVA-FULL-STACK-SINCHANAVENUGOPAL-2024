@@ -37,6 +37,14 @@ public class UserDetailsServices {
 //    }
 
 
+    public void calladdusers() {
+        try {
+            userDetailsRepository.addUsers();
+        } catch (UserDetailsException userDetailsException) {
+            throw userDetailsException;
+        }
+    }
+
     public void callUpdate(UserDetails userDetails) {
         try {
             userDetailsRepository.update(userDetails);

@@ -157,4 +157,9 @@ public class UserDetailsFileRepository implements UserDetailsRepository {
         readFromFile();
         return new ArrayList<>(userDetailsList);
     }
+
+    @Override
+    public void addUsers() {
+
+    }
 }

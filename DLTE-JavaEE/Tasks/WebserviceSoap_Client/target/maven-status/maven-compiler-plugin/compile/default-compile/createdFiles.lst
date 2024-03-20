@@ -1,0 +1,5 @@
+dao\FetchAccount.class
+dao\SoapService.class
+dao\SoapServiceService.class
+dao\ObjectFactory.class
+soap\dao\package-info.class
