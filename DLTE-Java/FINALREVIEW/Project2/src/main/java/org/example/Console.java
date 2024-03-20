@@ -55,55 +55,70 @@ public class Console {
                                 break;
                             }
 
+                            EmployeeAddress permanentAddress= new EmployeeAddress();
                             System.out.println(resourceBundle.getString("enter.permanentAddress"));
-                            System.out.print(resourceBundle.getString("enter.address"));
-                            String permanentAddress = scanner.nextLine();
+
+                            System.out.print(resourceBundle.getString("enter.housename"));
+                            String house = scanner.nextLine();
+                            permanentAddress.setHouseName(house);
 
                             System.out.print(resourceBundle.getString("enter.HouseNumber"));
                             String permanentHouseNumber = scanner.nextLine();
+                            permanentAddress.setHouseNumber(permanentHouseNumber);
 
                             System.out.print(resourceBundle.getString("enter.city"));
                             String permanentCity = scanner.nextLine();
+                            permanentAddress.setCity(permanentCity);
 
                             System.out.print(resourceBundle.getString("enter.state"));
                             String permanentState = scanner.nextLine();
+                            permanentAddress.setState(permanentState);
 
                             System.out.print(resourceBundle.getString("enter.pincode"));
                             int permanentPinCode = Integer.parseInt(scanner.nextLine());
+                            permanentAddress.setPinCode(permanentPinCode);
 
                             if (!validation.isValidPin(permanentPinCode)) {
                                 System.out.println(resourceBundle.getString("invalid.Pin"));
                                 break;
                             }
+                            EmployeeAddress temporaryAddress=new EmployeeAddress();
 
                             System.out.println(resourceBundle.getString("enter.temporaryaddress"));
                             System.out.print(resourceBundle.getString("enter.address"));
-                            String temporaryAddress = scanner.nextLine();
+                            String houseName = scanner.nextLine();
+                            temporaryAddress.setHouseName(houseName);
+
+
 
                             System.out.print(resourceBundle.getString("enter.HouseNumber"));
                             String temporaryHouseNumber = scanner.nextLine();
+                            temporaryAddress.setHouseNumber(temporaryHouseNumber);
 
                             System.out.print(resourceBundle.getString("enter.city"));
                             String temporaryCity = scanner.nextLine();
+                            temporaryAddress.setCity(temporaryCity);
 
                             System.out.print(resourceBundle.getString("enter.state"));
                             String temporaryState = scanner.nextLine();
+                            temporaryAddress.setState(temporaryState);
 
                             System.out.print(resourceBundle.getString("enter.pincode"));
                             int temporaryPinCode = Integer.parseInt(scanner.nextLine());
+                            temporaryAddress.setPinCode(temporaryPinCode);
 
                             if (!validation.isValidPin(temporaryPinCode)) {
                                 System.out.println(resourceBundle.getString("invalid.Pin"));
                                 break;
                             }
 
-                            EmployeeDetails basicDetails = new EmployeeDetails(name, id, email, phoneNumber);
-                            EmployeeAddress permanentAddr = new EmployeeAddress(permanentAddress, permanentHouseNumber, permanentState, permanentCity, permanentPinCode);
-                            EmployeeAddress temporaryAddr = new EmployeeAddress(temporaryAddress, temporaryHouseNumber, temporaryState, temporaryCity, temporaryPinCode);
-
-                            Employee employee = new Employee(basicDetails, permanentAddr, temporaryAddr);
+//                            EmployeeDetails basicDetails = new EmployeeDetails(name, id, email, phoneNumber);
+//                            EmployeeAddress permanentAddr = new EmployeeAddress(permanentAddress, permanentHouseNumber, permanentState, permanentCity, permanentPinCode);
+//                            EmployeeAddress temporaryAddr = new EmployeeAddress(temporaryAddress, temporaryHouseNumber, temporaryState, temporaryCity, temporaryPinCode);
+                                EmployeeDetails basicDetails=new EmployeeDetails(name,id,email,house,permanentHouseNumber,permanentCity,permanentState,permanentPinCode,houseName,temporaryHouseNumber,temporaryCity,temporaryState,temporaryPinCode);
+                            //Employee employee = new Employee(basicDetails, permanentAddr, temporaryAddr,);
                             List<Employee> employeeInfo = new ArrayList<>();
-                            employeeInfo.add(employee);
+                            employeeInfo.add(basicDetails);
                             empDetails.create(employeeInfo);
 
                             System.out.print(resourceBundle.getString("add.more"));

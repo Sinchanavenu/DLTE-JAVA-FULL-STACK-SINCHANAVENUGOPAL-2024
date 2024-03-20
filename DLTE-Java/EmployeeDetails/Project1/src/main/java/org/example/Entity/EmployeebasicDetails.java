@@ -6,6 +6,9 @@ public class EmployeebasicDetails {
     private String emailId;
     private long phoneNumber;
 
+    public EmployeebasicDetails() {
+    }
+
     public EmployeebasicDetails(String employeeName, String employeeId, String emailId, long phoneNumber) {
         this.employeeName = employeeName;
         this.employeeId = employeeId;

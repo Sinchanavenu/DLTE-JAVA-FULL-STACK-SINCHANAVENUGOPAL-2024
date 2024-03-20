@@ -1,7 +1,6 @@
 package org.example.Exceptions;
 
 import oracle.jdbc.driver.OracleDriver;
-import org.example.Entity.Employee;
 import org.example.Entity.EmployeeAddress;
 import org.example.Entity.EmployeeBasicDetails;
 import org.example.Entity.EmployeeDetails;
@@ -35,12 +34,11 @@ public class DatabaseRepository implements EmployeeBasicDetails {
         return connection!=null;
     }
     @Override
-    public void create(List<Employee> list) {
+    public void create(List<EmployeeDetails> list) {
 
-        for(Employee employee:list){
+        for(EmployeeDetails employee:list){
 
             String employeeID=employee.getEmployeeDetails().getEmployeeId();
-            try{
                 String employees = "INSERT INTO EmployeeBasicDetails (id, name) VALUES (?, ?)";
                 preparedStatement=connection.prepareStatement(employees);
                 preparedStatement.setString(1,employeeID);
@@ -51,7 +49,7 @@ public class DatabaseRepository implements EmployeeBasicDetails {
                         "VALUES (?, ?, ?, ?, ?, ?)";
                 preparedStatement=connection.prepareStatement(permanentaddress);
                 preparedStatement.setString(1,employeeID);
-                preparedStatement.setString(2,employee.getEmployeePermanentAddress().getHouseName());
+                preparedStatement.setString(2,employeeDetails.permanentAddress().getHouseName());
                 preparedStatement.setString(3,employee.getEmployeePermanentAddress().getHouseNumber());
                 preparedStatement.setString(4,employee.getEmployeePermanentAddress().getCity());
                 preparedStatement.setString(5,employee.getEmployeePermanentAddress().getState());
@@ -89,23 +87,15 @@ public class DatabaseRepository implements EmployeeBasicDetails {
                 logger.info(resourceBundle1.getString("employee.add")+ employeeID +" "+resourceBundle1.getString("employeeAdd.success"));
 
 
-            }catch (SQLException e) {
-                if (e instanceof SQLIntegrityConstraintViolationException) {
-                    System.out.println(resourceBundle1.getString("Fail.insert") +" "+ employeeID + " "+resourceBundle1.getString("employee.exists"));
-                    logger.warn(resourceBundle1.getString("Fail.insert") +" "+ employeeID + " "+resourceBundle1.getString("employee.exists"));
-                } else {
-                    e.printStackTrace();
-                }
             }
 
         }
 
-    }
 
 
     @Override
-    public Employee displayBasedOnEmployeeId(String employeeId) {
-        Employee employee = null;
+    public EmployeeDetails displayBasedOnEmployeeId(String employeeId) {
+        EmployeeDetails employee = null;
         try {
             String query = "SELECT * FROM EmployeeBasicDetails emp " +
                     "INNER JOIN EmployeePermanentAddress empPAdd ON emp.id = empPAdd.employeeId " +
@@ -139,7 +129,7 @@ public class DatabaseRepository implements EmployeeBasicDetails {
                         resultSet.getInt("temporaryPinCode")
                 );
 
-                employee = new Employee(basicDetails, permanentAddr, temporaryAddr);
+                employee = new EmployeeDetails(basicDetails, permanentAddr, temporaryAddr);
             }else{
                 throw new EmployeeNotFoundException(resourceBundle1.getString("no.employee") + employeeId);
             }
@@ -150,8 +140,8 @@ public class DatabaseRepository implements EmployeeBasicDetails {
     }
 
     @Override
-    public Employee displayBasedOnPinCode(int pinCode) {
-        Employee employee = null;
+    public EmployeeDetails displayBasedOnPinCode(int pinCode) {
+        EmployeeDetails employee = null;
         try {
             String query = "SELECT * FROM EmployeeBasicDetails emp " +
                     "INNER JOIN EmployeePermanentAddress empPAdd ON emp.id = empPAdd.employeeId " +
@@ -186,7 +176,7 @@ public class DatabaseRepository implements EmployeeBasicDetails {
                         resultSet.getInt("temporaryPinCode")
                 );
 
-                employee = new Employee(basicDetails, permanentAddr, temporaryAddr);
+                employee = new EmployeeDetails(basicDetails, permanentAddr, temporaryAddr);
             }else {
                 throw new EmployeeNotFoundException(resourceBundle1.getString("no.pincode")+ pinCode);
             }
@@ -197,8 +187,8 @@ public class DatabaseRepository implements EmployeeBasicDetails {
     }
 
     @Override
-    public List<Employee> read() {
-        List<Employee> employees = new ArrayList<>();
+    public List<EmployeeDetails> read() {
+        List<EmployeeDetails> employees = new ArrayList<>();
         try {
             String findAll = "SELECT * FROM EmployeeBasicDetails emp " +
                     "INNER JOIN EmployeePermanentAddress empPAdd ON emp.id = empPAdd.employeeId " +
@@ -207,7 +197,7 @@ public class DatabaseRepository implements EmployeeBasicDetails {
             preparedStatement = connection.prepareStatement(findAll);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Employee employee = null;
+                EmployeeDetails employee = null;
                 EmployeeAddress permanentAddress = new EmployeeAddress(
                         resultSet.getString("permanentAddress"),
                         resultSet.getString("permanentHouseNumber"),
@@ -228,7 +218,7 @@ public class DatabaseRepository implements EmployeeBasicDetails {
                         resultSet.getString("email"),
                         resultSet.getLong("phoneNumber")
                 );
-                employee = new Employee(basicDetails, permanentAddress, temporaryAddress);
+                employee = new EmployeeDetails(basicDetails, permanentAddress, temporaryAddress);
                 employees.add(employee);
             }
         } catch (SQLException e) {

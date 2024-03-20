@@ -1,0 +1,15 @@
+10:36:39.931 [34m[main][0;39m INFO  App.class - [34mEnter data to employee list[0;39m 
+10:39:02.816 [34m[main][0;39m INFO  App.class - [34mEnter data to employee list[0;39m 
+10:42:32.980 [34m[main][0;39m INFO  App.class - [34mEnter data to employee list[0;39m 
+11:34:02.043 [34m[main][0;39m INFO  DatabaseImplementation.class - [34mDisplaying details of Employee with Employee ID:1[0;39m 
+11:38:22.323 [34m[main][0;39m INFO  App.class - [34mDisplaying all details[0;39m 
+11:38:25.828 [34m[main][0;39m INFO  App.class - [34mDisplay required details based on Temporary pincode[0;39m 
+11:38:29.768 [34m[main][0;39m INFO  DatabaseImplementation.class - [34mDisplaying details based on Temporary Pincode:574103[0;39m 
+11:38:36.719 [34m[main][0;39m INFO  App.class - [34mDisplay required details based on Temporary pincode[0;39m 
+11:38:39.932 [34m[main][0;39m INFO  DatabaseImplementation.class - [34mDisplaying details based on Temporary Pincode:111111[0;39m 
+11:54:06.453 [34m[main][0;39m INFO  App.class - [34mEnter data to employee list[0;39m 
+12:25:39.721 [34m[main][0;39m INFO  App.class - [34mDisplaying all details[0;39m 
+12:27:12.850 [34m[main][0;39m INFO  App.class - [34mDisplaying all details[0;39m 
+12:30:35.620 [34m[main][0;39m INFO  App.class - [34mDisplaying all details[0;39m 
+12:32:51.502 [34m[main][0;39m INFO  App.class - [34mDisplaying all details[0;39m 
+12:43:43.980 [34m[main][0;39m INFO  App.class - [34mDisplaying all details[0;39m 

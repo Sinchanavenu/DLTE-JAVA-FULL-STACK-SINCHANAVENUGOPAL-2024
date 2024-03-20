@@ -12,7 +12,7 @@ public class Validation {
     }
 
     public static boolean isValidPhoneNumber(long phoneNumber) {
-        String regex = "0*(\\d{10})"; // Optional leading zeros followed by 10 digits
+        String regex = "0*(\\d{10})";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(Long.toString(phoneNumber));
         return matcher.matches();

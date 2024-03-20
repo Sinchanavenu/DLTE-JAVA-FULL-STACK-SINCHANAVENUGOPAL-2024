@@ -2,12 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63058383-023b-4a2d-8403-dae1757e502b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO/target/classes/org/example/App.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO/target/classes/org/example/Endpoint.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO/target/classes/org/example/FetchTransactions.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO/target/classes/org/example/TransactionByUsername.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO/target/test-classes/org/example/AppTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO/src/main/java/org/example/Endpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO/src/main/java/org/example/Endpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/employee/pojo/EmployeeAddressConsole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/employee/pojo/EmployeeConsole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/employee/pojo/EmployeeDetailsConsole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Console.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/Database.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/src/main/java/database/entity/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/src/main/java/database/entity/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/src/main/java/database/entity/EmployeeAddress.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/src/main/java/database/entity/EmployeeDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/src/main/java/database/entity/InputEmployeeDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/src/main/java/implementation/DatabaseImplementation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/src/main/java/implementation/EmployeeNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/src/main/java/implementation/Validation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/src/main/java/org/example/Connection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/src/main/resources/database.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/src/main/resources/logback.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../TechnicalReview/Database/src/test/java/database/entity/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/java/org/example/Entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project1/src/main/java/org/example/Entity/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/java/org/example/Entity/EmployeeAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project1/src/main/java/org/example/Entity/EmployeeAddress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/src/main/java/org/example/Entity/EmployeebasicDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project1/src/main/java/org/example/Entity/EmployeebasicDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/target/classes/org/example/Entity/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Project1/target/classes/org/example/Entity/Employee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/target/classes/org/example/Entity/EmployeeAddress.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Project1/target/classes/org/example/Entity/EmployeeAddress.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/target/classes/org/example/Entity/EmployeebasicDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Project1/target/classes/org/example/Entity/EmployeebasicDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/target/project-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Project1/target/project-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/target/surefire-reports/TEST-org.example.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Project1/target/surefire-reports/TEST-org.example.AppTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project1/target/surefire-reports/org.example.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Project1/target/surefire-reports/org.example.AppTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Validation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FINALREVIEW/Project1/src/main/java/org/example/Entity/Employee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FINALREVIEW/Project1/src/main/java/org/example/Entity/EmployeeAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../FINALREVIEW/Project1/src/main/java/org/example/Entity/EmployeeAddress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FINALREVIEW/Project1/src/main/java/org/example/Entity/EmployeeBasicDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../FINALREVIEW/Project1/src/main/java/org/example/Entity/EmployeeBasicDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FINALREVIEW/Project1/src/main/java/org/example/Entity/EmployeeDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../FINALREVIEW/Project1/src/main/java/org/example/Entity/EmployeeDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FINALREVIEW/Project1/src/main/java/org/example/Exceptions/DatabaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../FINALREVIEW/Project1/src/main/java/org/example/Exceptions/DatabaseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FINALREVIEW/Project2/src/main/java/org/example/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../FINALREVIEW/Project2/src/main/java/org/example/Console.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FINALREVIEW/Project2/src/main/java/org/example/Entity/EmployeeAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../FINALREVIEW/Project2/src/main/java/org/example/Entity/EmployeeAddress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FINALREVIEW/Project2/src/main/java/org/example/Entity/EmployeeDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../FINALREVIEW/Project2/src/main/java/org/example/Entity/EmployeeDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO client/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO client/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO client/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO client/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO client/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../DLTE-JavaEE/Tasks/Building SOAP Read Service with DAO client/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +93,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -102,7 +146,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1710779261525</updated>
-      <workItem from="1710779266105" duration="9373000" />
+      <workItem from="1710779266105" duration="12298000" />
+      <workItem from="1710891521443" duration="2385000" />
     </task>
     <servers />
   </component>
@@ -114,22 +159,22 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="549" y="164" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1710784954270" />
-    <state width="1493" height="208" key="GridCell.Tab.0.bottom" timestamp="1710786913305">
+    <state width="1493" height="208" key="GridCell.Tab.0.bottom" timestamp="1710900388327">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1493" height="208" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1710786913305" />
-    <state width="1493" height="208" key="GridCell.Tab.0.center" timestamp="1710786913305">
+    <state width="1493" height="208" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1710900388327" />
+    <state width="1493" height="208" key="GridCell.Tab.0.center" timestamp="1710900388327">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1493" height="208" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1710786913305" />
-    <state width="1493" height="208" key="GridCell.Tab.0.left" timestamp="1710786913305">
+    <state width="1493" height="208" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1710900388327" />
+    <state width="1493" height="208" key="GridCell.Tab.0.left" timestamp="1710900388327">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1493" height="208" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1710786913305" />
-    <state width="1493" height="208" key="GridCell.Tab.0.right" timestamp="1710786913305">
+    <state width="1493" height="208" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1710900388327" />
+    <state width="1493" height="208" key="GridCell.Tab.0.right" timestamp="1710900388327">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1493" height="208" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1710786913305" />
+    <state width="1493" height="208" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1710900388327" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1710779397104">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
