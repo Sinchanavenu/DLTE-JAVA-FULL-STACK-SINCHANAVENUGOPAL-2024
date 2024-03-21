@@ -105,7 +105,7 @@ public class AppTest
     }
 
 
-    // Helper method 
+    // Helper method
     private String getConsoleOutput() {
         return null;
     }

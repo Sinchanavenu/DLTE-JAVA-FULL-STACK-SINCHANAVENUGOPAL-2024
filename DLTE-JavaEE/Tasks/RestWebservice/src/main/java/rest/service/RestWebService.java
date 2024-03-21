@@ -24,7 +24,7 @@ Read Transaction which contains amount of given range(min and max) as parameter:
 @WebServlet("/rest/*")
 public class RestWebService extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Gson gson=new Gson();
         Transaction transaction=gson.fromJson(req.getReader(),Transaction.class);
         transactions.add(transaction);
@@ -33,7 +33,7 @@ public class RestWebService extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String reqMinAmount=req.getParameter("Minimum");
         String reqMaxAmount=req.getParameter("Maximum");
 
