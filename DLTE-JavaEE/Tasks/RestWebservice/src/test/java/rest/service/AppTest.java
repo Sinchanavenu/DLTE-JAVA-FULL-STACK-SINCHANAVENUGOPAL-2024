@@ -1,3 +1,5 @@
+package rest.service;
+
 import com.google.gson.Gson;
 import org.junit.Before;
 import org.junit.Test;
@@ -59,8 +61,8 @@ public class AppTest {
 
         // Mocking service call
         RestWebService webService = new RestWebService();
-        webService.allTransaction = (ArrayList<Transaction>) transactionList;
-        when(httpServletRequest.getParameter("Maximum")).thenReturn("1000");
+        webService.transactions = (ArrayList<Transaction>) transactionList;
+        when(httpServletRequest.getParameter("Maximum")).thenReturn("3000");
         when(httpServletRequest.getParameter("Minimum")).thenReturn("0");
 
         // Invoking doGet method
@@ -68,7 +70,7 @@ public class AppTest {
 
         // Verifying response
         verify(httpServletResponse).setContentType("application/json");
-        assertEquals("Expected response", "[{\"date\":\"Jan 20, 2024 12:00:00 AM\",\"amountInTransaction\":5000,\"fromWhom\":\"Annapoorna\",\"toWhom\":\"Friend\"},{\"date\":\"Jan 20, 2024 12:00:00 AM\",\"amountInTransaction\":500000,\"fromWhom\":\"Akshatha\",\"toWhom\":\"Family\"}]", stringWriter.toString().trim());
+        assertEquals("Expected response", "[{\"date\":\"March 06, 2024 12:00:00 AM\",\"amountInTransaction\":1000,\"fromWhom\":\"Sherly\",\"toWhom\":\"Emergency\"},{\"date\":\"Feb 12, 2024 12:00:00 AM\",\"amountInTransaction\":2500,\"fromWhom\":\"Duke\",\"toWhom\":\"Bills\"}]", stringWriter.toString().trim());
     }
 
     @Test
@@ -76,7 +78,7 @@ public class AppTest {
         // Mocking service call
         RestWebService webService = new RestWebService();
         Gson gson = new Gson();
-        Transaction transaction = new Transaction(new Date("3/19/2024"), 200, "Akshata", "Family");
+        Transaction transaction = new Transaction(new Date("02/12/2024"), 2500, "Duke", "Bills");
         String jsonTransaction = gson.toJson(transaction);
 
         // Mocking BufferedReader with JSON content
