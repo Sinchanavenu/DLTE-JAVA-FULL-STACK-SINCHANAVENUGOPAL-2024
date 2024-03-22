@@ -1,5 +1,6 @@
 package initial;
 
+import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
@@ -12,9 +13,11 @@ public class MySource {
     List<String> defaulters;
 
     public MySource() {
-        defaulters= (List<String>) Stream.of("Annapoorna","Medhini","Arundhathi","Akash","Prashanth");
+        defaulters= (List<String>) Stream.of("Ramesh","Suresh","Subeen","Ashvitha","Raj");
     }
-    public String addDefaulters(String name){
+
+    @WebMethod
+    public String addDefaulter(String name){
         defaulters.add(name);
         return name+" has added to defaulters record";
     }

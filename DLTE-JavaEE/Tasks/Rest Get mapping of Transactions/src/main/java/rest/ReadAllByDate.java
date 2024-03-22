@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
-
+/*
 @WebServlet("/rest/allbydate/")
 public class ReadAllByDate  extends HttpServlet {
     UserDetailsServices userDetailsServices;
@@ -35,4 +35,6 @@ public class ReadAllByDate  extends HttpServlet {
         resp.getWriter().println(responseData);
     }
 }
+
+ */
 

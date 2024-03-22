@@ -11,8 +11,8 @@ public class HomeLoanImplementation implements LoanInterface {
     public List<Loan> find() {
         // Simulate finding home loans
         List<Loan> homeLoans = new ArrayList<>();
-        homeLoans.add(new Loan(1L,500000L,"open","home","Sinchana",8217696845L));
-        homeLoans.add(new Loan(2L, 200000L,"open","home","Sanjana",9081237645L));
+        homeLoans.add(new Loan(1234L,50000L,"open","home","Sinchana",7338296738L));
+        homeLoans.add(new Loan(1235L, 25000L,"open","home","Sanjana",7022916867L));
         return homeLoans;
     }
 }
