@@ -41,101 +41,7 @@ public class App
                     case 1:
                         logger.info("Enter data to employee list");
                         logger.isEnabledForLevel(Level.INFO);
-                        do {
-                            Employee employee = new Employee();
-                            System.out.println(resourceBundle.getString("employee.id"));
-                            employeeDetails1.setEmployeeID(scanner.nextInt());
-                            System.out.println(resourceBundle.getString("name"));
-                            employeeDetails1.setEmployeeName(scanner.next());
-                            System.out.println(resourceBundle.getString("contact.details"));
-                            while (true) {
-                                try {
-                                    System.out.println(resourceBundle.getString("phone.number"));
-                                    long phoneNumber = scanner1.nextLong();
-                                    if (validationData.isPhoneNumberValid(phoneNumber)) {
-                                        employeeDetails1.setPhoneNumber(phoneNumber);
-                                        break;
-                                    } else {
-                                        throw new EmployeeException();
-                                    }
-                                } catch (EmployeeException e) {
-                                    System.out.println(resourceBundle.getString("invalid.phone.number"));
-                                } catch (InputMismatchException e) {
-                                    System.out.println(resourceBundle.getString("number.only"));
-                                    scanner1.nextLine(); // Consume the invalid input
-                                }
-                            }
-                            while (true) {
-                                try {
-                                    System.out.println(resourceBundle.getString("email.id"));
-                                    String mail = scanner.next();
-                                    if (validationData.isEmailValid(mail)) {
-                                        employeeDetails1.setEmailID(mail);
-                                        break;
-                                    } else throw new EmployeeException();
-                                } catch (EmployeeException e) {
-                                    System.out.println(resourceBundle.getString("email.validation"));
-                                }
-                            }
-                            System.out.println(resourceBundle.getString("temporary.address"));
-                            System.out.println(resourceBundle.getString("house.name"));
-                            tempEmployeeAddress1.setHouseName(scanner2.nextLine());
-                            System.out.println(resourceBundle.getString("street.name"));
-                            tempEmployeeAddress1.setHouseStreet(scanner2.nextLine());
-                            System.out.println(resourceBundle.getString("city.name"));
-                            tempEmployeeAddress1.setCityName(scanner2.nextLine());
-                            System.out.println(resourceBundle.getString("state.name"));
-                            tempEmployeeAddress1.setStateName(scanner2.nextLine());
-                            while (true) {
-                                try {
-                                    System.out.println(resourceBundle.getString("pin.code"));
-                                    int pincode = scanner1.nextInt();
-                                    if (validationData.isPinCodeValid(pincode)) {
-                                        tempEmployeeAddress1.setPinCode(pincode);
-                                        break;
-                                    } else throw new EmployeeException();
-                                } catch (EmployeeException e) {
-                                    System.out.println(resourceBundle.getString("invalid.pincode"));
-                                } catch (InputMismatchException e) {
-                                    System.out.println(resourceBundle.getString("number.only"));
-                                    scanner1.nextLine();
-                                }
-                            }
-                            System.out.println(resourceBundle.getString("permanent.address"));
-                            System.out.println(resourceBundle.getString("house.name"));
-                            permEmployeeAddress1.setHouseName(scanner3.nextLine());
-                            System.out.println(resourceBundle.getString("street.name"));
-                            permEmployeeAddress1.setHouseStreet(scanner3.nextLine());
-                            System.out.println(resourceBundle.getString("city.name"));
-                            permEmployeeAddress1.setCityName(scanner3.nextLine());
-                            System.out.println(resourceBundle.getString("state.name"));
-                            permEmployeeAddress1.setStateName(scanner3.nextLine());
-                            while (true) {
-                                try {
-                                    System.out.println(resourceBundle.getString("pin.code"));
-                                    int pincode = scanner1.nextInt();
-                                    if (validationData.isPinCodeValid(pincode)) {
-                                        permEmployeeAddress1.setPinCode(pincode);
-                                        break;
-                                    }
-                                } catch (EmployeeException e) {
-                                    System.out.println(resourceBundle.getString("invalid.pincode"));
-                                } catch (InputMismatchException e) {
-                                    System.out.println(resourceBundle.getString("number.only"));
-                                    scanner1.nextLine();
-                                }
-                            }
-                            logger.info("Data added");
-                            EmployeeDetails employeeBasicDetails;
-                            employeeBasicDetails = translateEmployeeBasic(employeeDetails1);
-                            EmployeeAddress tempEmployeeAddress;
-                            tempEmployeeAddress = translateEmployeeAddress(tempEmployeeAddress1);
-                            EmployeeAddress permEmployeeAddress;
-                            permEmployeeAddress = translateEmployeeAddress(permEmployeeAddress1);
-                            employee = new Employee(employeeBasicDetails, tempEmployeeAddress, permEmployeeAddress);
-                            employeeDetails.saveAll(employee);
-                            System.out.println("Do you want to add more?");
-                        } while (scanner.next().equalsIgnoreCase("yes"));
+                            callInsert();
                         break;
                     case 2://display based on employee id
                             System.out.println(resourceBundle.getString("employee.id"));
@@ -223,5 +129,117 @@ public class App
         employeeDetails.setEmailID(employeeDetails1.getEmailID());
         employeeDetails.setPhoneNumber(employeeDetails1.getPhoneNumber());
         return employeeDetails;
+    }
+
+    public static void callInsert(){
+        Scanner scanner=new Scanner(System.in);
+        Scanner scanner1=new Scanner(System.in);
+        Scanner scanner2=new Scanner(System.in);
+        Scanner scanner3=new Scanner(System.in);
+        InputEmployeeDetails employeeDetails=null;
+        ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
+        EmployeeDetailsConsole employeeDetails1=new EmployeeDetailsConsole();
+        EmployeeAddressConsole tempEmployeeAddress1=new EmployeeAddressConsole();
+        EmployeeAddressConsole permEmployeeAddress1=new EmployeeAddressConsole();
+        List<Employee> employeeArrayList=new ArrayList<>();
+        Validate validationData=new Validate();
+        logger.info("Enter data to employee list");
+        employeeDetails = new DatabaseImplementation();
+        logger.isEnabledForLevel(Level.INFO);
+        do {
+            Employee employee = new Employee();
+            System.out.println(resourceBundle.getString("employee.id"));
+            employeeDetails1.setEmployeeID(scanner.nextInt());
+            System.out.println(resourceBundle.getString("name"));
+            employeeDetails1.setEmployeeName(scanner.next());
+            System.out.println(resourceBundle.getString("contact.details"));
+            while (true) {
+                try {
+                    System.out.println(resourceBundle.getString("phone.number"));
+                    long phoneNumber = scanner1.nextLong();
+                    if (validationData.isPhoneNumberValid(phoneNumber)) {
+                        employeeDetails1.setPhoneNumber(phoneNumber);
+                        break;
+                    } else {
+                        throw new EmployeeException();
+                    }
+                } catch (EmployeeException e) {
+                    System.out.println(resourceBundle.getString("invalid.phone.number"));
+                } catch (InputMismatchException e) {
+                    System.out.println(resourceBundle.getString("number.only"));
+                    scanner1.nextLine(); // Consume the invalid input
+                }
+            }
+            while (true) {
+                try {
+                    System.out.println(resourceBundle.getString("email.id"));
+                    String mail = scanner.next();
+                    if (validationData.isEmailValid(mail)) {
+                        employeeDetails1.setEmailID(mail);
+                        break;
+                    } else throw new EmployeeException();
+                } catch (EmployeeException e) {
+                    System.out.println(resourceBundle.getString("email.validation"));
+                }
+            }
+            System.out.println(resourceBundle.getString("temporary.address"));
+            System.out.println(resourceBundle.getString("house.name"));
+            tempEmployeeAddress1.setHouseName(scanner2.nextLine());
+            System.out.println(resourceBundle.getString("street.name"));
+            tempEmployeeAddress1.setHouseStreet(scanner2.nextLine());
+            System.out.println(resourceBundle.getString("city.name"));
+            tempEmployeeAddress1.setCityName(scanner2.nextLine());
+            System.out.println(resourceBundle.getString("state.name"));
+            tempEmployeeAddress1.setStateName(scanner2.nextLine());
+            while (true) {
+                try {
+                    System.out.println(resourceBundle.getString("pin.code"));
+                    int pincode = scanner1.nextInt();
+                    if (validationData.isPinCodeValid(pincode)) {
+                        tempEmployeeAddress1.setPinCode(pincode);
+                        break;
+                    } else throw new EmployeeException();
+                } catch (EmployeeException e) {
+                    System.out.println(resourceBundle.getString("invalid.pincode"));
+                } catch (InputMismatchException e) {
+                    System.out.println(resourceBundle.getString("number.only"));
+                    scanner1.nextLine();
+                }
+            }
+            System.out.println(resourceBundle.getString("permanent.address"));
+            System.out.println(resourceBundle.getString("house.name"));
+            permEmployeeAddress1.setHouseName(scanner3.nextLine());
+            System.out.println(resourceBundle.getString("street.name"));
+            permEmployeeAddress1.setHouseStreet(scanner3.nextLine());
+            System.out.println(resourceBundle.getString("city.name"));
+            permEmployeeAddress1.setCityName(scanner3.nextLine());
+            System.out.println(resourceBundle.getString("state.name"));
+            permEmployeeAddress1.setStateName(scanner3.nextLine());
+            while (true) {
+                try {
+                    System.out.println(resourceBundle.getString("pin.code"));
+                    int pincode = scanner1.nextInt();
+                    if (validationData.isPinCodeValid(pincode)) {
+                        permEmployeeAddress1.setPinCode(pincode);
+                        break;
+                    }
+                } catch (EmployeeException e) {
+                    System.out.println(resourceBundle.getString("invalid.pincode"));
+                } catch (InputMismatchException e) {
+                    System.out.println(resourceBundle.getString("number.only"));
+                    scanner1.nextLine();
+                }
+            }
+            logger.info("Data added");
+            EmployeeDetails employeeBasicDetails;
+            employeeBasicDetails = translateEmployeeBasic(employeeDetails1);
+            EmployeeAddress tempEmployeeAddress;
+            tempEmployeeAddress = translateEmployeeAddress(tempEmployeeAddress1);
+            EmployeeAddress permEmployeeAddress;
+            permEmployeeAddress = translateEmployeeAddress(permEmployeeAddress1);
+            employee = new Employee(employeeBasicDetails, tempEmployeeAddress, permEmployeeAddress);
+            employeeDetails.saveAll(employee);
+            System.out.println("Do you want to add more?");
+        } while (scanner.next().equalsIgnoreCase("yes"));
     }
 }

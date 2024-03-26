@@ -1,5 +1,6 @@
 package org.example;
 
+import implementation.EmployeeNotFoundException;
 import oracle.jdbc.driver.OracleDriver;
 
 import java.sql.Driver;
@@ -16,8 +17,8 @@ public class Connection {
             DriverManager.registerDriver(driver);
             connection=DriverManager.getConnection(resourceBundle.getString("db.url"),resourceBundle.getString("db.user"),resourceBundle.getString("db.password"));
         } catch (SQLException e) {
-            //throw new EmployeeNotFoundException();
-            System.out.println(e);
+            throw new EmployeeNotFoundException();
+            //System.out.println(e);
         }
         return (Connection) connection;
     }

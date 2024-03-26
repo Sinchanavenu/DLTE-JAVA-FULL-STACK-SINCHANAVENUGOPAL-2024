@@ -1,0 +1,47 @@
+10:38:09.938 [34m[main][0;39m INFO  console.input.App - [34m------Welcome to the profile filling form-----------[0;39m 
+10:38:32.052 [34m[main][0;39m INFO  a.backend.middleware.DatabaseTarget - [34mDatabase server connection is initiated.[0;39m 
+10:38:32.126 [1;31m[main][0;39m ERROR a.b.m.EmployeeDatabaseRepository - [1;31mSQL syntax error: ORA-00904: "T"."EMPLOYEE_ID": invalid identifier
+[0;39m 
+10:38:32.131 [34m[main][0;39m INFO  console.input.App - [34m------Welcome to the profile filling form-----------[0;39m 
+10:38:43.209 [34m[main][0;39m INFO  a.backend.middleware.DatabaseTarget - [34mDatabase server connection is initiated.[0;39m 
+10:38:50.654 [1;31m[main][0;39m ERROR a.b.m.EmployeeDatabaseRepository - [1;31mFailed to fetch employee profiles by pincode: ORA-00904: "T"."PIN_CODE": invalid identifier
+[0;39m 
+10:38:50.654 [34m[main][0;39m INFO  console.input.App - [34m------Welcome to the profile filling form-----------[0;39m 
+10:38:53.310 [34m[main][0;39m INFO  a.backend.middleware.DatabaseTarget - [34mDatabase server connection is initiated.[0;39m 
+10:38:56.475 [31m[main][0;39m WARN  console.input.App - [31mInvalid Employee Id format. Please enter Employee id which contains only 5 digits[0;39m 
+10:39:03.058 [31m[main][0;39m WARN  console.input.App - [31mInvalid Employee Id format. Please enter Employee id which contains only 5 digits[0;39m 
+10:40:32.764 [1;31m[main][0;39m ERROR console.input.App - [1;31mAn error occurred:[0;39m 
+10:40:42.935 [34m[main][0;39m INFO  console.input.App - [34m------Welcome to the profile filling form-----------[0;39m 
+10:40:48.013 [34m[main][0;39m INFO  a.backend.middleware.DatabaseTarget - [34mDatabase server connection is initiated.[0;39m 
+10:40:54.217 [31m[main][0;39m WARN  console.input.App - [31mInvalid Employee Id format. Please enter Employee id which contains only 5 digits[0;39m 
+10:41:03.355 [31m[main][0;39m WARN  console.input.App - [31mInvalid Employee Id format. Please enter Employee id which contains only 5 digits[0;39m 
+10:41:04.161 [31m[main][0;39m WARN  console.input.App - [31mInvalid Employee Id format. Please enter Employee id which contains only 5 digits[0;39m 
+10:41:04.677 [31m[main][0;39m WARN  console.input.App - [31mInvalid Employee Id format. Please enter Employee id which contains only 5 digits[0;39m 
+10:41:05.132 [31m[main][0;39m WARN  console.input.App - [31mInvalid Employee Id format. Please enter Employee id which contains only 5 digits[0;39m 
+10:41:05.621 [31m[main][0;39m WARN  console.input.App - [31mInvalid Employee Id format. Please enter Employee id which contains only 5 digits[0;39m 
+10:41:06.046 [31m[main][0;39m WARN  console.input.App - [31mInvalid Employee Id format. Please enter Employee id which contains only 5 digits[0;39m 
+10:41:21.902 [31m[main][0;39m WARN  console.input.App - [31mInvalid Employee Id format. Please enter Employee id which contains only 5 digits[0;39m 
+10:44:16.383 [1;31m[main][0;39m ERROR a.b.m.EmployeeDatabaseRepository - [1;31mSQL syntax error: ORA-00904: "PFJONE_NUMBER": invalid identifier
+[0;39m 
+10:44:16.421 [34m[main][0;39m INFO  a.backend.middleware.DatabaseTarget - [34mDatabase server connection is initiated.[0;39m 
+10:52:29.345 [34m[main][0;39m INFO  console.input.App - [34m------Welcome to the profile filling form-----------[0;39m 
+10:54:14.106 [34m[main][0;39m INFO  console.input.App - [34m------Welcome to the profile filling form-----------[0;39m 
+10:54:17.204 [34m[main][0;39m INFO  a.backend.middleware.DatabaseTarget - [34mDatabase server connection is initiated.[0;39m 
+10:54:43.121 [1;31m[main][0;39m ERROR a.b.m.EmployeeDatabaseRepository - [1;31mSQL syntax error: ORA-00904: "PFJONE_NUMBER": invalid identifier
+[0;39m 
+10:54:43.182 [34m[main][0;39m INFO  a.backend.middleware.DatabaseTarget - [34mDatabase server connection is initiated.[0;39m 
+10:55:01.467 [1;31m[main][0;39m ERROR a.b.m.EmployeeDatabaseRepository - [1;31mConstraint violation: ORA-02291: integrity constraint (FIRST.SYS_C007412) violated - parent key not found
+[0;39m 
+10:55:01.513 [34m[main][0;39m INFO  a.backend.middleware.DatabaseTarget - [34mDatabase server connection is initiated.[0;39m 
+10:55:18.624 [1;31m[main][0;39m ERROR a.b.m.EmployeeDatabaseRepository - [1;31mSQL syntax error: ORA-00904: "PIN_CODE": invalid identifier
+[0;39m 
+10:55:18.624 [34m[main][0;39m INFO  console.input.App - [34mWould you like to continue with another employee's details? (Yes/No)[0;39m 
+10:55:20.661 [34m[main][0;39m INFO  console.input.App - [34m------Welcome to the profile filling form-----------[0;39m 
+10:55:22.821 [34m[main][0;39m INFO  a.backend.middleware.DatabaseTarget - [34mDatabase server connection is initiated.[0;39m 
+10:55:22.828 [1;31m[main][0;39m ERROR a.b.m.EmployeeDatabaseRepository - [1;31mSQL syntax error: ORA-00904: "T"."EMPLOYEE_ID": invalid identifier
+[0;39m 
+10:55:22.828 [34m[main][0;39m INFO  console.input.App - [34m------Welcome to the profile filling form-----------[0;39m 
+10:55:26.090 [34m[main][0;39m INFO  a.backend.middleware.DatabaseTarget - [34mDatabase server connection is initiated.[0;39m 
+10:55:29.187 [1;31m[main][0;39m ERROR a.b.m.EmployeeDatabaseRepository - [1;31mFailed to fetch employee profiles by pincode: ORA-00904: "T"."PIN_CODE": invalid identifier
+[0;39m 
+10:55:29.187 [34m[main][0;39m INFO  console.input.App - [34m------Welcome to the profile filling form-----------[0;39m 

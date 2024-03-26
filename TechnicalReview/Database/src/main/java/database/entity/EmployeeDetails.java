@@ -8,6 +8,13 @@ public class EmployeeDetails {
     EmployeeAddress temporaryEmployeeAddress;
     EmployeeAddress permanentEmployeeAddress;
 
+    public EmployeeDetails(int employeeID, String employeeName, long phoneNumber, String emailID) {
+        this.employeeID = employeeID;
+        this.employeeName = employeeName;
+        this.phoneNumber = phoneNumber;
+        this.emailID = emailID;
+    }
+
     public EmployeeDetails() {
     }
 

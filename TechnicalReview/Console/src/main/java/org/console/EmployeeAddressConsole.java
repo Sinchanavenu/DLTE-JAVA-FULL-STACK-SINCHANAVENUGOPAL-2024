@@ -7,6 +7,17 @@ public class EmployeeAddressConsole {
     private String stateName;
     private int pinCode;
 
+    @Override
+    public String toString() {
+        return "EmployeeAddressConsole{" +
+                "houseName='" + houseName + '\'' +
+                ", houseStreet='" + houseStreet + '\'' +
+                ", cityName='" + cityName + '\'' +
+                ", stateName='" + stateName + '\'' +
+                ", pinCode=" + pinCode +
+                '}';
+    }
+
     public EmployeeAddressConsole() {
     }
 

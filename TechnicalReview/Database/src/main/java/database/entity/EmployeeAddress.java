@@ -7,6 +7,28 @@ public class EmployeeAddress {
     private String stateName;
     private int pinCode;
 
+    @Override
+    public String toString() {
+        return "EmployeeAddress{" +
+                "houseName='" + houseName + '\'' +
+                ", houseStreet='" + houseStreet + '\'' +
+                ", cityName='" + cityName + '\'' +
+                ", stateName='" + stateName + '\'' +
+                ", pinCode=" + pinCode +
+                '}';
+    }
+
+    public EmployeeAddress() {
+    }
+
+    public EmployeeAddress(String houseName, String houseStreet, String cityName, String stateName, int pinCode) {
+        this.houseName = houseName;
+        this.houseStreet = houseStreet;
+        this.cityName = cityName;
+        this.stateName = stateName;
+        this.pinCode = pinCode;
+    }
+
     public String getHouseName() {
         return houseName;
     }

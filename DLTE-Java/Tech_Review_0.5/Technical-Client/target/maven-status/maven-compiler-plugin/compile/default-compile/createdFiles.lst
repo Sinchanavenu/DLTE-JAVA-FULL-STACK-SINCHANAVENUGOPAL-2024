@@ -1,0 +1,8 @@
+console\input\entity\EmployeeDetails.class
+console\input\presentation\OutputEmployeeProfile.class
+console\input\presentation\InputEmployeeProfile.class
+console\input\validation\Validation.class
+console\input\entity\EmployeeTemporaryAddress.class
+console\input\App.class
+console\input\entity\EmployeePermanentAddress.class
+console\input\presentation\FilterEmployeeByPincode.class

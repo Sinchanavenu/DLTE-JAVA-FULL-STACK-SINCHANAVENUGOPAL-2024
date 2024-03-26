@@ -5,6 +5,7 @@ import database.entity.EmployeeAddress;
 import database.entity.EmployeeDetails;
 import database.entity.InputEmployeeDetails;
 import oracle.jdbc.driver.OracleDriver;
+import org.example.EstablishConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,13 +26,7 @@ public class DatabaseImplementation implements InputEmployeeDetails {
     Validation validation=new Validation();
     public DatabaseImplementation()
     {
-        try{
-            Driver driver=new OracleDriver();
-            DriverManager.registerDriver(driver);
-            connection= (Connection) DriverManager.getConnection(resourceBundle.getString("db.url"),resourceBundle.getString("db.user"),resourceBundle.getString("db.pass"));
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+        connection= EstablishConnection.EstablishConnection();
     }
 
 
@@ -207,7 +202,20 @@ public class DatabaseImplementation implements InputEmployeeDetails {
         }
         return employees;
     }
+    @Override
+    public boolean doesEmployeeExists(int employeeID) {
+        try {
+            String findByID="SELECT * FROM EmployeeDetails ebd INNER JOIN temporaryaddress ta ON ebd.employeeId = ta.employeeId INNER JOIN permanentaddress pa ON ebd.employeeId = pa.employeeId WHERE ebd.employeeId = ?";
+            preparedStatement=connection.prepareStatement(findByID);
+            preparedStatement.setInt(1,employeeID);
+            resultSet=preparedStatement.executeQuery();
+            if(resultSet.next()) return true;
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
 
     public void close(){
