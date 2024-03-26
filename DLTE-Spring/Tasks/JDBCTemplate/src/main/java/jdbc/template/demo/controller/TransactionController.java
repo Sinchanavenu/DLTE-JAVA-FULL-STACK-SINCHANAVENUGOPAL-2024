@@ -39,7 +39,7 @@ public class TransactionController {
     }
     @GetMapping("/amount/{amount}")
     //retrieving list of transactions by entering amount
-    public List<Transactions> findByAmount(@PathVariable Long amount) {
+    public List<Transactions> findByAmount(@PathVariable Double amount) {
         return transactionService.findByAmount(amount);
     }
 }

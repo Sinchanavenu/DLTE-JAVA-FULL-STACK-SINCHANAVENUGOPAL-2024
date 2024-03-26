@@ -27,7 +27,7 @@ public class TransactionService {
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Transactions.class), receiver);
     }
     //finding list of transactions by entering amount(transaction_amount)
-    public List<Transactions> findByAmount(Long amount) {
+    public List<Transactions> findByAmount(Double amount) {
         String sql = "SELECT * FROM transaction WHERE transaction_amount = ?";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Transactions.class), amount);
     }
