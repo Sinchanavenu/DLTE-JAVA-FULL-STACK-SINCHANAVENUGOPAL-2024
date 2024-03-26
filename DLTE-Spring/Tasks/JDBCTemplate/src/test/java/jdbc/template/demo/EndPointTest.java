@@ -45,7 +45,7 @@ public class EndPointTest {
 
     @Test
     public void testFindBySenderEndpoint() throws Exception {
-        Transactions transaction = new Transactions(103 , new Date(2024,03,20),"Sinchana","Ninadha",2500,"Bills");
+        Transactions transaction = new Transactions(101 , new Date(2024,03,20),"Sinchana","Ninadha",2500,"Bills");
         List<Transactions> transactions = Arrays.asList(transaction);
         when(transactionService.findBySender("Sinchana")).thenReturn(transactions);
 
@@ -58,7 +58,7 @@ public class EndPointTest {
 
     @Test
     public void testFindByReceiverEndpoint() throws Exception {
-        Transactions transaction = new Transactions(103 , new Date(2024,03,20),"Sinchana","Ninadha",2500,"Bills");
+        Transactions transaction = new Transactions(101 , new Date(2024,03,20),"Sinchana","Ninadha",2500,"Bills");
         List<Transactions> transactions = Arrays.asList(transaction);
         when(transactionService.findByReceiver("")).thenReturn(transactions);
 
@@ -71,15 +71,15 @@ public class EndPointTest {
 
     @Test
     public void testFindByAmountENdpoint() throws Exception {
-        Transactions transaction = new Transactions(104 , new Date(2024,03,20),"Sinchana","Ninadha",1100,"Bills");
+        Transactions transaction = new Transactions(101 , new Date(2024,03,20),"Sinchana","Ninadha",1100,"Bills");
         List<Transactions> transactions = Arrays.asList(transaction);
-        when(transactionService.findByAmount(1100L)).thenReturn(transactions);
+        when(transactionService.findByAmount(1100D)).thenReturn(transactions);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/transactions/amount/1100")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 //.andExpect(MockMvcResultMatchers.jsonPath("$[0].transactionAmount").value(20000)); //test pass
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].transactionAmount").value(100)); //test fail
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].transactionAmount").value(100D)); //test fail
     }
 }
 

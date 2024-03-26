@@ -56,7 +56,7 @@ class DemoApplicationTests {
         Transactions transaction2 = new Transactions(102, Date.valueOf("2024-03-28"), "Sahana", "Venu", 5000, "Friend");
         List<Transactions> expected = Stream.of(transaction1).collect(Collectors.toList());
         when(jdbcTemplate.query(anyString(), any(Object[].class), any(BeanPropertyRowMapper.class))).thenReturn(expected);
-        List<Transactions> actual = transactionService.findByAmount((long) 2500);
+        List<Transactions> actual = transactionService.findByAmount((double) 2500);
         assertNotEquals(expected, actual);
     }
 
