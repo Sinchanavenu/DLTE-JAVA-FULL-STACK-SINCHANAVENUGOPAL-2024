@@ -19,7 +19,11 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.springframework.mock.http.server.reactive.MockServerHttpRequest.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
 @WebMvcTest(TransactionController.class)
@@ -31,6 +35,25 @@ public class EndPointTest {
     @MockBean
     private TransactionService transactionService;
 
+        @Test
+    void testNewTransaction() {
+        // testing for adding transactions
+            Transactions transaction=new Transactions(102,Date.valueOf("2024-04-02"),"Sinchana","Riya",7000,"Emergency");
+            String request="{\n"+
+                    "  \"transactionId\":102,\n"+
+                    " \"transactionDate\":\"2024-04-02\",\n"+
+                    " \"transactionBy\":\"Riya\",\n"+
+                    " \"transactionTo\":\"Sinchana\",\n"+
+                    " \"transactionAmount\":7000,\n"+
+                    " \"transactionRemarks\":\"Emergency\"\n "+
+                    "}";
+            when(transactionService.newTransaction(any())).thenReturn(transaction);
+            mockMvc.perform(MockMvcRequestBuilders.post("/Transactions/addTransaction")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(request))
+                    .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
     @Test
     public void testTransactionEndpoint() throws Exception {
 //        Transactions transactions;
@@ -39,7 +62,7 @@ public class EndPointTest {
         mockMvc.perform(MockMvcRequestBuilders.post("/Transactions/addTransaction")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(request))
-                .andExpect(MockMvcResultMatchers.status().isOk());
+                .andExpect(status().isOk());
 
     }
 
@@ -51,7 +74,7 @@ public class EndPointTest {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/transactions/sender/Sinchana")
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].transactionBy").value("Sinchana")); //pass
         //.andExpect(MockMvcResultMatchers.jsonPath("$[0].transactionBy").value("Sanjana")); //fail
     }
@@ -64,7 +87,7 @@ public class EndPointTest {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/transactions/receiver/Ninadha")
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].transactionTo").value("Ninadha")); //pass
         //.andExpect(MockMvcResultMatchers.jsonPath("$[0].transactionTo").value("Sahana"));//test fail
     }
@@ -77,7 +100,7 @@ public class EndPointTest {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/transactions/amount/1100")
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(status().isOk())
                 //.andExpect(MockMvcResultMatchers.jsonPath("$[0].transactionAmount").value(20000)); //test pass
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].transactionAmount").value(100D)); //test fail
     }

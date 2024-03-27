@@ -1,0 +1,42 @@
+<configuration>
+
+<!--     Define appenders-->
+<!--    <appender name="myConsole" class="ch.qos.logback.core.ConsoleAppender">-->
+<!--        <encoder>-->
+<!--            <pattern>%highlight([%thread]) %highlight(%-5level) %logger{36} - %highlight(%msg) %d{dd/MM/YYYY HH:mm:ss} %n</pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+    <!-- Define file appender -->
+<!--    <appender name="myLogs" class="ch.qos.logback.core.FileAppender">-->
+<!--        <file>C:/DLTE-JAVA-FULL-STACK-SINCHANAVENUGOPAL-2024/FINAL/logs/app.log</file> &lt;!&ndash; Define log file name and path &ndash;&gt;-->
+<!--        <encoder>-->
+<!--            <pattern>%d{HH:mm:ss.SSS} %highlight([%thread]) %-5level %logger{36} - %highlight(%msg) %n</pattern>-->
+<!--        </encoder>-->
+
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>C:/DLTE-JAVA-FULL-STACK-SINCHANAVENUGOPAL-2024/logs/app.%d{yyyy-MM-dd}.%i.log</fileNamePattern>-->
+<!--            <maxFileSize>1KB</maxFileSize>-->
+<!--            <maxHistory>1</maxHistory>-->
+<!--        </rollingPolicy>-->
+<!--    </appender>-->
+    <!-- Define archive appender -->
+    <appender name="myLogsArchive" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>C:/DLTE-JAVA-FULL-STACK-SINCHANAVENUGOPAL-2024/FINAL/logs/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>C:/DLTE-JAVA-FULL-STACK-SINCHANAVENUGOPAL-2024/logs/app-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <maxFileSize>3KB</maxFileSize>
+            <totalSizeCap>3KB</totalSizeCap>
+            <maxHistory>1</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- Root logger settings -->
+    <root level="INFO">
+<!--        <appender-ref ref="myConsole" />&ndash;&gt;-->
+        <appender-ref ref="myLogsArchive" /> <!-- Attach file appender -->
+    </root>
+
+</configuration>

@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -26,6 +26,25 @@ class DemoApplicationTests {
 
     @InjectMocks
     private TransactionService transactionService;
+
+    @Test
+    void testNewTransaction(){
+            Transactions transaction1 = new Transactions(201, Date.valueOf("2024-04-25"), "Isha", "Ravi", 200, "Bills");
+            Transactions transaction2=new Transactions(202, Date.valueOf("2024-04-02"),"Isha","Rani",100,"Emergency");
+            when(jdbcTemplate.update(
+                    eq("insert into transactions_table values(?,?,?,?,?,?)"),
+                    any(Integer.class),
+                    any(Date.class),
+                    any(String.class),
+                    any(String.class),
+                    any(Double.class),
+                    any(String.class)
+            )).thenReturn(1);
+            Transactions transactionActual = transactionService.newTransaction(transaction1);
+            System.out.println(transactionActual.getTransactionBy());
+            assertEquals(transaction1.getTransactionBy(),transactionActual.getTransactionBy());
+            assertEquals(transaction2.getTransactionBy(),transactionActual.getTransactionBy());//failed testcase
+    }
 
     @Test
     void testFindBySender() {
