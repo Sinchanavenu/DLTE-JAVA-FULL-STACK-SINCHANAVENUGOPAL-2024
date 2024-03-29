@@ -20,6 +20,7 @@ public class ConsoleAppNew {
         try (Scanner scanner = new Scanner(System.in)) {
             DatabaseRepositoryImplementation inputEmployeeDetails = new DatabaseRepositoryImplementation();
             Logger logger = LoggerFactory.getLogger(ConsoleAppNew.class);
+            logger.info("fdg");
             ValidationofData validation = new ValidationofData();
 
             try {
@@ -28,10 +29,10 @@ public class ConsoleAppNew {
                     int choice = getChoice(scanner);
 
                     switch (choice) {
-                        case 1:
+                        case 1:logger.info("op1");
                             readEmployeeDetails(scanner, inputEmployeeDetails, validation);
                             break;
-                        case 2:
+                        case 2:logger.info("op2");
                             displayEmployeeById(scanner, inputEmployeeDetails, logger);
                             break;
                         case 3:

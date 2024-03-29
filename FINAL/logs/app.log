@@ -5,3 +5,4 @@
 09:54:29.066 [31m[main][0;39m WARN  b.d.DatabaseRepositoryImplementation - [31mEmployee Already exists.[0;39m 
 09:55:39.032 [34m[main][0;39m INFO  b.d.DatabaseRepositoryImplementation - [34mEmployee has been added successfully.[0;39m 
 10:16:17.369 [main] INFO  b.d.DatabaseRepositoryImplementation - Employee has been added successfully.
+17:29:36.212 [main] INFO  frontend.console.ConsoleAppNew - fdg

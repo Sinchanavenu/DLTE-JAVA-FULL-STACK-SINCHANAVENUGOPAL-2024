@@ -1,4 +1,4 @@
-package rest.service;
+/*package rest.service;
 
 import com.google.gson.Gson;
 import org.junit.Before;
@@ -93,3 +93,5 @@ public class AppTest {
         verify(printWriter).println("to MockRecipient transaction has been done");
     }
 }
+
+ */

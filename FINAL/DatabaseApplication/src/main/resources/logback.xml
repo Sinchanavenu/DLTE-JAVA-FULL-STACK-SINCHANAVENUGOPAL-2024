@@ -22,7 +22,7 @@
 <!--    </appender>-->
     <!-- Define archive appender -->
     <appender name="myLogsArchive" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>C:/DLTE-JAVA-FULL-STACK-SINCHANAVENUGOPAL-2024/FINAL/logs/app.log</file>
+        <file>C:\DLTE-JAVA-FULL-STACK-SINCHANAVENUGOPAL-2024\logs</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>C:/DLTE-JAVA-FULL-STACK-SINCHANAVENUGOPAL-2024/logs/app-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
             <maxFileSize>3KB</maxFileSize>

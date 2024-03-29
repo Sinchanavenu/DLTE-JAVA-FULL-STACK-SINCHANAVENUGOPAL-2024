@@ -3,10 +3,10 @@ package jdbc.template.demo.Entity;
 import java.util.Date;
 
 public class Transactions {
-    private int transactionId;
+    private Integer transactionId;
     private Date transactionDate;
     private String transactionTo;
-    private double transactionAmount;
+    private Double transactionAmount;
     private String transactionRemarks;
     private String transactionBy;
 
@@ -25,7 +25,7 @@ public class Transactions {
     public Transactions() {
     }
 
-    public Transactions(int transactionId, Date transactionDate, String transactionBy, String transactionTo, double transactionAmount, String transactionRemarks) {
+    public Transactions(Integer transactionId, Date transactionDate, String transactionBy, String transactionTo, double transactionAmount, String transactionRemarks) {
         this.transactionId = transactionId;
         this.transactionDate = transactionDate;
         this.transactionBy = transactionBy;
@@ -34,11 +34,11 @@ public class Transactions {
         this.transactionRemarks = transactionRemarks;
     }
 
-    public int getTransactionId() {
+    public Integer getTransactionId() {
         return transactionId;
     }
 
-    public void setTransactionId(int transactionId) {
+    public void setTransactionId(Integer transactionId) {
         this.transactionId = transactionId;
     }
 
@@ -66,11 +66,11 @@ public class Transactions {
         this.transactionTo = transactionTo;
     }
 
-    public double getTransactionAmount() {
+    public Double getTransactionAmount() {
         return transactionAmount;
     }
 
-    public void setTransactionAmount(double transactionAmount) {
+    public void setTransactionAmount(Double transactionAmount) {
         this.transactionAmount = transactionAmount;
     }
 

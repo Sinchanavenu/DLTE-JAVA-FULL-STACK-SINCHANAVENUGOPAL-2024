@@ -20,7 +20,7 @@ Create Transaction: POST service
 Read All: GET service
 Read Transaction which contains amount of given range(min and max) as parameter: GET service
  */
-
+/*
 @WebServlet("/rest/*")
 public class RestWebService extends HttpServlet {
     @Override
@@ -69,3 +69,5 @@ public class RestWebService extends HttpServlet {
 
 
 }
+
+ */
