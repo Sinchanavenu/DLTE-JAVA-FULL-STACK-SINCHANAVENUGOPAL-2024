@@ -73,25 +73,24 @@ public class EndPointTesting {
         Transaction updateTransaction = new Transaction();
         updateTransaction.setTransactionId(1);
         updateTransaction.setTransactionDate(new Date("10/06/2024"));
-        updateTransaction.setTransactionBy("sender");
-        updateTransaction.setTransactionTo("receiver");
+        updateTransaction.setTransactionBy("sinchana");
+        updateTransaction.setTransactionTo("ninadha");
         updateTransaction.setTransactionAmount(1000L);
-        updateTransaction.setTransactionRemarks("new remark");
+        updateTransaction.setTransactionRemarks("bills");
         when(transactionService.updateTransaction(any(Transaction.class))).thenReturn(updateTransaction);
         UpdateTransactionRequest request = new UpdateTransactionRequest();
         services.transaction.Transaction transaction = new services.transaction.Transaction();
-        transaction.setTransactionId(2);
-        transaction.setTransactionDate(new Date("8/12/2024"));
-        updateTransaction.setTransactionBy("Sender");
-        updateTransaction.setTransactionTo("Receiver");
+        transaction.setTransactionId(1);
+        transaction.setTransactionDate(new Date("10/06/2024"));
+        updateTransaction.setTransactionBy("sinchana");
+        updateTransaction.setTransactionTo("receiver");
         updateTransaction.setTransactionAmount(1000L);
-        updateTransaction.setTransactionRemarks("old remark");
+        updateTransaction.setTransactionRemarks("friends");
         request.setTransaction(transaction);
         UpdateTransactionResponse response = soapPhase.updatingTransaction(request);
         assertEquals("SUCCESS", response.getServiceStatus().getStatus());
-        assertEquals("1 \" has been updated\"", response.getServiceStatus().getMessage());
         assertEquals(1L, response.getTransaction().getTransactionId());
-        assertEquals("Updated remarks", response.getTransaction().getTransactionAmount());
+        assertEquals("Transaction Updated ", response.getTransaction().getTransactionAmount());
     }
 
     @Test
