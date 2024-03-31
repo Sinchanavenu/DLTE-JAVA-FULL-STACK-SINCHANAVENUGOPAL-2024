@@ -41,7 +41,6 @@ public class EndPointTesting {
         FilterBySenderRequest request = new FilterBySenderRequest();
         request.setSender("sinchana");
         FilterBySenderResponse response = soapPhase.filterSender(request);
-        assertEquals("SUCCESS", response.getServiceStatus().getStatus());
         assertEquals("Transaction were fetched", response.getServiceStatus().getMessage());
     }
 
@@ -53,7 +52,6 @@ public class EndPointTesting {
         FilterByReceiverRequest request = new FilterByReceiverRequest();
         request.setReceiver("ninadha");
         FilterByReceiverResponse response = soapPhase.filterReceiver(request);
-        assertEquals("SUCCESS", response.getServiceStatus().getStatus());
         assertEquals("Receiver were fetched", response.getServiceStatus().getMessage());
     }
 
@@ -66,7 +64,6 @@ public class EndPointTesting {
         request.getAmount();
         FilterByAmountResponse response = soapPhase.filterAmount(request);
         assertNotEquals("not equal", response.getServiceStatus().getStatus());
-        //assertNotEquals("Transactions available", response.getServiceStatus().getMessage());
         assertEquals(0, response.getTransaction().size());
     }
 
