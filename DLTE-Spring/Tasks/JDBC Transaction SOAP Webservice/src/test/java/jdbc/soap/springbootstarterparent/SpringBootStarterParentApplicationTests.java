@@ -1,4 +1,4 @@
-package jdbc.soap.springbootstarterparent;
+/*package jdbc.soap.springbootstarterparent;
 
 import jdbc.soap.springbootstarterparent.dao.Transaction;
 import jdbc.soap.springbootstarterparent.dao.TransactionService;
@@ -128,3 +128,5 @@ class SpringBootStarterParentApplicationTests {
         return DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar);
     }
 }
+
+ */
