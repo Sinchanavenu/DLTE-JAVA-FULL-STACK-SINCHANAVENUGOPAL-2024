@@ -164,6 +164,7 @@ public class SoapPhase {
 
     @PreAuthorize("hasAnyAuthority('manager')")
     @PayloadRoot(namespace = url, localPart ="closeTransactionRequest")
+    @ResponsePayload
     public CloseTransactionResponse closeTransaction(@RequestPayload CloseTransactionRequest closeTransactionRequest){
         CloseTransactionResponse closeTransactionResponse=new CloseTransactionResponse();
         ServiceStatus serviceStatus=new ServiceStatus();
