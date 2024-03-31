@@ -4,6 +4,7 @@ import jdbc.soap.springbootstarterparent.dao.Transaction;
 import jdbc.soap.springbootstarterparent.dao.TransactionService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -21,7 +22,7 @@ public class SoapPhase {
     @Autowired
     private TransactionService transactionService;
 
-
+    @PreAuthorize("hasAnyAuthority('clerk','cashier')")
     @PayloadRoot(namespace = url, localPart = "filterBySenderRequest")
     @ResponsePayload
     public FilterBySenderResponse filterSender(@RequestPayload FilterBySenderRequest filterBySenderRequest) {
@@ -48,6 +49,7 @@ public class SoapPhase {
         return filterBySenderResponse;
     }
 
+    @PreAuthorize("hasAnyAuthority('clerk')")
     @PayloadRoot(namespace = url, localPart = "filterByReceiverRequest")
     @ResponsePayload
     public FilterByReceiverResponse filterReceiver(@RequestPayload FilterByReceiverRequest filterByReceiverRequest) {
@@ -74,6 +76,7 @@ public class SoapPhase {
         return filterByReceiverResponse;
     }
 
+    @PreAuthorize("hasAnyAuthority('admin','cashier')")
     @PayloadRoot(namespace = url, localPart = "filterByAmountRequest")
     @ResponsePayload
     public FilterByAmountResponse filterAmount(@RequestPayload FilterByAmountRequest filterByAmountRequest) {
@@ -100,6 +103,7 @@ public class SoapPhase {
         return filterByAmountResponse;
     }
 
+    @PreAuthorize("hasAnyAuthority('manager','admin')")
     @PayloadRoot(namespace = url, localPart = "newTransactionRequest")
     @ResponsePayload
     public NewTransactionResponse addNewTransaction(@RequestPayload NewTransactionRequest newTransactionRequest) {
@@ -128,6 +132,7 @@ public class SoapPhase {
         return newTransactionResponse;
     }
 
+    @PreAuthorize("hasAnyAuthority('admin')")
     @PayloadRoot(namespace = url, localPart = "updateTransactionRequest")
     @ResponsePayload
     public UpdateTransactionResponse updatingTransaction(@RequestPayload UpdateTransactionRequest updateTransactionRequest){
@@ -157,6 +162,7 @@ public class SoapPhase {
         return updateTransactionResponse;
     }
 
+    @PreAuthorize("hasAnyAuthority('manager')")
     @PayloadRoot(namespace = url, localPart ="closeTransactionRequest")
     public CloseTransactionResponse closeTransaction(@RequestPayload CloseTransactionRequest closeTransactionRequest){
         CloseTransactionResponse closeTransactionResponse=new CloseTransactionResponse();

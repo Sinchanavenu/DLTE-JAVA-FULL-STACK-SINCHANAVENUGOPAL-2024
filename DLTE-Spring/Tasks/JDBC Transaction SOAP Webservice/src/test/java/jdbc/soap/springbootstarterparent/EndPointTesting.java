@@ -1,4 +1,4 @@
-package jdbc.soap.springbootstarterparent;
+/*package jdbc.soap.springbootstarterparent;
 
 import jdbc.soap.springbootstarterparent.configs.SoapPhase;
 import jdbc.soap.springbootstarterparent.dao.Transaction;
@@ -116,3 +116,5 @@ public class EndPointTesting {
     }
 
 }
+
+ */
