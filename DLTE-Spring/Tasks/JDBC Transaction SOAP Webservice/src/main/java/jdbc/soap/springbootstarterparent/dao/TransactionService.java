@@ -5,10 +5,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
+import java.util.Date;
 
 /*
 From the previous DAO #1089 build the SOAP Webservice by XSD, Configuration, endpoints
@@ -60,7 +61,7 @@ public class TransactionService {
     }
 
     public Transaction updateTransaction(Transaction transaction){
-        int acknowledge = jdbcTemplate.update("update mybank_transaction set transactionRemarks where transactionId=?",
+        int acknowledge = jdbcTemplate.update("update mybank_transaction set transactionRemarks=? where transactionId=?",
                 new Object[]{
                         transaction.getTransactionRemarks(),
                         transaction.getTransactionId()
@@ -71,9 +72,11 @@ public class TransactionService {
             return null;
     }
 
-    public String closeTransaction(Date startDate, Date endDate){
+    public String closeTransaction(XMLGregorianCalendar startDate, XMLGregorianCalendar endDate){
+        java.util.Date startUtilDate =startDate.toGregorianCalendar().getTime();
+        java.util.Date endUtilDate= endDate.toGregorianCalendar().getTime();
         int acknowledge = jdbcTemplate.update("delete from mybank_transaction where transactionDate between ? and ?",
-                new Object[]{startDate,endDate});
+                new Object[]{startUtilDate,endUtilDate});
         if(acknowledge!=0)
             return "Transaction between" +startDate+ "and" +endDate+ "closed";
         else

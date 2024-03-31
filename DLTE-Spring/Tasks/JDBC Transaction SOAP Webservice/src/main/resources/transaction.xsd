@@ -125,6 +125,7 @@
         <xsd:complexType>
             <xsd:sequence>
                 <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xsd:element name="transaction" type="tns:transaction"/>
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>

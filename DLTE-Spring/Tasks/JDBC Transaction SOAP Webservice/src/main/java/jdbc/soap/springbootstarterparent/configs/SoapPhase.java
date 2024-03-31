@@ -110,6 +110,7 @@ public class SoapPhase {
         Date date=newTransactionRequest.getTransaction().getTransactionDate().toGregorianCalendar().getTime();
         System.out.println(actual.getTransactionId()+" "+actual.getTransactionDate());
         Transaction daoTransaction = new Transaction();
+        daoTransaction.setTransactionDate(date);
         BeanUtils.copyProperties(actual, daoTransaction);
         System.out.println(daoTransaction);
         daoTransaction = transactionService.apiSave(daoTransaction);
@@ -156,8 +157,24 @@ public class SoapPhase {
         return updateTransactionResponse;
     }
 
+    @PayloadRoot(namespace = url, localPart ="closeTransactionRequest")
+    public CloseTransactionResponse closeTransaction(@RequestPayload CloseTransactionRequest closeTransactionRequest){
+        CloseTransactionResponse closeTransactionResponse=new CloseTransactionResponse();
+        ServiceStatus serviceStatus=new ServiceStatus();
+        services.transaction.Transaction transaction=new services.transaction.Transaction();
 
+        String deleteTransaction = transactionService.closeTransaction(closeTransactionRequest.getStartDate(),closeTransactionRequest.getEndDate());
+        if(deleteTransaction.contains("Invalid")){
+            serviceStatus.setStatus("FAILURE");
+        }
+        else
+            serviceStatus.setStatus("SUCCESS");
+        serviceStatus.setMessage(deleteTransaction);
+        closeTransactionResponse.setServiceStatus(serviceStatus);
+        return closeTransactionResponse;
+    }
 
 }
+
 
 
