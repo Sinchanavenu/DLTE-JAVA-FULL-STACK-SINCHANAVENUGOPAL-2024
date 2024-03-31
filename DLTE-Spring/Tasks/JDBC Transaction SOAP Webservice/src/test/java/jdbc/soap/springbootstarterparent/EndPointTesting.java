@@ -83,7 +83,7 @@ public class EndPointTesting {
         transaction.setTransactionId(1);
         transaction.setTransactionDate(new Date("10/06/2024"));
         updateTransaction.setTransactionBy("sinchana");
-        updateTransaction.setTransactionTo("receiver");
+        updateTransaction.setTransactionTo("ninadha");
         updateTransaction.setTransactionAmount(1000L);
         updateTransaction.setTransactionRemarks("friends");
         request.setTransaction(transaction);
@@ -95,18 +95,14 @@ public class EndPointTesting {
 
     @Test
     public void testRemoveTransactionBetweenDates() throws DatatypeConfigurationException {
-//        String startDate ="01/01/2024";
-//        String endDate ="01/31/2024";
-        Date startDate = new Date(2024, 5, 10); //
-        Date endDate = new Date(2024, 5, 13); //
 
-        // Converting Date to XMLGregorianCalendar
+        Date startDate = new Date(2024, 5, 10);
+        Date endDate = new Date(2024, 5, 13);
+
         XMLGregorianCalendar start = dateToXMLGregorian(startDate);
         XMLGregorianCalendar end = dateToXMLGregorian(endDate);
         when(transactionService.closeTransaction(startDate, endDate)).thenReturn("remove");
         CloseTransactionRequest request = new CloseTransactionRequest();
-//        String start ="01/01/2024";
-//        String end ="01/31/2024";
         request.setStartDate(start);
         request.setEndDate(end);
         CloseTransactionResponse response = soapPhase.closeTransaction(request);
