@@ -33,6 +33,8 @@ public class EndPointTesting {
     @InjectMocks
     private SoapPhase soapPhase;
 
+    
+
     @Test
     public void testBySender() {
         List<Transaction> transaction = new ArrayList<>();

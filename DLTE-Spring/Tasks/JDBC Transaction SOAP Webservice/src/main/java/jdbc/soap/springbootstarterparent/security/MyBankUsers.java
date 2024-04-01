@@ -23,14 +23,6 @@ public class MyBankUsers implements UserDetails {
     private String emailId;
     private Long contactNumber;
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
     public MyBankUsers() {
     }
 
