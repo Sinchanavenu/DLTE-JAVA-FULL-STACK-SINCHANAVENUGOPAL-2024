@@ -1,5 +1,6 @@
-/*package jdbc.soap.springbootstarterparent;
+package jdbc.soap.springbootstarterparent;
 
+import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 import jdbc.soap.springbootstarterparent.configs.SoapPhase;
 import jdbc.soap.springbootstarterparent.dao.Transaction;
 import jdbc.soap.springbootstarterparent.dao.TransactionService;
@@ -19,8 +20,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -33,7 +33,22 @@ public class EndPointTesting {
     @InjectMocks
     private SoapPhase soapPhase;
 
-    
+    @Test
+    public void newTransaction(){
+        //added new transaction testing
+        Transaction transaction=new Transaction(1, new Date(10/06/2024), "sinchana", "ninadha", 5000L, "Friend");
+        when(transactionService.apiSave(any(Transaction.class))).thenReturn(transaction);
+        NewTransactionRequest request=new NewTransactionRequest();
+        Transaction transactions=new Transaction();
+        transactions.setTransactionId(2);
+        transactions.setTransactionDate(new Date(12/06/2024));
+        transactions.setTransactionBy("ninadha");
+        transactions.setTransactionTo("sam");
+        transactions.setTransactionAmount(12000L);
+        transactions.setTransactionRemarks("bills");
+        NewTransactionResponse transactionResponse=soapPhase.addNewTransaction(request);
+        assertTrue(transaction.getTransactionBy().equals(transactionResponse.getTransaction().getTransactionBy()));
+    }
 
     @Test
     public void testBySender() {
@@ -119,4 +134,4 @@ public class EndPointTesting {
 
 }
 
- */
+
