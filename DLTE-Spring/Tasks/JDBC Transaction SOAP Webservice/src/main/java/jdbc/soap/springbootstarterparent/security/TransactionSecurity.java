@@ -33,7 +33,10 @@ public class TransactionSecurity {
         httpSecurity.formLogin();
 
         httpSecurity.authorizeRequests().antMatchers("/profile/register").permitAll();
-        //httpSecurity.authorizeRequests().antMatchers("/profile/register").permitAll();
+        httpSecurity.authorizeRequests().antMatchers("/Transactions/addTransaction").hasAnyAuthority("admin");
+        httpSecurity.authorizeRequests().antMatchers("/Transactions/sender/{sender}").hasAnyAuthority("customer");
+        httpSecurity.authorizeRequests().antMatchers("/Transactions/receiver/{receiver}").hasAnyAuthority("customer");
+        httpSecurity.authorizeRequests().antMatchers("/Transactions/amount/{amount}").hasAnyAuthority("customer");
         httpSecurity.authorizeRequests().anyRequest().authenticated();
 
 

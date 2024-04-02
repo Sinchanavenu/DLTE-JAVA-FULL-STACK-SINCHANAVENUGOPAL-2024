@@ -36,6 +36,14 @@ public class MyBankUsers implements UserDetails {
         this.contactNumber = contactNumber;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
     public String getUserName() {
         return userName;
     }

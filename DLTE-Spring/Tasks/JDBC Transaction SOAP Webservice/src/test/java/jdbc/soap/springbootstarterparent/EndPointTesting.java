@@ -1,4 +1,4 @@
-package jdbc.soap.springbootstarterparent;
+/*package jdbc.soap.springbootstarterparent;
 
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 import jdbc.soap.springbootstarterparent.configs.SoapPhase;
@@ -133,5 +133,7 @@ public class EndPointTesting {
     }
 
 }
+
+ */
 
 

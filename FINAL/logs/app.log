@@ -1,8 +1,4 @@
-00:44:59.732 [31m[main][0;39m WARN  b.d.DatabaseRepositoryImplementation - [31mEmployee Already exists.[0;39m 
-00:48:17.148 [34m[main][0;39m INFO  b.d.DatabaseRepositoryImplementation - [34mEmployee has been added successfully.[0;39m 
-00:53:33.279 [34m[main][0;39m INFO  b.d.DatabaseRepositoryImplementation - [34mEmployee has been added successfully.[0;39m 
-00:57:44.244 [34m[main][0;39m INFO  b.d.DatabaseRepositoryImplementation - [34mEmployee has been added successfully.[0;39m 
-09:54:29.066 [31m[main][0;39m WARN  b.d.DatabaseRepositoryImplementation - [31mEmployee Already exists.[0;39m 
-09:55:39.032 [34m[main][0;39m INFO  b.d.DatabaseRepositoryImplementation - [34mEmployee has been added successfully.[0;39m 
-10:16:17.369 [main] INFO  b.d.DatabaseRepositoryImplementation - Employee has been added successfully.
-17:29:36.212 [main] INFO  frontend.console.ConsoleAppNew - fdg
+21:39:02.717 [main] INFO  frontend.console.ConsoleAppNew - fdg
+21:52:32.047 [main] INFO  b.d.DatabaseRepositoryImplementation - Employee has been added successfully.
+21:54:53.848 [main] INFO  b.d.DatabaseRepositoryImplementation - Employee has been added successfully.
+21:56:05.111 [main] INFO  b.d.DatabaseRepositoryImplementation - Employee has been added successfully.
