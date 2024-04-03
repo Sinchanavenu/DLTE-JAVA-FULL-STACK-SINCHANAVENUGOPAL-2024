@@ -18,11 +18,11 @@ import java.util.List;
 public class ReadEmployeeDetails extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //InputEmployeeDetails inputEmployeeDetails=new DatabaseRepositoryImplementation();
-        InputEmployeeDetails inputEmployeeDetails=null;
+        InputEmployeeDetails inputEmployeeDetails=new DatabaseRepositoryImplementation();
+        //InputEmployeeDetails inputEmployeeDetails=null;
         resp.setContentType("application/json");
-        //List<Employee> employeeList=inputEmployeeDetails.read();
-        List<Employee>  employeeList=new ArrayList<>();
+        List<Employee> employeeList=inputEmployeeDetails.read();
+        //List<Employee>  employeeList=new ArrayList<>();
         Gson gson=new Gson();
         String responseData = gson.toJson(employeeList);
         resp.getWriter().println(responseData);

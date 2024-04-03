@@ -12,22 +12,28 @@ import java.io.IOException;
 public class RestClient {
     public static void main(String[] args) {
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("http://localhost:8112/EmployeeRestWebservice/employee");
+        HttpGet httpGet = new HttpGet("http://localhost:8112/EmployeeRestWebservice/employe");
         try (CloseableHttpResponse response = httpClient.execute(httpGet)) {
             HttpEntity entity = response.getEntity();
-            if (entity != null) {
-                String json = EntityUtils.toString(entity);
-                System.out.println("Received JSON response:");
-                System.out.println(json); // Print the raw JSON response
+            if (response.getStatusLine().getStatusCode() == 200) {
+                if (entity != null) {
+                    String json = EntityUtils.toString(entity);
+                    System.out.println("Received JSON response:");
+                    System.out.println(json);
+                }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                httpClient.close();
-            } catch (IOException e) {
+        else{
+                System.out.println( response.getStatusLine().getStatusCode());
+        }
+        }catch(IOException e){
                 e.printStackTrace();
             }
-        }
+        finally{
+                try {
+                    httpClient.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
     }
 }

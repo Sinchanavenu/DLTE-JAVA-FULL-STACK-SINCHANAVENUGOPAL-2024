@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="759ba1fc-a1d9-4ed8-a74b-e8ce5d44e3ca" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../JDBC Transaction SOAP Webservice/mybank-card.log.2024-04-02.0.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JDBC Transaction SOAP Webservice/mybank-card.log" beforeDir="false" afterPath="$PROJECT_DIR$/../JDBC Transaction SOAP Webservice/mybank-card.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../LASTFINAL/Console/src/main/java/frontend/console/rest/RestClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../LASTFINAL/Console/src/main/java/frontend/console/rest/RestClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../LASTFINAL/Console/target/classes/frontend/console/rest/RestClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../LASTFINAL/Console/target/classes/frontend/console/rest/RestClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../LASTFINAL/DatabaseApplication/target/DatabaseApplication-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../../LASTFINAL/DatabaseApplication/target/DatabaseApplication-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../LASTFINAL/DatabaseApplication/target/surefire-reports/TEST-backend.datarepo.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../LASTFINAL/DatabaseApplication/target/surefire-reports/TEST-backend.datarepo.AppTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../LASTFINAL/DatabaseApplication/target/surefire-reports/backend.datarepo.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../LASTFINAL/DatabaseApplication/target/surefire-reports/backend.datarepo.AppTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../LASTFINAL/RestWebservice/src/main/java/rest/ReadEmployeeDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../LASTFINAL/RestWebservice/src/main/java/rest/ReadEmployeeDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../LASTFINAL/RestWebservice/target/EmployeeRestWebservice.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../../LASTFINAL/RestWebservice/target/EmployeeRestWebservice.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../LASTFINAL/RestWebservice/target/EmployeeRestWebservice/WEB-INF/classes/rest/ReadEmployeeDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../LASTFINAL/RestWebservice/target/EmployeeRestWebservice/WEB-INF/classes/rest/ReadEmployeeDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../LASTFINAL/RestWebservice/target/EmployeeRestWebservice/WEB-INF/lib/DatabaseApplication-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../../LASTFINAL/RestWebservice/target/EmployeeRestWebservice/WEB-INF/lib/DatabaseApplication-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../LASTFINAL/RestWebservice/target/classes/rest/ReadEmployeeDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../LASTFINAL/RestWebservice/target/classes/rest/ReadEmployeeDetails.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="2ea4GWqwXx8z2IOayxEfiLs7oJ1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Spring Boot Rest Controller Mappings" />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="759ba1fc-a1d9-4ed8-a74b-e8ce5d44e3ca" name="Default Changelist" comment="" />
+      <created>1712129259144</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712129259144</updated>
+      <workItem from="1712129260650" duration="12000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1712129271334">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1712129271334" />
+  </component>
+</project>

@@ -1,0 +1,145 @@
+<!-- Along with #1291 build Single page application which consists of previous page along with UL and OL list of displaying deposit features and Available Loans from MyBank
+
+Build MyBank logo and add it as background and while scroll let the background is fixed
+
+Note: build web page which has scrollable amount of components -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBank - Your Financial Partner</title>
+    <style>
+        /* Global styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-image: url('files/bank.jpg');
+            background-size: 100%; 
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed; 
+        }
+
+    
+        #container {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; /* Center products horizontally */
+            padding: 20px;
+            margin-top: 150px; /* Adjusted margin to account for logo */
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Product card styles */
+        .product {
+            margin: 20px;
+            text-align: center;
+            background-color: beige;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 300px;
+            width: 100%; /* Take up full width */
+            
+        }
+
+        .product img, .product video {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            color: black;
+        }
+
+        .product:hover .details {
+            opacity: 1;
+        
+        }
+
+
+        .details h2 {
+            margin-top: 0;
+        }
+
+        /* List styles */
+        #features-list, #loans-list {
+            margin-top: 50px;
+            padding: 0 20px;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        #features-list li, #loans-list li {
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="background-color: burlywood;"><center><strong>My Bank</strong> </center></h1>
+
+<!-- Deposit Features -->
+<ul id="features-list">
+    <h3 style="text-align:center;font-family:'Times New Roman', Times, serif;">Deposit Features</h3>
+    <li>High-interest savings account</li>
+    <li>Flexible term deposits</li>
+    <li>Automatic recurring deposits</li>
+    <li>Online deposit management</li>
+</ul>
+
+<!-- Available Loans -->
+<ol id="loans-list">
+    <h3 style="text-align:center; font-family:'Times New Roman', Times, serif;">Loans available</h3>
+    <li>Personal loan</li>
+    <li>Gold loan</li>
+    <li>Home loan</li>
+    <li>Education loan</li>
+</ol>
+
+<!-- Bank Products -->
+<div id="container">
+    <div class="product">
+        <img src="files/card.jpg" alt="Product 1">
+        <div class="details">
+            <h2>CREDIT CARD</h2>
+            <p>MyBank provides variety of cards to its customers </p>
+        </div>
+    </div>
+    <div class="product">
+        <img src="files/loan.jpg" alt="Product 2">
+        <div class="details">
+            <h2>LOANS</h2>
+            <p>MyBank provides variety of loans to its customers </p>
+        </div>
+    </div>
+    <div class="product">
+        <img src="files/insurance.jpg" alt="Product 3">
+        <div class="details">
+            <h2>INSURANCE</h2>
+            <p>MyBank provides variety of insurances to its customers</p>
+        </div>
+    </div>
+    <div class="product">
+        <video controls muted autoplay>
+            <source src="files/card.mov" type="video/mp4">
+        </video>
+        <div class="details">
+            <h2>Card</h2>
+            <p>Video displays the benefits of using a card </p>
+        </div>    
+    </div>
+</div>
+
+</body>
+</html>
