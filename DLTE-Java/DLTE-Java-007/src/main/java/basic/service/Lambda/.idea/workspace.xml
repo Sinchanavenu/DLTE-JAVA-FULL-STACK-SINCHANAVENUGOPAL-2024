@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9d6acf76-5549-4cc8-8192-b2c2f5109f4b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Lambda.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../../../MyBank_Project/DAO/mybank-card.log.2024-04-03.0.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../DLTE-Spring/UsingXML/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../../DLTE-Spring/UsingXML/src/main/java/org/example/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../DLTE-Spring/UsingXML/src/main/java/org/example/MyBankContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../../DLTE-Spring/UsingXML/src/main/java/org/example/MyBankContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../DLTE-Spring/UsingXML/src/main/resources/mybank-branches.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../../DLTE-Spring/UsingXML/src/main/resources/mybank-branches.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../DLTE-Spring/UsingXML/target/classes/mybank-branches.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../../DLTE-Spring/UsingXML/target/classes/mybank-branches.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../DLTE-Spring/UsingXML/target/classes/org/example/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../../DLTE-Spring/UsingXML/target/classes/org/example/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../DLTE-Spring/UsingXML/target/classes/org/example/MyBankContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../../DLTE-Spring/UsingXML/target/classes/org/example/MyBankContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../MyBank_Project/DAO/mybank-card.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../../MyBank_Project/DAO/mybank-card.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../MyBank_Project/DAO/src/main/java/project/dao/demo/DaoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../../MyBank_Project/DAO/src/main/java/project/dao/demo/DaoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../MyBank_Project/DAO/src/main/java/project/dao/demo/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../../MyBank_Project/DAO/src/main/java/project/dao/demo/service/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../MyBank_Project/MyBankDAO/src/main/java/mybank/dao/demo/DaoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../../MyBank_Project/MyBankDAO/src/main/java/mybank/dao/demo/DaoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../MyBank_Project/MyBankDAO/src/main/java/mybank/dao/demo/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../../MyBank_Project/MyBankDAO/src/main/java/mybank/dao/demo/service/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../MyBank_Project/Webservices/src/main/java/project/webservice/demo/configs/SoapPhase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../../MyBank_Project/Webservices/src/main/java/project/webservice/demo/configs/SoapPhase.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../../../../.." />
+  </component>
+  <component name="ProjectId" id="2ecbnDS2DiAUxUINGp531u3nwux" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../.." />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9d6acf76-5549-4cc8-8192-b2c2f5109f4b" name="Default Changelist" comment="" />
+      <created>1712206977933</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712206977933</updated>
+      <workItem from="1712206979360" duration="34000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1712207012071">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1712207012071" />
+  </component>
+</project>

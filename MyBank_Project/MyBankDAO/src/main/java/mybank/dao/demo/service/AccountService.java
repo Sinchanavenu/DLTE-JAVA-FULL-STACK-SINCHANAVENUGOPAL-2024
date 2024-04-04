@@ -15,11 +15,11 @@ public class AccountService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public List<Account> filterByStatus(Long customerId){
+    public List<Account> filterByStatus(){
         List<Account> shortlisted = jdbcTemplate.query("SELECT a.* FROM MYBANK_APP_ACCOUNT a\n" +
                         "INNER JOIN MYBANK_APP_CUSTOMER c ON a.CUSTOMER_ID = c.CUSTOMER_ID\n" +
                         "WHERE c.CUSTOMER_STATUS = 'Active' AND a.ACCOUNT_STATUS = 'Active'",
-                new Object[]{customerId},new AccountMapper());
+                new AccountMapper());
         return shortlisted;
     }
 
