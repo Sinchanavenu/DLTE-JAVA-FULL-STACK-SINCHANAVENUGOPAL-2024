@@ -1,6 +1,7 @@
 package mybank.dao.demo.service;
 
 import mybank.dao.demo.entity.Account;
+import mybank.dao.demo.remote.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -11,10 +12,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Service
-public class AccountService {
+public class AccountService implements AccountRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Override
     public List<Account> filterByStatus(){
         List<Account> shortlisted = jdbcTemplate.query("SELECT a.* FROM MYBANK_APP_ACCOUNT a\n" +
                         "INNER JOIN MYBANK_APP_CUSTOMER c ON a.CUSTOMER_ID = c.CUSTOMER_ID\n" +

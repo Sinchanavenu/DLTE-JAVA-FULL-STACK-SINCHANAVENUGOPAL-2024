@@ -1,11 +1,22 @@
 package project.dao.demo.entity;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class Account {
+    @NotNull(message = "{account.accountId.null}")
     private Long accountId;
+    @NotNull(message = "{account.customerId.null}")
     private Long customerId;
+    @NotBlank(message = "{account.accountType.null}")
     private String accountType;
+    @NotNull(message = "{account.accountNumber.null}")
+    @Digits(integer = 12, fraction = 0, message = "{digits.accountNumber}")
     private Long accountNumber;
+    @NotNull(message = "{account.accountBalance.null}")
     private Double accountBalance;
+    @NotNull(message = "{account.accountStatus.null}")
     private String accountStatus;
 
     public Account() {

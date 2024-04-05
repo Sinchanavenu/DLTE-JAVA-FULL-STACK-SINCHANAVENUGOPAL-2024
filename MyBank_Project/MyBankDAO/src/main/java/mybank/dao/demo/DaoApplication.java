@@ -12,8 +12,4 @@ public class DaoApplication {
         SpringApplication.run(DaoApplication.class, args);
     }
 
-    @Autowired
-    AccountService accountService;
-
-
 }

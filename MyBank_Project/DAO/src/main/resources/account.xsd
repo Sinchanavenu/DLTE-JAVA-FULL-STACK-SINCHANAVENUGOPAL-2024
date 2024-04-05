@@ -31,38 +31,17 @@
     <!--    Status-->
     <xsd:complexType name="serviceStatus">
         <xsd:sequence>
-            <xsd:element name="status" type="xsd:string"/>
+            <xsd:element name="status" type="xsd:int"/>
             <xsd:element name="message" type="xsd:string"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <!--    Operation-->
-
-    <!--    Call Procedure-->
-
-
-<!--    &lt;!&ndash;    Update loan details&ndash;&gt;-->
-<!--    <xsd:element name="updateLoanRequest">-->
-<!--        <xsd:complexType>-->
-<!--            <xsd:sequence>-->
-<!--                <xsd:element name="loans" type="tns:loans"/>-->
-<!--            </xsd:sequence>-->
-<!--        </xsd:complexType>-->
-<!--    </xsd:element>-->
-<!--    <xsd:element name="updateLoanResponse">-->
-<!--        <xsd:complexType>-->
-<!--            <xsd:sequence>-->
-<!--                <xsd:element name="serviceStatus" type="tns:serviceStatus"/>-->
-<!--                <xsd:element name="loans" type="tns:loans"/>-->
-<!--            </xsd:sequence>-->
-<!--        </xsd:complexType>-->
-<!--    </xsd:element>-->
-
     <!--    Filter By Status-->
     <xsd:element name="filterByStatusRequest">
         <xsd:complexType>
             <xsd:sequence>
-                <xsd:element name="filterByStatusRequest"/>
+                <xsd:element name="customerId" type="xsd:long"/>
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>

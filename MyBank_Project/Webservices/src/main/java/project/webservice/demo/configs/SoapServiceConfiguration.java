@@ -24,10 +24,10 @@ public class SoapServiceConfiguration extends WsConfigurerAdapter {
     }
 
     // wsdl properties
-    @Bean(name = "loans")
+    @Bean(name = "account")
     public DefaultWsdl11Definition convertToWsdl(XsdSchema xsdSchema){
         DefaultWsdl11Definition defaultWsdl11Definition=new DefaultWsdl11Definition();
-        defaultWsdl11Definition.setPortTypeName("LoansPort");
+        defaultWsdl11Definition.setPortTypeName("accountPort");
         defaultWsdl11Definition.setTargetNamespace("http://account.services");
         defaultWsdl11Definition.setLocationUri("/accountrepo");
         defaultWsdl11Definition.setSchema(xsdSchema);
