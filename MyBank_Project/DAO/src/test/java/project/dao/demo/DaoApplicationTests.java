@@ -1,4 +1,4 @@
-/*package project.dao.demo;
+package project.dao.demo;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,7 +34,7 @@ class DaoApplicationTests {
     @Mock
     JdbcTemplate jdbcTemplate;
     @InjectMocks
-    AccountRepository accountService;
+    AccountService accountService;
 
 
     @Test
@@ -63,30 +63,30 @@ class DaoApplicationTests {
         assertEquals("Active", result.get(1).getAccountStatus());
     }
 
-//    @Test
-//    void filterStatusFailure() throws AccountException, SQLSyntaxErrorException {
-//        List<Account> accountList = new ArrayList<>();
-//        accountList.add(new Account(105L, 1L, "savings", 111111111111L, 20000D, "Inactive"));
-//        accountList.add(new Account(106L, 1L, "salary", 111111111112L, 25000D, "Active"));
-//        accountList.add(new Account(107L, 2L, "current", 222222222222L, 4500D, "Inactive"));
-//        accountList.add(new Account(108L, 2L, "savings", 222222222223L, 400D, "Active"));
-//
-//        // Stubbing jdbcTemplate.query() method to return the accountList
-//        when(jdbcTemplate.query(anyString(), any(Object[].class), any(AccountService.AccountMapper.class)))
-//                .thenReturn(accountList);
-//
-//        // Stubbing jdbcTemplate.queryForObject() method to return 1
-//        when(jdbcTemplate.queryForObject(anyString(), eq(Integer.class), any(Long.class))).thenReturn(1);
-//
-//        // Call the method to be tested
-//        List<Account> result = accountService.filterByStatus(1L);
-//
-//
-//        assertEquals(2, result.size());
-//
-//        assertEquals("Active", result.get(0).getAccountStatus());
-//
-//    }
+    @Test
+    void filterStatusFailure() throws AccountException, SQLSyntaxErrorException {
+        List<Account> accountList = new ArrayList<>();
+        accountList.add(new Account(105L, 1L, "savings", 111111111111L, 20000D, "Inactive"));
+        accountList.add(new Account(106L, 1L, "salary", 111111111112L, 25000D, "Active"));
+        accountList.add(new Account(107L, 2L, "current", 222222222222L, 4500D, "Inactive"));
+        accountList.add(new Account(108L, 2L, "savings", 222222222223L, 400D, "Active"));
+
+        // Stubbing jdbcTemplate.query() method to return the accountList
+        when(jdbcTemplate.query(anyString(), any(Object[].class), any(AccountService.AccountMapper.class)))
+                .thenReturn(accountList);
+
+        // Stubbing jdbcTemplate.queryForObject() method to return 1
+        when(jdbcTemplate.queryForObject(anyString(), eq(Integer.class), any(Long.class))).thenReturn(1);
+
+        // Call the method to be tested
+        List<Account> result = accountService.filterByStatus(1L);
+
+
+        assertEquals(2, result.size());
+
+        assertEquals("Active", result.get(0).getAccountStatus());
+
+    }
 
 
 //    @Test
@@ -114,7 +114,6 @@ class DaoApplicationTests {
 
 }
 
- */
 
 
 

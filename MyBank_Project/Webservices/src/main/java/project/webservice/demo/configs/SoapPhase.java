@@ -74,7 +74,12 @@ public class SoapPhase {
             serviceStatus.setMessage(resourceBundle.getString("account.fetch.success"));
             filterByStatusResponse.setServiceStatus(serviceStatus);
             filterByStatusResponse.getAccount().addAll(returnAccount);
-        }catch(CustomerException|AccountException e){
+        }catch(CustomerException e){
+            logger.info(resourceBundle.getString("failure.fetch"));
+            serviceStatus.setStatus(HttpServletResponse.SC_NO_CONTENT);
+            serviceStatus.setMessage(e.getMessage());
+            filterByStatusResponse.setServiceStatus(serviceStatus);
+        }catch(AccountException e) {
             logger.info(resourceBundle.getString("failure.fetch"));
             serviceStatus.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             serviceStatus.setMessage(e.getMessage());
