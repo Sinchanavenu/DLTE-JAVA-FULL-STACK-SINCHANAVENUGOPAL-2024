@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 import project.dao.demo.entity.Account;
 import project.dao.demo.entity.exception.CustomerException;
+import project.dao.demo.entity.exception.ServerException;
 import project.dao.demo.remote.AccountRepository;
 
 import javax.security.auth.login.AccountException;
@@ -40,7 +41,7 @@ public class AccountService implements AccountRepository {
                             "WHERE c.CUSTOMER_ID = ? AND c.CUSTOMER_STATUS = 'Active' AND a.ACCOUNT_STATUS = 'Active'",
                     new Object[]{customerId}, new AccountMapper());
         } catch (DataAccessException e){
-            throw new SQLSyntaxErrorException();
+            throw new ServerException(resourceBundle.getString("internal.error"));
         }
             if (shortlisted.isEmpty()) {
                 throw new AccountException(resourceBundle.getString("no.account") +customerId);
@@ -54,7 +55,7 @@ public class AccountService implements AccountRepository {
             String sql = "SELECT COUNT(*) FROM MYBANK_APP_CUSTOMER WHERE CUSTOMER_ID = ?";
             int count = jdbcTemplate.queryForObject(sql, Integer.class, customerId);
             return count > 0;
-        } catch (DataAccessException e) {
+        } catch (CustomerException e) {
             logger.error(resourceBundle.getString("customerId.notFound"));
             return false;
         }

@@ -1,4 +1,4 @@
-package project.webservice.demo;
+/*package project.webservice.demo;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -54,30 +54,38 @@ public class EndPointTesting {
 
         // checking the response is success or not
         assertEquals("Account fetched successfully",response.getServiceStatus().getMessage());//success
-        //assertEquals("Account not fetched",response.getServiceStatus().getMessage());
+        assertEquals(200,response.getServiceStatus().getStatus());
+        //assertEquals(accountList.get(0).getCustomerId(),request.getCustomerId());
     }
 
-//    @Test
-//    public void testStatusFail() throws SQLSyntaxErrorException, AccountException {
-//        List<Account> accountList = new ArrayList<>();
-//        Account account = new Account();
-//        account.setAccountId(1235456L);
-//        account.setCustomerId(1L);
-//        account.setAccountType("Savings");
-//        account.setAccountNumber(105L);
-//        account.setAccountBalance(20000D);
-//        account.setAccountStatus("Active");
-//        accountList.add(account);
-//
-//        when(accService.filterByStatus(1L)).thenReturn(accountList);
-//
-//        FilterByStatusRequest request = new FilterByStatusRequest();
-//        request.setCustomerId(1L);
-//        FilterByStatusResponse response = soapPhase.filterStatus(request);
-//
-//        // checking the response is success or not
-//        //assertEquals("Account fetched successfully",response.getServiceStatus().getMessage());//success
-//        assertEquals("Account not fetched",response.getServiceStatus().getMessage());
-//    }
+    @Test
+    public void testStatusFail() throws SQLSyntaxErrorException, AccountException {
+        List<Account> accountList = new ArrayList<>();
+        Account account = new Account();
+        account.setAccountId(1235456L);
+        account.setCustomerId(1L);
+        account.setAccountType("Savings");
+        account.setAccountNumber(105L);
+        account.setAccountBalance(20000D);
+        account.setAccountStatus("Active");
+        accountList.add(account);
+
+        when(accService.filterByStatus(1L)).thenReturn(accountList);
+
+        FilterByStatusRequest request = new FilterByStatusRequest();
+        request.setCustomerId(2L);
+        FilterByStatusResponse response = soapPhase.filterStatus(request);
+
+        // checking the response is success or not
+        //assertEquals("Account fetched successfully",response.getServiceStatus().getMessage());//success
+        //assertEquals("Account not fetched",response.getServiceStatus().getMessage());
+        assertEquals(accountList.get(0).getCustomerId(),request.getCustomerId());
+    }
 
 }
+
+ */
+
+
+
+

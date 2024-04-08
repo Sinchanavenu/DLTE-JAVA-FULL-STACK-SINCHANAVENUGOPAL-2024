@@ -11,6 +11,7 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import project.dao.demo.entity.Account;
 import project.dao.demo.entity.exception.CustomerException;
+import project.dao.demo.entity.exception.ServerException;
 import project.dao.demo.remote.AccountRepository;
 import project.dao.demo.service.AccountService;
 import services.account.FilterByStatusRequest;
@@ -81,7 +82,13 @@ public class SoapPhase {
             filterByStatusResponse.setServiceStatus(serviceStatus);
         }catch(AccountException e) {
             logger.info(resourceBundle.getString("failure.fetch"));
-            serviceStatus.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            serviceStatus.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            serviceStatus.setMessage(e.getMessage());
+            filterByStatusResponse.setServiceStatus(serviceStatus);
+        }
+        catch (ServerException e){
+            logger.info(resourceBundle.getString("internal.error"));
+            serviceStatus.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             serviceStatus.setMessage(e.getMessage());
             filterByStatusResponse.setServiceStatus(serviceStatus);
         }

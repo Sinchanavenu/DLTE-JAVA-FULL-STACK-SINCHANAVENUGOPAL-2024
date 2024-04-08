@@ -18,6 +18,10 @@ public class Branch {
                 '}';
     }
 
+    public Branch(String bankName) {
+        this.bankName = bankName;
+    }
+
     public Branch() {
     }
 
