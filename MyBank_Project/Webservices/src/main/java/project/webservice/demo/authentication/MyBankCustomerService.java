@@ -1,0 +1,49 @@
+//package project.webservice.demo.authentication;
+//
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.jdbc.core.BeanPropertyRowMapper;
+//import org.springframework.jdbc.core.JdbcTemplate;
+//import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.core.userdetails.UsernameNotFoundException;
+//import org.springframework.stereotype.Service;
+//
+//@Service
+//public class MyBankCustomerService implements UserDetailsService {
+//
+//    @Autowired
+//    private JdbcTemplate jdbcTemplate;
+//
+//    Logger logger= LoggerFactory.getLogger(MyBankCustomerService.class);
+//
+//    public MyBankCustomer signingUp(MyBankCustomer myBankCustomer){
+//        jdbcTemplate.update("insert into mybank_app_customer (CUSTOMER_NAME,CUSTOMER_ADDRESS,CUSTOMER_STATUS,CUSTOMER_CONTACT,USERNAME,PASSWORD,ATTEMPTS) values(?,?,?,?,?,?,?)", new Object[]{myBankCustomer.getCustomerName(),myBankCustomer.getCustomerAddress(),myBankCustomer.getCustomerStatus(),myBankCustomer.getCustomerContact(),myBankCustomer.getUsername(),myBankCustomer.getPassword(),myBankCustomer.getAttempts()});
+//        return myBankCustomer;
+//    }
+//
+//    public MyBankCustomer findByUsername(String username){
+//        MyBankCustomer myBankCustomer=jdbcTemplate.queryForObject("select * from mybank_app_customer where username=?",new Object[]{username},new BeanPropertyRowMapper<>(MyBankCustomer.class));
+//        return myBankCustomer;
+//    }
+//
+//    public void updateAttempts(MyBankCustomer myBankCustomer){
+//        jdbcTemplate.update("update mybank_app_customer set attempts = ? where username = ?",new Object[]{myBankCustomer.getAttempts(),myBankCustomer.getUsername()});
+//        logger.info("Attempts are Updated");
+//    }
+//    public void updateStatus(MyBankCustomer myBankCustomer){
+//        jdbcTemplate.update("update mybank_app_customer set customer_status = 'Inactive' where username = ?",new Object[]{myBankCustomer.getUsername()});
+//        logger.info("Status has changed");
+//    }
+//
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        MyBankCustomer myBankCustomer=findByUsername(username);
+//        if(myBankCustomer==null)
+//            throw new UsernameNotFoundException(username);
+//        return myBankCustomer;
+//    }
+//
+//}
+
