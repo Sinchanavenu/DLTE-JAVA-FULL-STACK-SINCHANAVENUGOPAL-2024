@@ -11,6 +11,4 @@ import java.util.List;
 @Repository
 public interface AccountRepository {
     public List<Account> filterByStatus(Long customerId) throws SQLSyntaxErrorException, AccountException;
-    //public Customer apiUpdate(Long customerId, String customerName, String customerAddress,String customerStatus, Long customerContact, String password);
-    public Customer updateCustomer(Customer customer);
 }

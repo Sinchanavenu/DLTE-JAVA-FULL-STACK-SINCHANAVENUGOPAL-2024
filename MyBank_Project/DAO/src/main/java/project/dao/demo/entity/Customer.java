@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 public class Customer {
-    @NotNull(message = "{customer.customerId.null}")
+
     private Long customerId;
     @NotNull(message = "{customer.customerName.null}")
     @Pattern(regexp = "^[a-zA-Z ]+$", message = "{name.invalid}")
@@ -19,7 +19,6 @@ public class Customer {
     @NotNull(message = "{customer.customerContact.null}")
     @Digits(integer = 10, fraction = 0, message = "{digits.customerContact}")
     private Long customerContact;
-    @NotNull(message = "{customer.username.null}")
     @Pattern(regexp = "^[a-zA-Z]+$", message = "{username.invalid}")
     private String username;
     @NotNull(message = "{customer.password.null}")

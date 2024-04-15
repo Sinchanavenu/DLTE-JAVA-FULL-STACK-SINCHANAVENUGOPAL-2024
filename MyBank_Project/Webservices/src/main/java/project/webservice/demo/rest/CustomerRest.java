@@ -1,10 +1,13 @@
 package project.webservice.demo.rest;
 
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +16,7 @@ import project.dao.demo.exception.CustomerException;
 import project.dao.demo.exception.CustomerInactive;
 import project.dao.demo.exception.ServerException;
 import project.dao.demo.remote.AccountRepository;
+import project.dao.demo.remote.CustomerRepository;
 
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -22,15 +26,25 @@ import java.util.Map;
 @RequestMapping("/customer")
 public class CustomerRest {
     @Autowired
-    private AccountRepository customerService;
+    private CustomerRepository customerService;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     Logger logger= LoggerFactory.getLogger(CustomerRest.class);
 
     @PutMapping("/{customerId}")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Customer updated successfully"),
+            @ApiResponse(responseCode = "404", description = "Customer Id does not exitst"),
+            @ApiResponse(responseCode = "400", description = "Customer Inactive"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     public ResponseEntity<Object> updateCustomer(@PathVariable Long customerId, @Valid @RequestBody Customer customer) {
             try {
                 // Set the customerId in the provided customer object
                 customer.setCustomerId(customerId);
+                customer.setPassword(passwordEncoder.encode(customer.getPassword()));
 
                 // Call the service to update the customer
                 Customer updatedCustomer = customerService.updateCustomer(customer);
@@ -41,9 +55,8 @@ public class CustomerRest {
             } catch (CustomerException e) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
             } catch (CustomerInactive e){
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
             } catch (ServerException e) {
-                // Handle generic server exceptions and return HTTP status 500 (Internal Server Error)
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
             }
         }
