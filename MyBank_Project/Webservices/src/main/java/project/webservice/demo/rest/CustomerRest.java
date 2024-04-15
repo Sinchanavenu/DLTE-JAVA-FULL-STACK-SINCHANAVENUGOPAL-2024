@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -17,6 +19,8 @@ import project.dao.demo.exception.CustomerInactive;
 import project.dao.demo.exception.ServerException;
 import project.dao.demo.remote.AccountRepository;
 import project.dao.demo.remote.CustomerRepository;
+import project.webservice.demo.authentication.MyBankCustomer;
+import project.webservice.demo.authentication.MyBankCustomerService;
 
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -31,6 +35,9 @@ public class CustomerRest {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    @Autowired
+    MyBankCustomerService myBankCustomerService;
+
     Logger logger= LoggerFactory.getLogger(CustomerRest.class);
 
     @PutMapping("/{customerId}")
@@ -38,12 +45,20 @@ public class CustomerRest {
             @ApiResponse(responseCode = "200", description = "Customer updated successfully"),
             @ApiResponse(responseCode = "404", description = "Customer Id does not exitst"),
             @ApiResponse(responseCode = "400", description = "Customer Inactive"),
-            @ApiResponse(responseCode = "500", description = "Internal server error")
+            @ApiResponse(responseCode = "500", description = "Internal server error"),
+            @ApiResponse(responseCode = "401",description = "You cannot update details for this customer")
     })
     public ResponseEntity<Object> updateCustomer(@PathVariable Long customerId, @Valid @RequestBody Customer customer) {
+        String info="";
+        Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+
+        String username= authentication.getName();
+        MyBankCustomer customer1=myBankCustomerService.findByUsername(username);
+
+
             try {
                 // Set the customerId in the provided customer object
-                customer.setCustomerId(customerId);
+                customer.setCustomerId(customer1.getCustomerId());
                 customer.setPassword(passwordEncoder.encode(customer.getPassword()));
 
                 // Call the service to update the customer

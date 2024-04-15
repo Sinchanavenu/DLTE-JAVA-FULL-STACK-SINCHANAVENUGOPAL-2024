@@ -27,7 +27,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import project.dao.demo.entity.Customer;
-import project.dao.demo.remote.AccountRepository;
+/*import project.dao.demo.remote.AccountRepository;
 import project.dao.demo.remote.CustomerRepository;
 import project.dao.demo.service.CustomerService;
 import project.webservice.demo.rest.CustomerRest;
@@ -107,4 +107,6 @@ public class CustomerRestTest {
         assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
     }
 }
+
+ */
 

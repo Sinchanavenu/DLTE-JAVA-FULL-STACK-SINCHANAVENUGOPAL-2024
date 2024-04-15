@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class MyBankCustomer implements UserDetails {
+    private Long customerId;
     private String customerName;
     private String customerAddress;
     private String customerStatus;
@@ -20,6 +21,24 @@ public class MyBankCustomer implements UserDetails {
     public MyBankCustomer() {
     }
 
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
+    public MyBankCustomer(Long customerId, String customerName, String customerAddress, String customerStatus, Long customerContact, String username, String password, Integer attempts) {
+        this.customerId = customerId;
+        this.customerName = customerName;
+        this.customerAddress = customerAddress;
+        this.customerStatus = customerStatus;
+        this.customerContact = customerContact;
+        this.username = username;
+        this.password = password;
+        this.attempts = attempts;
+    }
 
     public String getCustomerName() {
         return customerName;

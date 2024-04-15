@@ -41,6 +41,7 @@ public class MyBankCustomerService implements UserDetailsService {
         logger.info("Status has changed");
     }
 
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         MyBankCustomer myBankCustomer=findByUsername(username);
