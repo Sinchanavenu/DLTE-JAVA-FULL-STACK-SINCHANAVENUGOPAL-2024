@@ -1,4 +1,4 @@
-package project.webservice.demo.authentication;
+package project.dao.demo.security;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MyBankCustomerService implements UserDetailsService {
-
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -49,6 +48,4 @@ public class MyBankCustomerService implements UserDetailsService {
             throw new UsernameNotFoundException(username);
         return myBankCustomer;
     }
-
 }
-

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
+import project.dao.demo.security.MyBankCustomer;
+import project.dao.demo.security.MyBankCustomerService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

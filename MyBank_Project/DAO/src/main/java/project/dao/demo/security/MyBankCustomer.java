@@ -1,4 +1,4 @@
-package project.webservice.demo.authentication;
+package project.dao.demo.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

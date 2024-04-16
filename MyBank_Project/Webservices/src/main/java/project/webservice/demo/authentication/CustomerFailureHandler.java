@@ -7,6 +7,8 @@ import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
+import project.dao.demo.security.MyBankCustomer;
+import project.dao.demo.security.MyBankCustomerService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

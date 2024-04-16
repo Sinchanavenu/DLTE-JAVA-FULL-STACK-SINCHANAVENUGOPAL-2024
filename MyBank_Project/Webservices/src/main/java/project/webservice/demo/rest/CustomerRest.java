@@ -19,12 +19,14 @@ import project.dao.demo.exception.CustomerInactive;
 import project.dao.demo.exception.ServerException;
 import project.dao.demo.remote.AccountRepository;
 import project.dao.demo.remote.CustomerRepository;
-import project.webservice.demo.authentication.MyBankCustomer;
-import project.webservice.demo.authentication.MyBankCustomerService;
+import project.dao.demo.security.MyBankCustomer;
+import project.dao.demo.security.MyBankCustomerService;
+
 
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
+
 
 @RestController
 @RequestMapping("/customer")
@@ -40,21 +42,19 @@ public class CustomerRest {
 
     Logger logger= LoggerFactory.getLogger(CustomerRest.class);
 
-    @PutMapping("/{customerId}")
+    @PutMapping
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Customer updated successfully"),
             @ApiResponse(responseCode = "404", description = "Customer Id does not exitst"),
             @ApiResponse(responseCode = "400", description = "Customer Inactive"),
-            @ApiResponse(responseCode = "500", description = "Internal server error"),
-            @ApiResponse(responseCode = "401",description = "You cannot update details for this customer")
+            @ApiResponse(responseCode = "500", description = "Internal server error")
     })
-    public ResponseEntity<Object> updateCustomer(@PathVariable Long customerId, @Valid @RequestBody Customer customer) {
+    public ResponseEntity<Object> updateCustomer(@Valid @RequestBody Customer customer) {
         String info="";
         Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
 
         String username= authentication.getName();
         MyBankCustomer customer1=myBankCustomerService.findByUsername(username);
-
 
             try {
                 // Set the customerId in the provided customer object
