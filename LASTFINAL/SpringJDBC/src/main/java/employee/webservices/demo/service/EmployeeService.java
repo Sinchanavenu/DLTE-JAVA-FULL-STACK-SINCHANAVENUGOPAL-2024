@@ -4,6 +4,7 @@ package employee.webservices.demo.service;
 import employee.webservices.demo.entity.Employee;
 import employee.webservices.demo.entity.EmployeeAddress;
 import employee.webservices.demo.entity.EmployeeBasicDetails;
+import employee.webservices.demo.exception.EmployeeException;
 import employee.webservices.demo.interfaces.InputEmployeeDetails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 @Service
 public class EmployeeService implements InputEmployeeDetails {
@@ -24,6 +26,8 @@ public class EmployeeService implements InputEmployeeDetails {
     JdbcTemplate jdbcTemplate;
 
     Logger logger = LoggerFactory.getLogger(EmployeeService.class);
+
+    ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
 
     @Override
     public List<Employee> create(List<Employee> list) {
@@ -51,6 +55,7 @@ public class EmployeeService implements InputEmployeeDetails {
             }
         } catch (DataAccessException e) {
             logger.error("Error creating employees", e);
+            throw new EmployeeException(resourceBundle.getString("employee.error"));
         }
         return createdEmployees;
     }

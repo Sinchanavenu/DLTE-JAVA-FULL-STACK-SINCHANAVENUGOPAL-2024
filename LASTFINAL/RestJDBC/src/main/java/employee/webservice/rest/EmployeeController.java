@@ -4,6 +4,8 @@ package employee.webservice.rest;
 import employee.webservices.demo.entity.Employee;
 import employee.webservices.demo.exception.EmployeeException;
 import employee.webservices.demo.service.EmployeeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,7 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
+
 
     @PostMapping("/create")
     public ResponseEntity<List<Employee>> createEmployees(@RequestBody List<Employee> employees) {

@@ -1,6 +1,5 @@
 package console.employee.entities;
 
-import com.sun.istack.internal.NotNull;
 
 public class EmployeebasicDetails {
     private String employeeName;
