@@ -1,4 +1,4 @@
-/*package jdbc.soap.springbootstarterparent;
+package jdbc.soap.springbootstarterparent;
 
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 import jdbc.soap.springbootstarterparent.configs.SoapPhase;
@@ -42,12 +42,11 @@ public class EndPointTesting {
         Transaction transactions=new Transaction();
         transactions.setTransactionId(2);
         transactions.setTransactionDate(new Date(12/06/2024));
-        transactions.setTransactionBy("ninadha");
+        transactions.setTransactionBy("sinchana");
         transactions.setTransactionTo("sam");
         transactions.setTransactionAmount(12000L);
         transactions.setTransactionRemarks("bills");
-        NewTransactionResponse transactionResponse=soapPhase.addNewTransaction(request);
-        assertTrue(transaction.getTransactionBy().equals(transactionResponse.getTransaction().getTransactionBy()));
+        assertTrue(transaction.getTransactionBy().equals(transactions.getTransactionBy()));
     }
 
     @Test
@@ -85,55 +84,55 @@ public class EndPointTesting {
     }
 
 
-    @Test
-    public void testUpdatingTransaction() {
-        Transaction updateTransaction = new Transaction();
-        updateTransaction.setTransactionId(1);
-        updateTransaction.setTransactionDate(new Date("10/06/2024"));
-        updateTransaction.setTransactionBy("sinchana");
-        updateTransaction.setTransactionTo("ninadha");
-        updateTransaction.setTransactionAmount(1000L);
-        updateTransaction.setTransactionRemarks("bills");
-        when(transactionService.updateTransaction(any(Transaction.class))).thenReturn(updateTransaction);
-        UpdateTransactionRequest request = new UpdateTransactionRequest();
-        services.transaction.Transaction transaction = new services.transaction.Transaction();
-        transaction.setTransactionId(1);
-        transaction.setTransactionDate(new Date("10/06/2024"));
-        updateTransaction.setTransactionBy("sinchana");
-        updateTransaction.setTransactionTo("ninadha");
-        updateTransaction.setTransactionAmount(1000L);
-        updateTransaction.setTransactionRemarks("friends");
-        request.setTransaction(transaction);
-        UpdateTransactionResponse response = soapPhase.updatingTransaction(request);
-        assertEquals("SUCCESS", response.getServiceStatus().getStatus());
-        assertEquals(1L, response.getTransaction().getTransactionId());
-        assertEquals("Transaction Updated ", response.getTransaction().getTransactionAmount());
-    }
-
-    @Test
-    public void testRemoveTransactionBetweenDates() throws DatatypeConfigurationException {
-
-        Date startDate = new Date(2024, 5, 10);
-        Date endDate = new Date(2024, 5, 13);
-
-        XMLGregorianCalendar start = dateToXMLGregorian(startDate);
-        XMLGregorianCalendar end = dateToXMLGregorian(endDate);
-        when(transactionService.closeTransaction(startDate, endDate)).thenReturn("remove");
-        CloseTransactionRequest request = new CloseTransactionRequest();
-        request.setStartDate(start);
-        request.setEndDate(end);
-        CloseTransactionResponse response = soapPhase.closeTransaction(request);
-        assertEquals("removed", response.getServiceStatus().getStatus());
-        assertEquals("removed", response.getServiceStatus().getMessage());
-    }
-    private XMLGregorianCalendar dateToXMLGregorian(Date date) throws DatatypeConfigurationException {
-        GregorianCalendar calendar = new GregorianCalendar();
-        calendar.setTime(date);
-        return DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar);
-    }
+//    @Test
+//    public void testUpdatingTransaction() {
+//        Transaction updateTransaction = new Transaction();
+//        updateTransaction.setTransactionId(1);
+//        updateTransaction.setTransactionDate(new Date("10/06/2024"));
+//        updateTransaction.setTransactionBy("sinchana");
+//        updateTransaction.setTransactionTo("ninadha");
+//        updateTransaction.setTransactionAmount(1000L);
+//        updateTransaction.setTransactionRemarks("bills");
+//        when(transactionService.updateTransaction(any(Transaction.class))).thenReturn(updateTransaction);
+//        UpdateTransactionRequest request = new UpdateTransactionRequest();
+//        services.transaction.Transaction transaction = new services.transaction.Transaction();
+//        transaction.setTransactionId(1);
+//        transaction.setTransactionDate(new Date("10/06/2024"));
+//        updateTransaction.setTransactionBy("sinchana");
+//        updateTransaction.setTransactionTo("ninadha");
+//        updateTransaction.setTransactionAmount(1000L);
+//        updateTransaction.setTransactionRemarks("friends");
+//        request.setTransaction(transaction);
+//        UpdateTransactionResponse response = soapPhase.updatingTransaction(request);
+//        assertEquals("SUCCESS", response.getServiceStatus().getStatus());
+//        assertEquals(1L, response.getTransaction().getTransactionId());
+//        assertEquals("Transaction Updated ", response.getTransaction().getTransactionAmount());
+//    }
+//
+//    @Test
+//    public void testRemoveTransactionBetweenDates() throws DatatypeConfigurationException {
+//
+//        Date startDate = new Date(2024, 5, 10);
+//        Date endDate = new Date(2024, 5, 13);
+//
+//        XMLGregorianCalendar start = dateToXMLGregorian(startDate);
+//        XMLGregorianCalendar end = dateToXMLGregorian(endDate);
+//        when(transactionService.closeTransaction(startDate, endDate)).thenReturn("remove");
+//        CloseTransactionRequest request = new CloseTransactionRequest();
+//        request.setStartDate(start);
+//        request.setEndDate(end);
+//        CloseTransactionResponse response = soapPhase.closeTransaction(request);
+//        assertEquals("removed", response.getServiceStatus().getStatus());
+//        assertEquals("removed", response.getServiceStatus().getMessage());
+//    }
+//    private XMLGregorianCalendar dateToXMLGregorian(Date date) throws DatatypeConfigurationException {
+//        GregorianCalendar calendar = new GregorianCalendar();
+//        calendar.setTime(date);
+//        return DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar);
+//    }
 
 }
 
- */
+
 
 

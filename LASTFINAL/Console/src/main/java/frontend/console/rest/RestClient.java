@@ -12,7 +12,7 @@ import java.io.IOException;
 public class RestClient {
     public static void main(String[] args) {
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("http://localhost:8112/EmployeeRestWebservice/employe");
+        HttpGet httpGet = new HttpGet("http://localhost:8112/EmployeeRestWebservice/employee");
         try (CloseableHttpResponse response = httpClient.execute(httpGet)) {
             HttpEntity entity = response.getEntity();
             if (response.getStatusLine().getStatusCode() == 200) {
