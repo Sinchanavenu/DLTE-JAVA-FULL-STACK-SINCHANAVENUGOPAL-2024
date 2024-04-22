@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -13,7 +15,8 @@ import project.dao.demo.entity.Account;
 import project.dao.demo.exception.CustomerException;
 import project.dao.demo.exception.ServerException;
 import project.dao.demo.remote.AccountRepository;
-import project.dao.demo.service.AccountService;
+import project.dao.demo.security.MyBankCustomer;
+import project.dao.demo.security.MyBankCustomerService;
 import services.account.FilterByStatusRequest;
 import services.account.FilterByStatusResponse;
 import services.account.ServiceStatus;
@@ -21,8 +24,6 @@ import services.account.ServiceStatus;
 import javax.security.auth.login.AccountException;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLSyntaxErrorException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -39,31 +40,24 @@ public class SoapPhase {
     @Autowired
     public AccountRepository accountService;
 
+    @Autowired
+    MyBankCustomerService myBankCustomerService;
+
     @PayloadRoot(namespace = url,localPart = "filterByStatusRequest")
     @ResponsePayload
     public FilterByStatusResponse filterStatus(@RequestPayload FilterByStatusRequest filterByStatusRequest) throws AccountException, SQLSyntaxErrorException {
         FilterByStatusResponse filterByStatusResponse=new FilterByStatusResponse();
         ServiceStatus serviceStatus=new ServiceStatus();
 
-        try {
+        String info="";
+        Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
 
-            //List<services.account.Account> returnAccount = new ArrayList<>();
+        String username= authentication.getName();
+        MyBankCustomer customer1=myBankCustomerService.findByUsername(username);
+
+        try {
             List<Account> received = accountService.filterByStatus(filterByStatusRequest.getCustomerId());
 
-//        Iterator<Account> iterator= received.iterator();
-//
-//        while(iterator.hasNext()){
-//            services.account.Account currentAccount=new services.account.Account();
-//            BeanUtils.copyProperties(iterator.next(),currentAccount);
-//            returnAccount.add(currentAccount);
-//        }
-
-            //if(!received.isEmpty()){
-//            for (Account account : received) {
-//                services.account.Account currentAccount = new services.account.Account();
-//                BeanUtils.copyProperties(account, currentAccount);
-//                returnAccount.add(currentAccount);
-//            }
             List<services.account.Account> returnAccount= received.stream().map(account -> {
                 services.account.Account currentAccount= new services.account.Account();
                 BeanUtils.copyProperties(account,currentAccount);

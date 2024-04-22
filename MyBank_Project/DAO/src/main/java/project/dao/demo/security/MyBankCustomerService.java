@@ -10,12 +10,17 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+
 @Service
 public class MyBankCustomerService implements UserDetailsService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     Logger logger= LoggerFactory.getLogger(MyBankCustomerService.class);
+    ResourceBundle resourceBundle= ResourceBundle.getBundle("application");
 
     public MyBankCustomer signingUp(MyBankCustomer myBankCustomer){
 
@@ -26,9 +31,28 @@ public class MyBankCustomerService implements UserDetailsService {
         return myBankCustomer;
     }
 
-    public MyBankCustomer findByUsername(String username){
-        MyBankCustomer myBankCustomer=jdbcTemplate.queryForObject("select * from mybank_app_customer where username=?",new Object[]{username},new BeanPropertyRowMapper<>(MyBankCustomer.class));
-        return myBankCustomer;
+//    public MyBankCustomer findByUsername(String username){
+//        MyBankCustomer myBankCustomer=jdbcTemplate.queryForObject("select * from mybank_app_customer where username=?",new Object[]{username},new BeanPropertyRowMapper<>(MyBankCustomer.class));
+//        return myBankCustomer;
+//    }
+
+    public MyBankCustomer findByUsername(String username) {
+        List<MyBankCustomer> customerList = jdbcTemplate.query(
+                "SELECT * FROM mybank_app_customer",
+                new BeanPropertyRowMapper<>(MyBankCustomer.class));
+        return filterByUserName(customerList,username);
+
+    }
+
+    public MyBankCustomer filterByUserName( List<MyBankCustomer> customerList,String username){
+        List<MyBankCustomer> filteredCustomers = customerList.stream()
+                .filter(customer -> customer.getUsername().equals(username))
+                .collect(Collectors.toList());
+        if (!filteredCustomers.isEmpty()) {
+            return filteredCustomers.get(0);
+        } else {
+            return null;
+        }
     }
 
     public void updateAttempts(MyBankCustomer myBankCustomer){
@@ -48,4 +72,5 @@ public class MyBankCustomerService implements UserDetailsService {
             throw new UsernameNotFoundException(username);
         return myBankCustomer;
     }
+
 }

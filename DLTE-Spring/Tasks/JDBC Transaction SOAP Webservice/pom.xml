@@ -23,8 +23,8 @@
             <artifactId>spring-boot-starter-data-jdbc</artifactId>
         </dependency>
         <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web-services</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web-services</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -58,10 +58,10 @@
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-security</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-security</artifactId>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -91,25 +91,25 @@
                     </includes>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.codehaus.mojo</groupId>-->
-<!--                <artifactId>jaxb2-maven-plugin</artifactId>-->
-<!--                <version>1.6</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>xjc</id>-->
-<!--                        <goals>-->
-<!--                            <goal>xjc</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <schemaDirectory>src/main/resources</schemaDirectory>-->
-<!--                    <schemaFiles>transaction.xsd</schemaFiles>-->
-<!--                    <outputDirectory>src/main/java</outputDirectory>-->
-<!--                    <clearOutputDir>false</clearOutputDir>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.codehaus.mojo</groupId>-->
+            <!--                <artifactId>jaxb2-maven-plugin</artifactId>-->
+            <!--                <version>1.6</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>xjc</id>-->
+            <!--                        <goals>-->
+            <!--                            <goal>xjc</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--                <configuration>-->
+            <!--                    <schemaDirectory>src/main/resources</schemaDirectory>-->
+            <!--                    <schemaFiles>transaction.xsd</schemaFiles>-->
+            <!--                    <outputDirectory>src/main/java</outputDirectory>-->
+            <!--                    <clearOutputDir>false</clearOutputDir>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
