@@ -44,38 +44,3 @@ body, html {
     background-color: black;
     margin-bottom: 30px;
 }
-#pagination {
-    margin-top: 20px;
-}
-
-#pagination .page-item {
-    margin: 0 5px;
-}
-
-#pagination .page-link,
-.page-link {
-    color: #fff;
-    background-color: black;
-    border: 1px solid black;
-    border-radius: 0.25rem;
-    padding: 0.5rem 0.75rem;
-    transition: background-color 0.3s ease;
-}
-
-#pagination .page-link:hover,
-.page-link:hover {
-    background-color:black;
-    color: #fff;
-}
-
-#pagination .page-item.active .page-link,
-.page-item.active .page-link {
-    background-color:black;
-    border-color: black;
-}
-
-.page-item.disabled .page-link {
-    pointer-events: none;
-    background-color: #6c757d;
-    border-color: #6c757d;
-}
