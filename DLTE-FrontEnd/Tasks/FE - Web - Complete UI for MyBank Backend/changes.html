@@ -55,9 +55,7 @@
                     data:JSON.stringify(request),
                     success:function(response){
                         alert(JSON.stringify(response))
-                        /*
-                        let element = $("#status")
-                        element.append(`<h1>${response.loanName} has updated</h1>`)*/
+
                     },
                     error:function(xhr,status,err){
                         let errorMessage = xhr.responseText;
