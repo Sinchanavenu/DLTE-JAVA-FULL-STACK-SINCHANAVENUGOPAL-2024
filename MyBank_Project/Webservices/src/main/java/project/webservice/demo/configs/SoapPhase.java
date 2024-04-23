@@ -49,27 +49,28 @@ public class SoapPhase {
         FilterByStatusResponse filterByStatusResponse=new FilterByStatusResponse();
         ServiceStatus serviceStatus=new ServiceStatus();
 
-        String info="";
         Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
 
         String username= authentication.getName();
         MyBankCustomer customer1=myBankCustomerService.findByUsername(username);
 
         try {
-            List<Account> received = accountService.filterByStatus(filterByStatusRequest.getCustomerId());
 
-            List<services.account.Account> returnAccount= received.stream().map(account -> {
-                services.account.Account currentAccount= new services.account.Account();
-                BeanUtils.copyProperties(account,currentAccount);
-                return currentAccount;
-            })
-                    .collect(Collectors.toList());
-            logger.info(resourceBundle.getString("success.fetch"));
-            serviceStatus.setStatus(HttpServletResponse.SC_OK);
-            serviceStatus.setMessage(resourceBundle.getString("account.fetch.success"));
-            filterByStatusResponse.setServiceStatus(serviceStatus);
-            filterByStatusResponse.getAccount().addAll(returnAccount);
-        }catch(CustomerException e){
+                List<Account> received = accountService.filterByStatus(customer1.getCustomerId());
+
+                List<services.account.Account> returnAccount = received.stream().map(account -> {
+                    services.account.Account currentAccount = new services.account.Account();
+                    BeanUtils.copyProperties(account, currentAccount);
+                    return currentAccount;
+                })
+                        .collect(Collectors.toList());
+                logger.info(resourceBundle.getString("success.fetch"));
+                serviceStatus.setStatus(HttpServletResponse.SC_OK);
+                serviceStatus.setMessage(resourceBundle.getString("account.fetch.success"));
+                filterByStatusResponse.setServiceStatus(serviceStatus);
+                filterByStatusResponse.getAccount().addAll(returnAccount);
+        }
+        catch(CustomerException e){
             logger.info(resourceBundle.getString("failure.fetch"));
             serviceStatus.setStatus(HttpServletResponse.SC_NO_CONTENT);
             serviceStatus.setMessage(e.getMessage());
@@ -90,3 +91,23 @@ public class SoapPhase {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+//    List<Account> received = accountService.filterByStatus(filterByStatusRequest.getCustomerId());
+//    List<services.account.Account> returnAccount = new ArrayList<>();
+//
+//for (Account account : received) {
+//        services.account.Account currentAccount = new services.account.Account();
+//        BeanUtils.copyProperties(account, currentAccount);
+//        returnAccount.add(currentAccount);
+//        }

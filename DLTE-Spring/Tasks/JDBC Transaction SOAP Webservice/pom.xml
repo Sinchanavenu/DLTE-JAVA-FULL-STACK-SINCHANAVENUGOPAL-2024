@@ -71,50 +71,50 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>xjc</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
-                    <outputDirectory>${project.basedir}/target/generated-sources/xjc</outputDirectory>
-                    <clearOutputDir>false</clearOutputDir>
-                    <includes>
-                        <include>transaction.xsd</include>
-                    </includes>
-                </configuration>
-            </plugin>
-            <!--            <plugin>-->
-            <!--                <groupId>org.codehaus.mojo</groupId>-->
-            <!--                <artifactId>jaxb2-maven-plugin</artifactId>-->
-            <!--                <version>1.6</version>-->
-            <!--                <executions>-->
-            <!--                    <execution>-->
-            <!--                        <id>xjc</id>-->
-            <!--                        <goals>-->
-            <!--                            <goal>xjc</goal>-->
-            <!--                        </goals>-->
-            <!--                    </execution>-->
-            <!--                </executions>-->
-            <!--                <configuration>-->
-            <!--                    <schemaDirectory>src/main/resources</schemaDirectory>-->
-            <!--                    <schemaFiles>transaction.xsd</schemaFiles>-->
-            <!--                    <outputDirectory>src/main/java</outputDirectory>-->
-            <!--                    <clearOutputDir>false</clearOutputDir>-->
-            <!--                </configuration>-->
-            <!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.codehaus.mojo</groupId>-->
+<!--                <artifactId>jaxb2-maven-plugin</artifactId>-->
+<!--                <version>1.6</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>xjc</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--                <configuration>-->
+<!--                    &lt;!&ndash; Specify the absolute path to your XSD file &ndash;&gt;-->
+<!--                    <schemaDirectory>file://C:/DLTE-JAVA-FULL-STACK-SINCHANAVENUGOPAL-2024/DLTE-Spring</schemaDirectory>-->
+<!--                    <outputDirectory>${project.build.directory}/generated-sources/xjc</outputDirectory>-->
+<!--                    <clearOutputDir>false</clearOutputDir>-->
+<!--                    <includes>-->
+<!--                        <include>transaction.xsd</include>-->
+<!--                    </includes>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>jaxb2-maven-plugin</artifactId>
+                            <version>1.6</version>
+                            <executions>
+                                <execution>
+                                    <id>xjc</id>
+                                    <goals>
+                                        <goal>xjc</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                            <configuration>
+                                <schemaDirectory>src/main/resources</schemaDirectory>
+                                <schemaFiles>transaction.xsd</schemaFiles>
+                                <outputDirectory>src/main/java</outputDirectory>
+                                <clearOutputDir>false</clearOutputDir>
+                            </configuration>
+                        </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
-
 </project>

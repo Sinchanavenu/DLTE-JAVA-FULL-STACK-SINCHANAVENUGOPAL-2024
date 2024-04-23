@@ -5,19 +5,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.*;
 import org.springframework.stereotype.Service;
-import project.dao.demo.entity.Account;
 import project.dao.demo.entity.Customer;
 import project.dao.demo.exception.CustomerException;
 import project.dao.demo.exception.CustomerInactive;
 import project.dao.demo.exception.ServerException;
-import project.dao.demo.remote.AccountRepository;
 import project.dao.demo.remote.CustomerRepository;
 
-import javax.security.auth.login.AccountException;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -31,17 +28,6 @@ public class CustomerService implements CustomerRepository {
 
     @Override
     public Customer updateCustomer(Customer customer) {
-        //        try {
-//            // Check if the customer exists and is active
-//            Customer fetchedCustomer = jdbcTemplate.queryForObject(
-//                    "SELECT * FROM MYBANK_APP_CUSTOMER WHERE CUSTOMER_ID = ? AND CUSTOMER_STATUS = 'Active'",
-//                    new Object[]{customer.getCustomerId()},
-//                    new CustomerMapper());
-//        }catch(DataAccessException e){
-//            throw new CustomerInactive(resourceBundle.getString("customer.inactive"));
-//
-//            }
-        // Execute the stored procedure to update the customer details
         Map<String, Object> returnedExecution = jdbcTemplate.call(conn -> {
             CallableStatement statement = conn.prepareCall("{call update_customer(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
             statement.setLong(1, customer.getCustomerId());
@@ -76,17 +62,13 @@ public class CustomerService implements CustomerRepository {
 
         // Retrieve the result from the stored procedure
         String result = returnedExecution.get("p_result").toString();
-        logger.info("blah blah blah " + result);
         if ("SQL100".equals(result)) {
-            // Success case
+
             Customer updatedCustomer = new Customer();
             updatedCustomer.setCustomerId(customer.getCustomerId());
             updatedCustomer.setCustomerName((String) returnedExecution.get("p_customer_name"));
             updatedCustomer.setCustomerAddress((String) returnedExecution.get("p_customer_address"));
             updatedCustomer.setCustomerStatus((String) returnedExecution.get("p_customer_status"));
-            //updatedCustomer.setCustomerContact(((Number) returnedExecution.get("p_customer_contact")).longValue());
-//                Long customerContact = (Long) returnedExecution.get("p_customer_contact");
-//                updatedCustomer.setCustomerContact(customerContact != null ? customerContact.longValue() : 0L); // Assuming a default value of 0L if customerContact is null
 
             BigDecimal customerContactBigDecimal = (BigDecimal) returnedExecution.get("p_customer_contact");
             Long customerContact = customerContactBigDecimal != null ? customerContactBigDecimal.longValue() : null;
@@ -96,6 +78,7 @@ public class CustomerService implements CustomerRepository {
             updatedCustomer.setUsername((String) returnedExecution.get("p_username"));
             updatedCustomer.setPassword((String) returnedExecution.get("p_password"));
             return updatedCustomer;
+
         } else if ("SQL101".equals(result)) {
             throw new CustomerInactive(resourceBundle.getString("customer.inactive"));
         } else if ("SQL102".equals(result)) {

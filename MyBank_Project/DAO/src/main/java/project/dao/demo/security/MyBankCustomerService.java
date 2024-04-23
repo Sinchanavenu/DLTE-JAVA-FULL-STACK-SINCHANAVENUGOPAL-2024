@@ -31,10 +31,6 @@ public class MyBankCustomerService implements UserDetailsService {
         return myBankCustomer;
     }
 
-//    public MyBankCustomer findByUsername(String username){
-//        MyBankCustomer myBankCustomer=jdbcTemplate.queryForObject("select * from mybank_app_customer where username=?",new Object[]{username},new BeanPropertyRowMapper<>(MyBankCustomer.class));
-//        return myBankCustomer;
-//    }
 
     public MyBankCustomer findByUsername(String username) {
         List<MyBankCustomer> customerList = jdbcTemplate.query(

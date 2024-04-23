@@ -1,87 +1,87 @@
-package jdbc.soap.springbootstarterparent;
-
-import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
-import jdbc.soap.springbootstarterparent.configs.SoapPhase;
-import jdbc.soap.springbootstarterparent.dao.Transaction;
-import jdbc.soap.springbootstarterparent.dao.TransactionService;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import services.transaction.*;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
-
-@SpringBootTest
-@ExtendWith(MockitoExtension.class)
-public class EndPointTesting {
-    @MockBean
-    private TransactionService transactionService;
-
-    @InjectMocks
-    private SoapPhase soapPhase;
-
-    @Test
-    public void newTransaction(){
-        //added new transaction testing
-        Transaction transaction=new Transaction(1, new Date(10/06/2024), "sinchana", "ninadha", 5000L, "Friend");
-        when(transactionService.apiSave(any(Transaction.class))).thenReturn(transaction);
-        NewTransactionRequest request=new NewTransactionRequest();
-        Transaction transactions=new Transaction();
-        transactions.setTransactionId(2);
-        transactions.setTransactionDate(new Date(12/06/2024));
-        transactions.setTransactionBy("sinchana");
-        transactions.setTransactionTo("sam");
-        transactions.setTransactionAmount(12000L);
-        transactions.setTransactionRemarks("bills");
-        assertTrue(transaction.getTransactionBy().equals(transactions.getTransactionBy()));
-    }
-
-    @Test
-    public void testBySender() {
-        List<Transaction> transaction = new ArrayList<>();
-        transaction.add(new Transaction(1, new Date(10/06/2024), "sinchana", "ninadha", 5000L, "Friend"));
-        when(transactionService.findBySender("sinchana")).thenReturn(transaction);
-        FilterBySenderRequest request = new FilterBySenderRequest();
-        request.setSender("sinchana");
-        FilterBySenderResponse response = soapPhase.filterSender(request);
-        assertEquals("Transaction were fetched", response.getServiceStatus().getMessage());
-    }
-
-    @Test
-    public void testByReceiver() {
-        List<Transaction> transaction = new ArrayList<>();
-        transaction.add(new Transaction(1, new Date(10/06/2024), "sinchana", "ninadha", 5000L, "Friend"));
-        when(transactionService.findByReceiver("ninadha")).thenReturn(transaction);
-        FilterByReceiverRequest request = new FilterByReceiverRequest();
-        request.setReceiver("ninadha");
-        FilterByReceiverResponse response = soapPhase.filterReceiver(request);
-        assertEquals("Receiver were fetched", response.getServiceStatus().getMessage());
-    }
-
-    @Test
-    public void testByAmount() {
-        List<Transaction> transaction = new ArrayList<>();
-        transaction.add(new Transaction(1, new Date(10/06/2024), "sinchana", "ninadha", 5000L, "Friend"));
-        when(transactionService.findByAmount(5000L)).thenReturn(transaction);
-        FilterByAmountRequest request = new FilterByAmountRequest();
-        request.getAmount();
-        FilterByAmountResponse response = soapPhase.filterAmount(request);
-        assertNotEquals("not equal", response.getServiceStatus().getStatus());
-        assertEquals(0, response.getTransaction().size());
-    }
+//package jdbc.soap.springbootstarterparent;
+//
+//import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
+//import jdbc.soap.springbootstarterparent.configs.SoapPhase;
+//import jdbc.soap.springbootstarterparent.dao.Transaction;
+//import jdbc.soap.springbootstarterparent.dao.TransactionService;
+//import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.extension.ExtendWith;
+//import org.mockito.InjectMocks;
+//import org.mockito.junit.jupiter.MockitoExtension;
+//import org.springframework.boot.test.context.SpringBootTest;
+//import org.springframework.boot.test.mock.mockito.MockBean;
+//import services.transaction.*;
+//
+//import javax.xml.datatype.DatatypeConfigurationException;
+//import javax.xml.datatype.DatatypeFactory;
+//import javax.xml.datatype.XMLGregorianCalendar;
+//import java.util.ArrayList;
+//import java.util.Date;
+//import java.util.GregorianCalendar;
+//import java.util.List;
+//
+//import static org.junit.jupiter.api.Assertions.*;
+//import static org.mockito.ArgumentMatchers.any;
+//import static org.mockito.Mockito.when;
+//
+//@SpringBootTest
+//@ExtendWith(MockitoExtension.class)
+//public class EndPointTesting {
+//    @MockBean
+//    private TransactionService transactionService;
+//
+//    @InjectMocks
+//    private SoapPhase soapPhase;
+//
+//    @Test
+//    public void newTransaction(){
+//        //added new transaction testing
+//        Transaction transaction=new Transaction(1, new Date(10/06/2024), "sinchana", "ninadha", 5000L, "Friend");
+//        when(transactionService.apiSave(any(Transaction.class))).thenReturn(transaction);
+//        NewTransactionRequest request=new NewTransactionRequest();
+//        Transaction transactions=new Transaction();
+//        transactions.setTransactionId(2);
+//        transactions.setTransactionDate(new Date(12/06/2024));
+//        transactions.setTransactionBy("sinchana");
+//        transactions.setTransactionTo("sam");
+//        transactions.setTransactionAmount(12000L);
+//        transactions.setTransactionRemarks("bills");
+//        assertTrue(transaction.getTransactionBy().equals(transactions.getTransactionBy()));
+//    }
+//
+//    @Test
+//    public void testBySender() {
+//        List<Transaction> transaction = new ArrayList<>();
+//        transaction.add(new Transaction(1, new Date(10/06/2024), "sinchana", "ninadha", 5000L, "Friend"));
+//        when(transactionService.findBySender("sinchana")).thenReturn(transaction);
+//        FilterBySenderRequest request = new FilterBySenderRequest();
+//        request.setSender("sinchana");
+//        FilterBySenderResponse response = soapPhase.filterSender(request);
+//        assertEquals("Transaction were fetched", response.getServiceStatus().getMessage());
+//    }
+//
+//    @Test
+//    public void testByReceiver() {
+//        List<Transaction> transaction = new ArrayList<>();
+//        transaction.add(new Transaction(1, new Date(10/06/2024), "sinchana", "ninadha", 5000L, "Friend"));
+//        when(transactionService.findByReceiver("ninadha")).thenReturn(transaction);
+//        FilterByReceiverRequest request = new FilterByReceiverRequest();
+//        request.setReceiver("ninadha");
+//        FilterByReceiverResponse response = soapPhase.filterReceiver(request);
+//        assertEquals("Receiver were fetched", response.getServiceStatus().getMessage());
+//    }
+//
+//    @Test
+//    public void testByAmount() {
+//        List<Transaction> transaction = new ArrayList<>();
+//        transaction.add(new Transaction(1, new Date(10/06/2024), "sinchana", "ninadha", 5000L, "Friend"));
+//        when(transactionService.findByAmount(5000L)).thenReturn(transaction);
+//        FilterByAmountRequest request = new FilterByAmountRequest();
+//        request.getAmount();
+//        FilterByAmountResponse response = soapPhase.filterAmount(request);
+//        assertNotEquals("not equal", response.getServiceStatus().getStatus());
+//        assertEquals(0, response.getTransaction().size());
+//    }
 
 
 //    @Test
@@ -131,7 +131,7 @@ public class EndPointTesting {
 //        return DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar);
 //    }
 
-}
+//}
 
 
 

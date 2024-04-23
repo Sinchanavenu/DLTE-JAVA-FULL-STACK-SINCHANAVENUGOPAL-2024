@@ -25,6 +25,7 @@ import project.dao.demo.security.MyBankCustomerService;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 
@@ -50,7 +51,6 @@ public class CustomerRest {
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     public ResponseEntity<Object> updateCustomer(@Valid @RequestBody Customer customer) {
-        String info="";
         Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
 
         String username= authentication.getName();
@@ -59,14 +59,23 @@ public class CustomerRest {
             try {
                 // Set the customerId in the provided customer object
                 customer.setCustomerId(customer1.getCustomerId());
+
                 customer.setPassword(passwordEncoder.encode(customer.getPassword()));
 
                 // Call the service to update the customer
                 Customer updatedCustomer = customerService.updateCustomer(customer);
                 logger.info("Customer updated successfully");
 
-                // Return the updated customer and HTTP status OK
-                return ResponseEntity.ok(updatedCustomer);
+                //map to hold those attributes and display only required attributes
+                Map<String, Object> responseBody = new LinkedHashMap<>();
+                responseBody.put("customerName", updatedCustomer.getCustomerName());
+                responseBody.put("customerAddress", updatedCustomer.getCustomerAddress());
+                responseBody.put("customerStatus", updatedCustomer.getCustomerStatus());
+                responseBody.put("customerContact", updatedCustomer.getCustomerContact());
+                responseBody.put("username", updatedCustomer.getUsername());
+
+                return ResponseEntity.status(HttpStatus.OK).body(responseBody);
+
             } catch (CustomerException e) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
             } catch (CustomerInactive e){
