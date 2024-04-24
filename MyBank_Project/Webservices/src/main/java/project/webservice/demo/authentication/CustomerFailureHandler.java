@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 @Component
 public class CustomerFailureHandler extends SimpleUrlAuthenticationFailureHandler {
@@ -21,6 +22,7 @@ public class CustomerFailureHandler extends SimpleUrlAuthenticationFailureHandle
     MyBankCustomerService myBankCustomerService;
 
     Logger logger= LoggerFactory.getLogger(CustomerFailureHandler.class);
+    ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
@@ -31,16 +33,16 @@ public class CustomerFailureHandler extends SimpleUrlAuthenticationFailureHandle
                 if(myBankCustomer.getAttempts()<myBankCustomer.getMaxAttempt()){
                     myBankCustomer.setAttempts(myBankCustomer.getAttempts()+1);
                     myBankCustomerService.updateAttempts(myBankCustomer);
-                    logger.warn("Invalid credentials and attempts taken");
-                    exception=new LockedException("Attempts are taken");
+                    logger.warn(resourceBundle.getString("invalid.credentials"));
+                    exception=new LockedException(resourceBundle.getString("attempts.taken"));
                 }
                 else{
                     myBankCustomerService.updateStatus(myBankCustomer);
-                    exception=new LockedException("Max Attempts reached account is suspended");
+                    exception=new LockedException(resourceBundle.getString("max.attempts"));
                 }
             }
             else{
-                logger.warn("Account suspended contact admin to redeem");
+                logger.warn(resourceBundle.getString("account.suspended"));
             }
         }
         super.setDefaultFailureUrl("/login?error=true");

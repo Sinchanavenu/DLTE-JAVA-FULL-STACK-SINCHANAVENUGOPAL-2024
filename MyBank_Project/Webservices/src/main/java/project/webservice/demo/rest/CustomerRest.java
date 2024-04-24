@@ -46,7 +46,6 @@ public class CustomerRest {
     @PutMapping
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Customer updated successfully"),
-            @ApiResponse(responseCode = "404", description = "Customer Id does not exitst"),
             @ApiResponse(responseCode = "400", description = "Customer Inactive"),
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })

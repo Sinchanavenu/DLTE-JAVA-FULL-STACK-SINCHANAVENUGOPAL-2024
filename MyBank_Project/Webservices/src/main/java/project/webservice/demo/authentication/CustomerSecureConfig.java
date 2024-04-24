@@ -17,6 +17,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import project.dao.demo.security.MyBankCustomerService;
 
 import java.util.Arrays;
+import java.util.ResourceBundle;
 
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @Configuration
@@ -37,28 +38,14 @@ public class CustomerSecureConfig {
         return new BCryptPasswordEncoder();
     }
 
+    ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
+
     //CORS Configuration
-//    @Bean
-//    public CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.setAllowedOriginPatterns(Arrays.asList("http://127.0.0.1:5500"));
-//
-//        configuration.addAllowedMethod("*");
-//        configuration.addAllowedHeader("*");
-//        configuration.setAllowCredentials(true);
-//
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", configuration);
-//        return source;
-  //  }
-
-    @Value("${allowed.origin}")
-    private String allowedOrigin;
-
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(Arrays.asList(allowedOrigin));
+        configuration.setAllowedOriginPatterns(Arrays.asList(resourceBundle.getString("url")));
+
         configuration.addAllowedMethod("*");
         configuration.addAllowedHeader("*");
         configuration.setAllowCredentials(true);
@@ -67,6 +54,7 @@ public class CustomerSecureConfig {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
