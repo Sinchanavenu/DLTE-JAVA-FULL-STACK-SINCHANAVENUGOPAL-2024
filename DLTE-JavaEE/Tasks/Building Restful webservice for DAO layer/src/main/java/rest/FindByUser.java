@@ -18,18 +18,6 @@ POST mapping to create new transaction
 findAllByTypeAndUsername>> GET mapping, finding transactions of respective user's transaction type
 Perform all these features based on team:
 
-Asset Avengers - Deposit:
-features: 1, 2, 5.2,
-Wealth warriors - View Transaction:
-features: 1, 2, 3, 4, 6
-Revenue Rulers - Profile update:
-features: 1, 2, 5.3
-Investment Insiders - Withdraw:
-features: 1, 2, 5.1
-Finance Titans - Transfer funds:
-features: 1, 2, 5.4
-Finance Falcons - User management:
-features: 1, 2, 3
  */
 
 
