@@ -32,7 +32,7 @@
                     <a href="logout" class="btn btn-outline-light rounded-5 me-2"><span class="bi bi-door-open"></span> Logout</a>
                 </li>
                 <li>
-                    <form action="View.jsp.jsp">
+                    <form action="View.jsp">
                         <input type="text" name="username" />
                         <input type="submit" value="filter">
                     </form>
