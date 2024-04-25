@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:body>
+    <f:view>
+        <h:form>
+            Loan Number: <h:inputText value="#{loan.loanNumber}" /><br/>
+            Loan Amount: <h:inputText value="#{loan.loanAmount}" /><br/>
+            Loan Date: <h:inputText value="#{loan.loanDate}" /><br/>
+            Loan Status: <h:inputText value="#{loan.loanStatus}" /><br/>
+            Borrower Name: <h:inputText value="#{loan.borrowerName}" /><br/>
+            Borrower Contact: <h:inputText value="#{loan.borrowerContact}" /><br/>
+            <h:commandButton value="Add Loan" action="#{loanServices.createLoans(loan)}" />
+        </h:form>
+    </f:view>
+</h:body>
+</html>

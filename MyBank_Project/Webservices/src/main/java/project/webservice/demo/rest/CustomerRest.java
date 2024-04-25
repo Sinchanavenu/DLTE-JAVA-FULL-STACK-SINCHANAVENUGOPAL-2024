@@ -17,7 +17,6 @@ import project.dao.demo.entity.Customer;
 import project.dao.demo.exception.CustomerException;
 import project.dao.demo.exception.CustomerInactive;
 import project.dao.demo.exception.ServerException;
-import project.dao.demo.remote.AccountRepository;
 import project.dao.demo.remote.CustomerRepository;
 import project.dao.demo.security.MyBankCustomer;
 import project.dao.demo.security.MyBankCustomerService;
