@@ -39,7 +39,7 @@ public class TransactionService {
         if(ack!=0)
             return transaction;
         else
-            return null;
+            throw new TransactionException("Insertion failed");
     }
 
     public List<Transaction> findBySender(String sender){
