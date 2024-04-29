@@ -17,7 +17,7 @@ import java.util.*;
 
 @Service
 public class AccountService implements AccountRepository {
-    ResourceBundle resourceBundle=ResourceBundle.getBundle("accounts");
+    ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
     private Logger logger= LoggerFactory.getLogger(AccountService.class);
 
 

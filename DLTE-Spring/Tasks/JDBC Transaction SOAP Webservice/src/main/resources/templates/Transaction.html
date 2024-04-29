@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="index::bootstrap-link">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adding New Transaction</title>
+    <title>New Loan Introduction</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
+    <!--    displaying the cards-->
 </head>
 <body>
 <div th:replace="index::collapse">
@@ -17,17 +17,18 @@
 <div class="container">
     <div class="row justify-content-center">
         <h1 th:text="${'New Transaction Form'}"></h1>
-        <h2 style="color: red;background-color:black " th:text="${error}"></h2>
-        <h2 style="color: red;background-color:black " th:text="${status}"></h2>
-        <form th:action="@{/web/submit}" th:object="${transaction}" method="post" class="col-lg-4 col-md-8 col-12 p-5 rounded-5 shadow-lg align-self-center">
+        <h2 style="color: red;background-color:black " th:text="${'status'}"></h2>
+        <div  th:if="${status}" th:text="${status}" class="status"></div>
+        <form th:action="@{/web/new}" th:object="${transaction}" method="post" class="col-lg-4 col-md-8 col-12 p-5 rounded-5 shadow-lg align-self-center">
             <div class="form group">
                 <label>Transaction ID</label>
-                <p class="text-danger" th:if="${#fields.hasErrors('transactionId')}" th:errors="*{'transactionId'}"></p>
+                <p class="text-danger" th:if="${#fields.hasErrors('transactionId')}" th:errors="*{transactionId}"></p>
                 <input type="number" th:field="*{transactionId}" name="transactionId" placeholder="Transaction ID" class="form-control" />
             </div>
             <div class="row justify-content-between">
                 <div class="col-lg-6 col-12">
                     <label >Transaction Date</label>
+
                     <p class="text-danger" th:if="${#fields.hasErrors('transactionDate')}" th:errors="*{transactionDate}"></p>
                     <input type="date" th:field="*{transactionDate}" name="transactionDate" placeholder="Transaction expiry mm/dd/yyyy" class="form-control" />
                 </div>
@@ -51,7 +52,7 @@
             </div>
             <div class="row justify-content-between">
                 <div class="col-lg-6 col-12">
-                    <label >Transaction Remarks</label>
+                    <label >Transaction For</label>
                     <p class="text-danger" th:if="${#fields.hasErrors('transactionRemarks')}" th:errors="*{transactionRemarks}"></p>
                     <input type="text" th:field="*{transactionRemarks}" name="transactionRemarks" placeholder="Transaction Remarks" class="form-control" />
                 </div>

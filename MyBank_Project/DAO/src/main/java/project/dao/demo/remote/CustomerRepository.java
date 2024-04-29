@@ -6,4 +6,5 @@ import project.dao.demo.entity.Customer;
 @Repository
 public interface CustomerRepository {
     public Customer updateCustomer(Customer customer);
+    public String updatePassword(String username, String oldPassword, String newPassword, String confirmPassword);
 }

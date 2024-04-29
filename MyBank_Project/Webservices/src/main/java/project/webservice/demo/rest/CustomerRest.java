@@ -9,14 +9,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import project.dao.demo.entity.Customer;
-import project.dao.demo.exception.CustomerException;
-import project.dao.demo.exception.CustomerInactive;
-import project.dao.demo.exception.ServerException;
+import project.dao.demo.exception.*;
 import project.dao.demo.remote.CustomerRepository;
 import project.dao.demo.security.MyBankCustomer;
 import project.dao.demo.security.MyBankCustomerService;
@@ -26,6 +25,7 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.regex.PatternSyntaxException;
 
 
 @RestController
@@ -82,7 +82,32 @@ public class CustomerRest {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
             }
         }
+    @PutMapping("/updatePassword")
+    public ResponseEntity<String> updatePassword(@RequestBody Map<String, String> passwordInfo) {
+        try {
+            String oldPassword = passwordInfo.get("oldPassword");
+            String newPassword = passwordInfo.get("newPassword");
+            String confirmPassword = passwordInfo.get("confirmPassword");
 
+            // Fetch username from the authentication context
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String username = authentication.getName();
+
+            String updateResult = customerService.updatePassword(username, oldPassword, newPassword, confirmPassword);
+
+            if (updateResult.equals("Password updated successfully.")) {
+                return ResponseEntity.ok(updateResult);
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(updateResult);
+            }
+        } catch (PasswordMismatchException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch(MaxAttemptsException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch(UsernameNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -95,5 +120,5 @@ public class CustomerRest {
         });
         return errors;
     }
-    }
+}
 
