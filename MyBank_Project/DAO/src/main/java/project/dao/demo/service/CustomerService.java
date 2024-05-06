@@ -3,8 +3,8 @@ package project.dao.demo.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.util.Pair;
 import org.springframework.jdbc.core.*;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,10 +16,7 @@ import project.dao.demo.security.MyBankCustomerService;
 
 import java.math.BigDecimal;
 import java.sql.*;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
 @Service
 public class CustomerService implements CustomerRepository {
@@ -37,20 +34,20 @@ public class CustomerService implements CustomerRepository {
     @Override
     public Customer updateCustomer(Customer customer) {
         Map<String, Object> returnedExecution = jdbcTemplate.call(conn -> {
-            CallableStatement statement = conn.prepareCall("{call update_customer(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
+            CallableStatement statement = conn.prepareCall("{call update_customer(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
             statement.setLong(1, customer.getCustomerId());
             statement.setString(2, customer.getCustomerName());
             statement.setString(3, customer.getCustomerAddress());
             statement.setString(4, customer.getCustomerStatus());
             statement.setLong(5, customer.getCustomerContact());
-            statement.setString(6, customer.getPassword());
-            statement.registerOutParameter(7, Types.VARCHAR); // p_customer_name
-            statement.registerOutParameter(8, Types.VARCHAR); // p_customer_address
-            statement.registerOutParameter(9, Types.VARCHAR); // p_customer_status
-            statement.registerOutParameter(10, Types.NUMERIC); // p_customer_contact
-            statement.registerOutParameter(11, Types.VARCHAR); // p_username
-            statement.registerOutParameter(12, Types.VARCHAR); // p_password
-            statement.registerOutParameter(13, Types.VARCHAR); // p_result
+            //statement.setString(6, customer.getPassword());
+            statement.registerOutParameter(6, Types.VARCHAR); // p_customer_name
+            statement.registerOutParameter(7, Types.VARCHAR); // p_customer_address
+            statement.registerOutParameter(8, Types.VARCHAR); // p_customer_status
+            statement.registerOutParameter(9, Types.NUMERIC); // p_customer_contact
+            statement.registerOutParameter(10, Types.VARCHAR); // p_username
+            statement.registerOutParameter(11, Types.VARCHAR); // p_password
+            statement.registerOutParameter(12, Types.VARCHAR); // p_result
             return statement;
         }, Arrays.asList(
                 new SqlParameter(Types.NUMERIC),
@@ -58,7 +55,7 @@ public class CustomerService implements CustomerRepository {
                 new SqlParameter(Types.VARCHAR),
                 new SqlParameter(Types.VARCHAR),
                 new SqlParameter(Types.NUMERIC),
-                new SqlParameter(Types.VARCHAR),
+                //new SqlParameter(Types.VARCHAR),
                 new SqlOutParameter("p_customer_name", Types.VARCHAR),
                 new SqlOutParameter("p_customer_address", Types.VARCHAR),
                 new SqlOutParameter("p_customer_status", Types.VARCHAR),
@@ -87,11 +84,7 @@ public class CustomerService implements CustomerRepository {
             updatedCustomer.setPassword((String) returnedExecution.get("p_password"));
             return updatedCustomer;
 
-        } else if ("SQL101".equals(result)) {
-            throw new CustomerInactive(resourceBundle.getString("customer.inactive"));
-        } else if ("SQL102".equals(result)) {
-            throw new CustomerException(resourceBundle.getString("customer.notfound"));
-        } else if ("SQL104".equals(result)) {
+        }  else if ("SQL104".equals(result)) {
             throw new ServerException("Internal server error");
         } else {
             throw new ServerException("Unknown error occurred.");
@@ -139,7 +132,7 @@ public class CustomerService implements CustomerRepository {
 
             // Reset failed login attempts count on successful password update
             jdbcTemplate.update(
-                    "UPDATE MYBANK_APP_CUSTOMER SET ATTEMPTS = 0 WHERE USERNAME = ?",
+                    "UPDATE MYBANK_APP_CUSTOMER SET ATTEMPTS = 1 WHERE USERNAME = ?",
                     username);
 
             // Encode and update password in the database
@@ -150,25 +143,37 @@ public class CustomerService implements CustomerRepository {
 
             return "Password updated successfully.";
         } catch (EmptyResultDataAccessException e) {
-            // Handle case where username does not exist
-            throw new UsernameNotFoundException("User not found.");
+            throw new UsernameNotFoundException(resourceBundle.getString("user.notfound"));
         }
     }
 
-    protected class CustomerMapper implements RowMapper<Customer> {
+    @Override
+    public Customer customerDetails(String username) throws SQLSyntaxErrorException {
+        Customer customerList = null;
+        try {
+            customerList = jdbcTemplate.queryForObject("SELECT CUSTOMER_NAME, CUSTOMER_ADDRESS, CUSTOMER_STATUS, CUSTOMER_CONTACT, USERNAME FROM MYBANK_APP_CUSTOMER where USERNAME=?",new Object[]{username},new CustomerMapper());
+        } catch (DataAccessException sqlException) {
+            logger.error(resourceBundle.getString("sql.error"));
+            sqlException.printStackTrace();
+            throw new SQLSyntaxErrorException(resourceBundle.getString("sql.error"));
+        }
+        return customerList;
+    }
+
+    public class CustomerMapper implements RowMapper<Customer> {
         @Override
         public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
             Customer customer = new Customer();
-            customer.setCustomerId(rs.getLong(1));
-            customer.setCustomerName(rs.getString(2));
-            customer.setCustomerAddress(rs.getString(3));
-            customer.setCustomerStatus(rs.getString(4));
-            customer.setCustomerContact(rs.getLong(5));
-            customer.setUsername(rs.getString(6));
-            customer.setPassword(rs.getString(7));
+            customer.setCustomerName(rs.getString("CUSTOMER_NAME"));
+            customer.setCustomerAddress(rs.getString("CUSTOMER_ADDRESS"));
+            customer.setCustomerStatus(rs.getString("CUSTOMER_STATUS"));
+            customer.setCustomerContact(rs.getLong("CUSTOMER_CONTACT"));
+            customer.setUsername(rs.getString("USERNAME"));
             return customer;
         }
     }
+
+
 }
 
 

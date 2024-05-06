@@ -22,7 +22,7 @@ public class CustomerFailureHandler extends SimpleUrlAuthenticationFailureHandle
     MyBankCustomerService myBankCustomerService;
 
     Logger logger= LoggerFactory.getLogger(CustomerFailureHandler.class);
-    ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
+    ResourceBundle resourceBundle=ResourceBundle.getBundle("accounts");
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
@@ -34,18 +34,22 @@ public class CustomerFailureHandler extends SimpleUrlAuthenticationFailureHandle
                     myBankCustomer.setAttempts(myBankCustomer.getAttempts()+1);
                     myBankCustomerService.updateAttempts(myBankCustomer);
                     logger.warn(resourceBundle.getString("invalid.credentials"));
-                    exception=new LockedException(resourceBundle.getString("attempts.taken"));
+                    int leftAttempts=4;
+                    exception = new LockedException(leftAttempts-myBankCustomer.getAttempts() + " " + resourceBundle.getString("customer.password.attempts"));
+                    //exception=new LockedException(resourceBundle.getString("attempts.taken"));
+                    String err = myBankCustomer.getAttempts()+" "+exception.getMessage();
+                    super.setDefaultFailureUrl("/web/?error="+err);
                 }
                 else{
                     myBankCustomerService.updateStatus(myBankCustomer);
                     exception=new LockedException(resourceBundle.getString("max.attempts"));
+                    super.setDefaultFailureUrl("/web/?error="+exception.getMessage());
                 }
             }
-            else{
-                logger.warn(resourceBundle.getString("account.suspended"));
-            }
         }
-        super.setDefaultFailureUrl("/login?error=true");
+        else {
+            super.setDefaultFailureUrl("/login?error=User does not exist");
+        }
         super.onAuthenticationFailure(request, response, exception);
     }
 

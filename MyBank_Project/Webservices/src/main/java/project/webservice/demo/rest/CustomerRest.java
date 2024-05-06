@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -22,9 +23,8 @@ import project.dao.demo.security.MyBankCustomerService;
 
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.sql.SQLSyntaxErrorException;
+import java.util.*;
 import java.util.regex.PatternSyntaxException;
 
 
@@ -42,6 +42,8 @@ public class CustomerRest {
 
     Logger logger= LoggerFactory.getLogger(CustomerRest.class);
 
+    ResourceBundle resourceBundle=ResourceBundle.getBundle("accounts");
+
     @PutMapping
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Customer updated successfully"),
@@ -58,7 +60,7 @@ public class CustomerRest {
                 // Set the customerId in the provided customer object
                 customer.setCustomerId(customer1.getCustomerId());
 
-                customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+                //customer.setPassword(passwordEncoder.encode(customer.getPassword()));
 
                 // Call the service to update the customer
                 Customer updatedCustomer = customerService.updateCustomer(customer);
@@ -73,16 +75,11 @@ public class CustomerRest {
                 responseBody.put("username", updatedCustomer.getUsername());
 
                 return ResponseEntity.status(HttpStatus.OK).body(responseBody);
-
-            } catch (CustomerException e) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-            } catch (CustomerInactive e){
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-            } catch (ServerException e) {
+            }  catch (ServerException e) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
             }
         }
-    @PutMapping("/updatePassword")
+    @PutMapping("/updatePass")
     public ResponseEntity<String> updatePassword(@RequestBody Map<String, String> passwordInfo) {
         try {
             String oldPassword = passwordInfo.get("oldPassword");
@@ -98,16 +95,47 @@ public class CustomerRest {
             if (updateResult.equals("Password updated successfully.")) {
                 return ResponseEntity.ok(updateResult);
             } else {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(updateResult);
+                return ResponseEntity.status(HttpStatus.OK).body(updateResult);
             }
         } catch (PasswordMismatchException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.OK).body(e.getMessage());
         } catch(MaxAttemptsException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.OK).body(e.getMessage());
         } catch(UsernameNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.OK).body(e.getMessage());
         }
     }
+
+    @GetMapping("/details")
+    public ResponseEntity<?> getCustomerList() {
+        Customer customerList = null;
+        String username = getUser();
+        try {
+            customerList = customerService.customerDetails(username);
+            Map<String, Object> responseBody = new LinkedHashMap<>();
+            responseBody.put("customerName", customerList.getCustomerName());
+            responseBody.put("customerAddress", customerList.getCustomerAddress());
+            responseBody.put("customerStatus", customerList.getCustomerStatus());
+            responseBody.put("customerContact", customerList.getCustomerContact());
+            responseBody.put("username", customerList.getUsername());
+            logger.info(resourceBundle.getString("customer.fetch.success"));
+            return ResponseEntity.status(HttpStatus.OK).body(responseBody);
+
+        }  catch (DataAccessException sqlException) {
+            logger.error(resourceBundle.getString("internal.error"));
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(resourceBundle.getString("internal.error"));
+        } catch (SQLSyntaxErrorException exception) {
+            logger.warn(resourceBundle.getString("sql.syntax.invalid"));
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(resourceBundle.getString("sql.syntax.invalid"));
+        }
+    }
+
+    public String getUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String name = authentication.getName();
+        return name;
+    }
+
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)

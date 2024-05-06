@@ -71,6 +71,8 @@
     </style>
 </head>
 <body>
+<div th:replace="index::collapse">
+</div>
 <form th:action="@{/web/tasks}" method="get">
     <label>Filter By:</label>
     <select id="filterBy" name="filterBy">

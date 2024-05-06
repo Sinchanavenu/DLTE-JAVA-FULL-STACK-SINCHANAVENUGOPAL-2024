@@ -1,7 +1,6 @@
 package project.webservice.demo.authentication;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -38,7 +37,7 @@ public class CustomerSecureConfig {
         return new BCryptPasswordEncoder();
     }
 
-    ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
+    ResourceBundle resourceBundle=ResourceBundle.getBundle("accounts");
 
     //CORS Configuration
     @Bean
@@ -59,7 +58,12 @@ public class CustomerSecureConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.httpBasic();
+        httpSecurity.authorizeRequests().antMatchers("/web/").permitAll();
+        httpSecurity.logout().permitAll();
+        httpSecurity.authorizeRequests().antMatchers("/images/**").permitAll();
+        httpSecurity.authorizeRequests().antMatchers("/css/**").permitAll();
         httpSecurity.formLogin().usernameParameter("username").failureHandler(customerFailureHandler).successHandler(customerSuccessHandler);
+        httpSecurity.formLogin().loginPage("/web/").usernameParameter("username").failureHandler(customerFailureHandler).successHandler(customerSuccessHandler);
         httpSecurity.csrf().disable();
         httpSecurity.cors();
         httpSecurity.authorizeRequests().antMatchers("/profile/register").permitAll();

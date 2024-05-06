@@ -21,7 +21,7 @@ public class CustomerSuccessHandler extends SimpleUrlAuthenticationSuccessHandle
     MyBankCustomerService myBankCustomerService;
 
     Logger logger= LoggerFactory.getLogger(CustomerSuccessHandler.class);
-    ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
+    ResourceBundle resourceBundle=ResourceBundle.getBundle("accounts");
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
@@ -31,10 +31,11 @@ public class CustomerSuccessHandler extends SimpleUrlAuthenticationSuccessHandle
                 myBankCustomer.setAttempts(1);
                 myBankCustomerService.updateAttempts(myBankCustomer);
             }
-            super.setDefaultTargetUrl(resourceBundle.getString("url.target"));
+            //super.setDefaultTargetUrl(resourceBundle.getString("url.target"));
+            super.setDefaultTargetUrl("/web/dash/");
         }else{
             logger.warn(resourceBundle.getString("max.attempt"));
-            super.setDefaultTargetUrl("/login");
+            super.setDefaultTargetUrl("/web/?error=contact admin");
         }
         super.onAuthenticationSuccess(request,response,authentication);
     }

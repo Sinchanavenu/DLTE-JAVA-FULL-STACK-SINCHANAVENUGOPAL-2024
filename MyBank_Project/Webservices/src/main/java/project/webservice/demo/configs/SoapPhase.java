@@ -12,7 +12,6 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import project.dao.demo.entity.Account;
-import project.dao.demo.exception.CustomerException;
 import project.dao.demo.exception.ServerException;
 import project.dao.demo.remote.AccountRepository;
 import project.dao.demo.security.MyBankCustomer;
@@ -28,11 +27,11 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-//@ComponentScans([])
+
 @ComponentScan("project.dao.demo")
 @Endpoint
 public class SoapPhase {
-    ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
+    ResourceBundle resourceBundle=ResourceBundle.getBundle("accounts");
     private Logger logger= LoggerFactory.getLogger(SoapPhase.class);
 
     private final String url="http://account.services";
@@ -70,12 +69,7 @@ public class SoapPhase {
                 filterByStatusResponse.setServiceStatus(serviceStatus);
                 filterByStatusResponse.getAccount().addAll(returnAccount);
         }
-        catch(CustomerException e){
-            logger.info(resourceBundle.getString("failure.fetch"));
-            serviceStatus.setStatus(HttpServletResponse.SC_NO_CONTENT);
-            serviceStatus.setMessage(e.getMessage());
-            filterByStatusResponse.setServiceStatus(serviceStatus);
-        }catch(AccountException e) {
+        catch(AccountException e) {
             logger.info(resourceBundle.getString("failure.fetch"));
             serviceStatus.setStatus(HttpServletResponse.SC_NOT_FOUND);
             serviceStatus.setMessage(e.getMessage());

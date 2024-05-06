@@ -7,7 +7,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.*;
 import org.springframework.stereotype.Service;
 import project.dao.demo.entity.Account;
-import project.dao.demo.exception.CustomerException;
 import project.dao.demo.exception.ServerException;
 import project.dao.demo.remote.AccountRepository;
 
@@ -26,9 +25,6 @@ public class AccountService implements AccountRepository {
 
     @Override
     public List<Account> filterByStatus(Long customerId) throws AccountException, SQLSyntaxErrorException {
-        if(!customerExists(customerId)){
-            throw new CustomerException(resourceBundle.getString("no.customer"));
-        }
             List<Account> shortlisted;
         try {
             shortlisted = jdbcTemplate.query("SELECT a.*\n" +
@@ -45,16 +41,6 @@ public class AccountService implements AccountRepository {
             return shortlisted;
     }
 
-    public boolean customerExists(Long customerId) {
-        try {
-            String sql = "SELECT COUNT(*) FROM MYBANK_APP_CUSTOMER WHERE CUSTOMER_ID = ?";
-            int count = jdbcTemplate.queryForObject(sql, Integer.class, customerId);
-            return count > 0;
-        } catch (CustomerException e) {
-            logger.error(resourceBundle.getString("customerId.notFound"));
-            return false;
-        }
-    }
 
 
     public class AccountMapper implements RowMapper<Account> {

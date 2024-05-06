@@ -12,7 +12,7 @@ public class Account {
     @NotBlank(message = "{account.accountType.null}")
     private String accountType;
     @NotNull(message = "{account.accountNumber.null}")
-    @Digits(integer = 12, fraction = 0, message = "{digits.accountNumber}")
+    @Digits(integer = 12, fraction = 0, message = "{account.accountNumber.null}")
     private Long accountNumber;
     @NotNull(message = "{account.accountBalance.null}")
     private Double accountBalance;
