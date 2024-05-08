@@ -1,0 +1,109 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: MyBankCustomerAPI</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">project.webservice.demo.authentication</a> ]
+</div>
+
+<h1>Coverage Summary for Class: MyBankCustomerAPI (project.webservice.demo.authentication)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MyBankCustomerAPI</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/ 3)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package project.webservice.demo.authentication;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>4</i>&nbsp;import org.springframework.security.crypto.password.PasswordEncoder;
+<i>5</i>&nbsp;import org.springframework.web.bind.annotation.PostMapping;
+<i>6</i>&nbsp;import org.springframework.web.bind.annotation.RequestBody;
+<i>7</i>&nbsp;import org.springframework.web.bind.annotation.RequestMapping;
+<i>8</i>&nbsp;import org.springframework.web.bind.annotation.RestController;
+<i>9</i>&nbsp;import project.dao.demo.security.MyBankCustomer;
+<i>10</i>&nbsp;import project.dao.demo.security.MyBankCustomerService;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;@RestController
+<i>13</i>&nbsp;@RequestMapping(&quot;/profile&quot;)
+<b class="fc"><i>14</i>&nbsp;public class MyBankCustomerAPI {</b>
+<i>15</i>&nbsp;    @Autowired
+<i>16</i>&nbsp;    MyBankCustomerService customersService;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    @Autowired
+<i>19</i>&nbsp;    PasswordEncoder passwordEncoder;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    @PostMapping(&quot;/register&quot;)
+<i>22</i>&nbsp;    public MyBankCustomer save(@RequestBody MyBankCustomer myBankCustomer){
+<b class="fc"><i>23</i>&nbsp;        myBankCustomer.setPassword(passwordEncoder.encode(myBankCustomer.getPassword()));</b>
+<b class="fc"><i>24</i>&nbsp;        return customersService.signingUp(myBankCustomer);</b>
+<i>25</i>&nbsp;    }
+<i>26</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-07 18:01</div>
+</div>
+</body>
+</html>

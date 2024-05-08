@@ -23,12 +23,14 @@ public class Customer {
     private String username;
     private String password;
 
-    public Customer(@NotNull(message = "{customer.customerName.null}") @Pattern(regexp = "^[a-zA-Z ]+$", message = "{name.invalid}") String customerName, @NotNull(message = "{customer.customerAddress.null}") @Pattern(regexp = "^[a-zA-Z ]+$", message = "{address.invalid}") String customerAddress, @NotNull(message = "{customer.customerStatus.null}") @Pattern(regexp = "^(?i)(Active|Inactive)$", message = "{account.status.invalid}") String customerStatus, @NotNull(message = "{customer.customerContact.null}") @Digits(integer = 10, fraction = 0, message = "{digits.customerContact}") Long customerContact, @Pattern(regexp = "^[a-zA-Z]+$", message = "{username.invalid}") String username) {
+    public Customer(Long customerId, String customerName, String customerAddress, String customerStatus,Long customerContact, String username, String password) {
+        this.customerId = customerId;
         this.customerName = customerName;
         this.customerAddress = customerAddress;
         this.customerStatus = customerStatus;
         this.customerContact = customerContact;
         this.username = username;
+        this.password = password;
     }
 
     public Customer() {

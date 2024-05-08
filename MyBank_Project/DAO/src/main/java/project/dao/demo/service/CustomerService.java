@@ -94,6 +94,10 @@ public class CustomerService implements CustomerRepository {
     @Override
     public String updatePassword(String username, String oldPassword, String newPassword, String confirmPassword) {
         try {
+
+            if (oldPassword == null) {
+                throw new IllegalArgumentException("Old password cannot be null");
+            }
             // Check if new password matches confirmation
             if (!newPassword.equals(confirmPassword)) {
                 throw new PasswordMismatchException(resourceBundle.getString("confirmation.mismatch"));
@@ -160,7 +164,7 @@ public class CustomerService implements CustomerRepository {
         return customerList;
     }
 
-    public class CustomerMapper implements RowMapper<Customer> {
+    public static class CustomerMapper implements RowMapper<Customer> {
         @Override
         public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
             Customer customer = new Customer();

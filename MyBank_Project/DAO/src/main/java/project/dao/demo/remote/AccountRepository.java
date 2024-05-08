@@ -2,8 +2,8 @@ package project.dao.demo.remote;
 
 import org.springframework.stereotype.Repository;
 import project.dao.demo.entity.Account;
+import project.dao.demo.exception.AccountException;
 
-import javax.security.auth.login.AccountException;
 import java.sql.SQLSyntaxErrorException;
 import java.util.List;
 

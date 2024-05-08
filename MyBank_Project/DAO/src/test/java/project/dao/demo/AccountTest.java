@@ -2,15 +2,19 @@ package project.dao.demo;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import project.dao.demo.entity.Account;
+import project.dao.demo.exception.AccountException;
 import project.dao.demo.exception.ServerException;
 import project.dao.demo.service.AccountService;
-
-import javax.security.auth.login.AccountException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLSyntaxErrorException;
 import java.util.ArrayList;
@@ -18,19 +22,20 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 public class AccountTest {
         @Mock
         private JdbcTemplate jdbcTemplate;
 
         @InjectMocks
         private AccountService accountService;
+
 
         List<Account> accountList;
         @BeforeEach
@@ -136,6 +141,43 @@ public class AccountTest {
         verify(jdbcTemplate).query(anyString(), any(Object[].class), any(AccountService.AccountMapper.class));
     }
 
+    @Test
+    void testFilterByStatus_NoActiveAccount() {
+        // Arrange
+        Long customerId = 2L;
+        when(jdbcTemplate.query(anyString(), any(Object[].class), any(AccountService.AccountMapper.class)))
+                .thenReturn(Collections.emptyList());
+
+        // Act and Assert
+        AccountException exception = assertThrows(AccountException.class,
+                () -> accountService.filterByStatus(customerId));
+        assertEquals("No Active Account Found for Customer Id: " + customerId, exception.getMessage());
+    }
 
 
+    @Test
+    void testMapRow() throws SQLException {
+        // Create mock ResultSet data
+        ResultSet mockResultSet = Mockito.mock(ResultSet.class);
+        when(mockResultSet.getLong(1)).thenReturn(123L);
+        when(mockResultSet.getLong(2)).thenReturn(456L);
+        when(mockResultSet.getString(3)).thenReturn("Savings");
+        when(mockResultSet.getLong(4)).thenReturn(789L);
+        when(mockResultSet.getDouble(5)).thenReturn(1000.0);
+        when(mockResultSet.getString(6)).thenReturn("Active");
+
+        // Create an instance of AccountMapper
+        AccountService.AccountMapper accountMapper = new AccountService.AccountMapper();
+
+        // Call the mapRow method using the mock ResultSet
+        Account account = accountMapper.mapRow(mockResultSet, 1);
+
+        // Verify the mapping
+        assertEquals(123L, account.getAccountId());
+        assertEquals(456L, account.getCustomerId());
+        assertEquals("Savings", account.getAccountType());
+        assertEquals(789L, account.getAccountNumber());
+        assertEquals(1000.0, account.getAccountBalance());
+        assertEquals("Active", account.getAccountStatus());
+    }
 }

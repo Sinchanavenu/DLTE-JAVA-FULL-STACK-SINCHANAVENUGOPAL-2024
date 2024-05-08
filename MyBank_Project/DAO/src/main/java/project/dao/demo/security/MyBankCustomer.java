@@ -104,9 +104,7 @@ public class MyBankCustomer implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Collection<SimpleGrantedAuthority> authorities= new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(username));
-        return authorities;
+        return null;
     }
 
     @Override

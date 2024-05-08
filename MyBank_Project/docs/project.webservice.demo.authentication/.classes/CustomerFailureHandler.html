@@ -1,0 +1,139 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CustomerFailureHandler</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">project.webservice.demo.authentication</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CustomerFailureHandler (project.webservice.demo.authentication)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CustomerFailureHandler</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    13.6%
+  </span>
+  <span class="absValue">
+    (3/ 22)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package project.webservice.demo.authentication;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import org.slf4j.Logger;
+<i>4</i>&nbsp;import org.slf4j.LoggerFactory;
+<i>5</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>6</i>&nbsp;import org.springframework.security.authentication.LockedException;
+<i>7</i>&nbsp;import org.springframework.security.core.AuthenticationException;
+<i>8</i>&nbsp;import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+<i>9</i>&nbsp;import org.springframework.stereotype.Component;
+<i>10</i>&nbsp;import project.dao.demo.security.MyBankCustomer;
+<i>11</i>&nbsp;import project.dao.demo.security.MyBankCustomerService;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;import javax.servlet.ServletException;
+<i>14</i>&nbsp;import javax.servlet.http.HttpServletRequest;
+<i>15</i>&nbsp;import javax.servlet.http.HttpServletResponse;
+<i>16</i>&nbsp;import java.io.IOException;
+<i>17</i>&nbsp;import java.util.ResourceBundle;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;@Component
+<b class="fc"><i>20</i>&nbsp;public class CustomerFailureHandler extends SimpleUrlAuthenticationFailureHandler {</b>
+<i>21</i>&nbsp;    @Autowired
+<i>22</i>&nbsp;    MyBankCustomerService myBankCustomerService;
+<i>23</i>&nbsp;
+<b class="fc"><i>24</i>&nbsp;    Logger logger= LoggerFactory.getLogger(CustomerFailureHandler.class);</b>
+<b class="fc"><i>25</i>&nbsp;    ResourceBundle resourceBundle=ResourceBundle.getBundle(&quot;accounts&quot;);</b>
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    @Override
+<i>28</i>&nbsp;    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+<b class="nc"><i>29</i>&nbsp;        String username = request.getParameter(&quot;username&quot;);</b>
+<b class="nc"><i>30</i>&nbsp;        MyBankCustomer myBankCustomer=myBankCustomerService.findByUsername(username);</b>
+<b class="nc"><i>31</i>&nbsp;        if(myBankCustomer!=null){</b>
+<b class="nc"><i>32</i>&nbsp;            if(!myBankCustomer.getCustomerStatus().equals(&quot;Inactive&quot;)){</b>
+<b class="nc"><i>33</i>&nbsp;                if(myBankCustomer.getAttempts()&lt;myBankCustomer.getMaxAttempt()){</b>
+<b class="nc"><i>34</i>&nbsp;                    myBankCustomer.setAttempts(myBankCustomer.getAttempts()+1);</b>
+<b class="nc"><i>35</i>&nbsp;                    myBankCustomerService.updateAttempts(myBankCustomer);</b>
+<b class="nc"><i>36</i>&nbsp;                    logger.warn(resourceBundle.getString(&quot;invalid.credentials&quot;));</b>
+<b class="nc"><i>37</i>&nbsp;                    int leftAttempts=4;</b>
+<b class="nc"><i>38</i>&nbsp;                    exception = new LockedException(leftAttempts-myBankCustomer.getAttempts() + &quot; &quot; + resourceBundle.getString(&quot;customer.password.attempts&quot;));</b>
+<i>39</i>&nbsp;                    //exception=new LockedException(resourceBundle.getString(&quot;attempts.taken&quot;));
+<b class="nc"><i>40</i>&nbsp;                    String err = myBankCustomer.getAttempts()+&quot; &quot;+exception.getMessage();</b>
+<b class="nc"><i>41</i>&nbsp;                    super.setDefaultFailureUrl(&quot;/web/?error=&quot;+err);</b>
+<b class="nc"><i>42</i>&nbsp;                }</b>
+<i>43</i>&nbsp;                else{
+<b class="nc"><i>44</i>&nbsp;                    myBankCustomerService.updateStatus(myBankCustomer);</b>
+<b class="nc"><i>45</i>&nbsp;                    exception=new LockedException(resourceBundle.getString(&quot;max.attempts&quot;));</b>
+<b class="nc"><i>46</i>&nbsp;                    super.setDefaultFailureUrl(&quot;/web/?error=&quot;+exception.getMessage());</b>
+<i>47</i>&nbsp;                }
+<i>48</i>&nbsp;            }
+<i>49</i>&nbsp;        }
+<i>50</i>&nbsp;        else {
+<b class="nc"><i>51</i>&nbsp;            super.setDefaultFailureUrl(&quot;/login?error=User does not exist&quot;);</b>
+<i>52</i>&nbsp;        }
+<b class="nc"><i>53</i>&nbsp;        super.onAuthenticationFailure(request, response, exception);</b>
+<b class="nc"><i>54</i>&nbsp;    }</b>
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-07 18:01</div>
+</div>
+</body>
+</html>

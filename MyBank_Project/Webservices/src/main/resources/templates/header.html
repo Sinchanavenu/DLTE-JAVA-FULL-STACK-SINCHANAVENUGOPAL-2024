@@ -14,7 +14,8 @@
     <style>
         /* Customize your styles here */
         .navbar {
-            background-color: #ffffff; /* White background for the top strip */
+            background-color: #ffffff;
+            color: white;
         }
         .navbar-nav .nav-link {
             font-family: 'Poppins', sans-serif;
@@ -47,7 +48,7 @@
                     window.location.href = "/web/viewCustomer";
                 }else {
                     // Redirect to the error page with a message
-                    window.location.href = "/customer/error/?message=" + encodeURIComponent("Page under development");
+                    window.location.href = "/customer/error/?message=" + encodeURIComponent("Page under development") + "&code=" +encodeURIComponent(404);
                 }
             });
             function getUserName() {
@@ -80,7 +81,6 @@
             </a>
             <!-- Profile Avatar and Logout Button -->
             <div class="ml-auto d-flex align-items-center">
-                <img src="/images/profile.png" alt="Profile Avatar" width="40" height="34" class="profile-avatar mr-2">
                 <span th:id="Username" style="font-size: 16px; margin-right: 10px;">Hi User!!</span>
                 <a th:href="@{'/logout'}"  class="logout-btn btn btn-outline-light rounded-5"><span class="bi bi-door-open"></span> Logout</a>
             </div>

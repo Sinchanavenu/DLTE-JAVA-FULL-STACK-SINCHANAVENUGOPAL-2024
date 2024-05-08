@@ -1,0 +1,125 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CustomerSuccessHandler</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">project.webservice.demo.authentication</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CustomerSuccessHandler (project.webservice.demo.authentication)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CustomerSuccessHandler</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    84.6%
+  </span>
+  <span class="absValue">
+    (11/ 13)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package project.webservice.demo.authentication;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import org.slf4j.Logger;
+<i>4</i>&nbsp;import org.slf4j.LoggerFactory;
+<i>5</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>6</i>&nbsp;import org.springframework.security.core.Authentication;
+<i>7</i>&nbsp;import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
+<i>8</i>&nbsp;import org.springframework.stereotype.Component;
+<i>9</i>&nbsp;import project.dao.demo.security.MyBankCustomer;
+<i>10</i>&nbsp;import project.dao.demo.security.MyBankCustomerService;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;import javax.servlet.ServletException;
+<i>13</i>&nbsp;import javax.servlet.http.HttpServletRequest;
+<i>14</i>&nbsp;import javax.servlet.http.HttpServletResponse;
+<i>15</i>&nbsp;import java.io.IOException;
+<i>16</i>&nbsp;import java.util.ResourceBundle;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;@Component
+<b class="fc"><i>19</i>&nbsp;public class CustomerSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {</b>
+<i>20</i>&nbsp;    @Autowired
+<i>21</i>&nbsp;    MyBankCustomerService myBankCustomerService;
+<i>22</i>&nbsp;
+<b class="fc"><i>23</i>&nbsp;    Logger logger= LoggerFactory.getLogger(CustomerSuccessHandler.class);</b>
+<b class="fc"><i>24</i>&nbsp;    ResourceBundle resourceBundle=ResourceBundle.getBundle(&quot;accounts&quot;);</b>
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;    @Override
+<i>27</i>&nbsp;    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+<b class="fc"><i>28</i>&nbsp;        MyBankCustomer myBankCustomer= (MyBankCustomer) authentication.getPrincipal();</b>
+<b class="fc"><i>29</i>&nbsp;        if(!myBankCustomer.getCustomerStatus().equals(&quot;Inactive&quot;)){</b>
+<b class="fc"><i>30</i>&nbsp;            if(myBankCustomer.getAttempts() &gt;1){</b>
+<b class="nc"><i>31</i>&nbsp;                myBankCustomer.setAttempts(1);</b>
+<b class="nc"><i>32</i>&nbsp;                myBankCustomerService.updateAttempts(myBankCustomer);</b>
+<i>33</i>&nbsp;            }
+<i>34</i>&nbsp;            //super.setDefaultTargetUrl(resourceBundle.getString(&quot;url.target&quot;));
+<b class="fc"><i>35</i>&nbsp;            super.setDefaultTargetUrl(&quot;/web/dash/&quot;);</b>
+<i>36</i>&nbsp;        }else{
+<b class="fc"><i>37</i>&nbsp;            logger.warn(resourceBundle.getString(&quot;max.attempt&quot;));</b>
+<b class="fc"><i>38</i>&nbsp;            super.setDefaultTargetUrl(&quot;/web/?error=contact admin&quot;);</b>
+<i>39</i>&nbsp;        }
+<b class="fc"><i>40</i>&nbsp;        super.onAuthenticationSuccess(request,response,authentication);</b>
+<b class="fc"><i>41</i>&nbsp;    }</b>
+<i>42</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-07 18:01</div>
+</div>
+</body>
+</html>

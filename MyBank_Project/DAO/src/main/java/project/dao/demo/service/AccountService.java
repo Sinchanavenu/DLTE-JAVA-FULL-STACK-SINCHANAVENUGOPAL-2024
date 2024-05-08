@@ -7,10 +7,10 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.*;
 import org.springframework.stereotype.Service;
 import project.dao.demo.entity.Account;
+import project.dao.demo.exception.AccountException;
 import project.dao.demo.exception.ServerException;
 import project.dao.demo.remote.AccountRepository;
 
-import javax.security.auth.login.AccountException;
 import java.sql.*;
 import java.util.*;
 
@@ -43,7 +43,7 @@ public class AccountService implements AccountRepository {
 
 
 
-    public class AccountMapper implements RowMapper<Account> {
+    public static class AccountMapper implements RowMapper<Account> {
         @Override
         public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
             Account account=new Account();

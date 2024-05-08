@@ -3,6 +3,7 @@ package project.webservice.demo.authentication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -35,7 +36,7 @@ public class CustomerSuccessHandler extends SimpleUrlAuthenticationSuccessHandle
             super.setDefaultTargetUrl("/web/dash/");
         }else{
             logger.warn(resourceBundle.getString("max.attempt"));
-            super.setDefaultTargetUrl("/web/?error=contact admin");
+            super.setDefaultTargetUrl("/web/?errors="+ new LockedException(resourceBundle.getString("customer.Inactive")).getMessage());
         }
         super.onAuthenticationSuccess(request,response,authentication);
     }

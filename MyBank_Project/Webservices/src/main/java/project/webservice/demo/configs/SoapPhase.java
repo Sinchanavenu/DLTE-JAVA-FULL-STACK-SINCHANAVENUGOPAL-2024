@@ -12,6 +12,7 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import project.dao.demo.entity.Account;
+import project.dao.demo.exception.AccountException;
 import project.dao.demo.exception.ServerException;
 import project.dao.demo.remote.AccountRepository;
 import project.dao.demo.security.MyBankCustomer;
@@ -19,8 +20,6 @@ import project.dao.demo.security.MyBankCustomerService;
 import services.account.FilterByStatusRequest;
 import services.account.FilterByStatusResponse;
 import services.account.ServiceStatus;
-
-import javax.security.auth.login.AccountException;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLSyntaxErrorException;
 import java.util.List;

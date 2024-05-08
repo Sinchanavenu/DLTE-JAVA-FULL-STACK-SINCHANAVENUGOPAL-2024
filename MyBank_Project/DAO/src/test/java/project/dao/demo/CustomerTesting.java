@@ -5,11 +5,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.util.ReflectionTestUtils;
@@ -20,6 +22,9 @@ import project.dao.demo.exception.ServerException;
 import project.dao.demo.service.CustomerService;
 
 import java.math.BigDecimal;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.SQLSyntaxErrorException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -44,6 +49,24 @@ public class CustomerTesting {
     void setUp() {
         MockitoAnnotations.openMocks(this);
         ReflectionTestUtils.setField(customerService, "jdbcTemplate", jdbcTemplate);
+    }
+
+    @Test
+    void testCustomerDetails_SQLException() {
+        MockitoAnnotations.initMocks(this); // Initialize mocks
+
+        // Configure behavior to throw BadSqlGrammarException (subclass of DataAccessException)
+        when(jdbcTemplate.queryForObject(any(String.class), any(Object[].class), any(RowMapper.class)))
+                .thenThrow(org.springframework.jdbc.BadSqlGrammarException.class);
+
+        // Call the customerDetails method and expect an SQLSyntaxErrorException
+        Exception exception = org.junit.jupiter.api.Assertions.assertThrows(
+                SQLSyntaxErrorException.class,
+                () -> customerService.customerDetails("johndoe")
+        );
+
+        // Verify the exception message or behavior as needed
+        assertEquals("SQL Error", exception.getMessage());
     }
 
     @Test
@@ -91,6 +114,67 @@ public class CustomerTesting {
         });
     }
 
+    @Test
+    void testUpdateCustomer_SQL100_Success() {
+        Map<String, Object> outputParams = new HashMap<>();
+        outputParams.put("p_result", "SQL100");
+        outputParams.put("p_customer_name", "UpdatedName");
+        outputParams.put("p_customer_address", "UpdatedAddress");
+        outputParams.put("p_customer_status", "Active");
+        outputParams.put("p_customer_contact", BigDecimal.valueOf(1234567890L)); // Use BigDecimal
+        outputParams.put("p_username", "updatedUsername");
+        outputParams.put("p_password", "updatedPassword");
+
+        when(jdbcTemplate.call(any(), any())).thenReturn(outputParams);
+
+        Customer customer = new Customer();
+        customer.setCustomerId(1L);
+        Customer updatedCustomer = customerService.updateCustomer(customer);
+
+        assertEquals("UpdatedName", updatedCustomer.getCustomerName());
+        assertEquals("UpdatedAddress", updatedCustomer.getCustomerAddress());
+        assertEquals("Active", updatedCustomer.getCustomerStatus());
+        assertEquals(1234567890L, updatedCustomer.getCustomerContact()); // Use Long value for comparison
+        assertEquals("updatedUsername", updatedCustomer.getUsername());
+        assertEquals("updatedPassword", updatedCustomer.getPassword());
+    }
+
+    @Test
+    void testUpdateCustomer_SQL104_Exception() {
+        Map<String, Object> outputParams = new HashMap<>();
+        outputParams.put("p_result", "SQL104");
+
+        when(jdbcTemplate.call(any(), any())).thenReturn(outputParams);
+
+        Customer customer = new Customer();
+        customer.setCustomerId(1L);
+
+        // Testing exception handling
+        try {
+            customerService.updateCustomer(customer);
+        } catch (ServerException e) {
+            assertEquals("Internal server error", e.getMessage());
+        }
+    }
+
+    @Test
+    void testUpdateCustomer_DefaultException() {
+        Map<String, Object> outputParams = new HashMap<>();
+        outputParams.put("p_result", "Unknown");
+
+        when(jdbcTemplate.call(any(), any())).thenReturn(outputParams);
+
+        Customer customer = new Customer();
+        customer.setCustomerId(1L);
+
+        // Testing default exception handling
+        try {
+            customerService.updateCustomer(customer);
+        } catch (ServerException e) {
+            assertEquals("Unknown error occurred.", e.getMessage());
+        }
+    }
+
 
     @Test
     void testUpdatePasswordUserNotFound() {
@@ -112,38 +196,6 @@ public class CustomerTesting {
 
     private ResourceBundle resourceBundle;
 
-
-
-//    @Test
-//    void testUpdatePasswordSuccess() {
-//        // Mocked existing password from DB
-//        when(jdbcTemplate.queryForObject(anyString(), any(Object[].class), eq(String.class)))
-//                .thenReturn("hashedOldPassword");
-//
-//        // Mocked successful password update in DB
-//        when(jdbcTemplate.update(anyString(), any(Object[].class))).thenReturn(1);
-//
-//        // Mocked password encoder matches
-//        when(passwordEncoder.matches(any(CharSequence.class), any(String.class))).thenReturn(true);
-//
-//        String result = customerService.updatePassword("username", "oldPassword", "newPassword", "newPassword");
-//
-//        assertEquals("Password updated successfully.", result);
-//    }
-//
-//    @Test
-//    void testUpdatePasswordMismatch() {
-//        // Mocked existing password from DB
-//        when(jdbcTemplate.queryForObject(anyString(), any(Object[].class), eq(String.class)))
-//                .thenReturn("hashedOldPassword");
-//
-//        // Mocked password encoder does not match
-//        when(passwordEncoder.matches(any(CharSequence.class), any(String.class))).thenReturn(false);
-//
-//        assertThrows(PasswordMismatchException.class, () -> {
-//            customerService.updatePassword("username", "wrongOldPassword", "newPassword", "newPassword");
-//        });
-//    }
 
     @Test
     void testUpdatePasswordUsernameNotFound() {
@@ -171,6 +223,31 @@ public class CustomerTesting {
         assertThrows(MaxAttemptsException.class, () -> {
             customerService.updatePassword("username", "wrongOldPassword", "newPassword", "newPassword");
         });
+    }
+
+
+    @Test
+    void testMapRow() throws SQLException {
+        // Create mock ResultSet data
+        ResultSet mockResultSet = Mockito.mock(ResultSet.class);
+        when(mockResultSet.getString("CUSTOMER_NAME")).thenReturn("John Doe");
+        when(mockResultSet.getString("CUSTOMER_ADDRESS")).thenReturn("123 Main St");
+        when(mockResultSet.getString("CUSTOMER_STATUS")).thenReturn("Active");
+        when(mockResultSet.getLong("CUSTOMER_CONTACT")).thenReturn(1234567890L);
+        when(mockResultSet.getString("USERNAME")).thenReturn("johndoe");
+
+        // Create an instance of CustomerMapper
+        CustomerService.CustomerMapper customerMapper = new CustomerService.CustomerMapper();
+
+        // Call the mapRow method using the mock ResultSet
+        Customer customer = customerMapper.mapRow(mockResultSet, 1);
+
+        // Verify the mapping
+        assertEquals("John Doe", customer.getCustomerName());
+        assertEquals("123 Main St", customer.getCustomerAddress());
+        assertEquals("Active", customer.getCustomerStatus());
+        assertEquals(1234567890L, customer.getCustomerContact());
+        assertEquals("johndoe", customer.getUsername());
     }
 
 }

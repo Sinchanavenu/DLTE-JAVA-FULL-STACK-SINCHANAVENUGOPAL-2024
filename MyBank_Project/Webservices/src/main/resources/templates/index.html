@@ -31,6 +31,9 @@
                 <h5 th:if="${param.error}" style="text-align: center; margin-bottom: 20px;">
                     <span style="font-size: 20px; color: Red;" th:text="${session?.SPRING_SECURITY_LAST_EXCEPTION?.message}"></span>
                 </h5>
+                <h5 th:if="${param.errors}" style="text-align: center; margin-bottom: 20px;">
+                    <span style="font-size: 20px; color: Red;" th:text="${param.errors}"></span>
+                </h5>
                 <form action="#" th:action="@{'/web/'}" method="post">
                     <div class="form-group">
                         <label for="username">Username</label>
