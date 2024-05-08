@@ -153,7 +153,7 @@ public class CustomerTesting {
         try {
             customerService.updateCustomer(customer);
         } catch (ServerException e) {
-            assertEquals("Internal server error", e.getMessage());
+            assertEquals("server.error", e.getMessage());
         }
     }
 
