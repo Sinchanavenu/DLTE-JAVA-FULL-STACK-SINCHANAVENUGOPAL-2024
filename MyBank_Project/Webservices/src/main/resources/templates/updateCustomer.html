@@ -39,12 +39,9 @@
             background-color: #182052;
             color: white;
             border-radius: 20px;
-            /*margin-right: 30px;*/
-            /*margin-bottom: 20px;*/
-            /*padding-top: 100px;*/
             max-width: 100px;
-            margin: auto; /* Center the form horizontally */
-            padding: 20px; /* Add some padding inside the form */
+            margin: auto;
+            padding: 20px;
         }
         </style>
 </head>
@@ -73,17 +70,18 @@
         if (customerAddress.trim() === '') {
             $("#customerAddressError").text("Customer Address is required");
             isValid = false;
-        } else {
-            // Allow alphabets, numbers, and special characters in address
-            // You can modify this regex as per your specific requirements
-            const addressRegex = /^[ A-Za-z0-9_@./#&+-]*$/;
-            if (!addressRegex.test(customerAddress.trim())) {
-                $("#customerAddressError").text("Customer Address can only contain alphabets, numbers, and special characters (@./#&+-)");
-                isValid = false;
-            } else {
-                $("#customerAddressError").text('');
-            }
         }
+        // else {
+        //     // Allow alphabets, numbers, and special characters in address
+        //     // You can modify this regex as per your specific requirements
+        //     const addressRegex = /^[ A-Za-z0-9_@./#&+-]*$/;
+        //     if (!addressRegex.test(customerAddress.trim())) {
+        //         $("#customerAddressError").text("Customer Address can only contain alphabets, numbers, and special characters (@./#&+-)");
+        //         isValid = false;
+        //     } else {
+        //         $("#customerAddressError").text('');
+        //     }
+        // }
 
         // Validation for Customer Status
         if (customerStatus.trim() === '') {
@@ -132,8 +130,7 @@
             contentType: "application/json;charset=utf-8",
             data: JSON.stringify(request),
             success: function (response) {
-                $("#status").empty();
-                $("#status").append('<div class="alert alert-success d-flex align-items-center" role="alert"> <svg class="bi flex-shrink-0 me-2" width="40px" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg> <div> Customer Details Updated Successfully </div> </div>');
+                $('#successModal').modal('show');
                 $("#customerName").val("");
                 $("#customerAddress").val("");
                 $("#customerStatus").val("");
@@ -168,6 +165,25 @@
         });
     });
 </script>
+
+
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Success!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Customer details updated successfully.
+            </div>
+            <div class="modal-footer">
+                <a href="viewCustomer" class="btn btn-primary">Back to View Customer</a>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row justify-content-center" >
         <p id="status" class="display-6 text-center text-primary"></p>

@@ -62,7 +62,7 @@ public class CustomerTesting {
         // Call the customerDetails method and expect an SQLSyntaxErrorException
         Exception exception = org.junit.jupiter.api.Assertions.assertThrows(
                 SQLSyntaxErrorException.class,
-                () -> customerService.customerDetails("johndoe")
+                () -> customerService.customerDetails("sinchana")
         );
 
         // Verify the exception message or behavior as needed
@@ -76,8 +76,8 @@ public class CustomerTesting {
 
         Customer customer = new Customer();
         customer.setCustomerId(1L);
-        customer.setCustomerName("John Doe");
-        customer.setCustomerAddress("123 Main St");
+        customer.setCustomerName("Sinchana");
+        customer.setCustomerAddress("Mulki");
         customer.setCustomerStatus("Active");
         customer.setCustomerContact(1234567890L);
 
@@ -118,12 +118,12 @@ public class CustomerTesting {
     void testUpdateCustomer_SQL100_Success() {
         Map<String, Object> outputParams = new HashMap<>();
         outputParams.put("p_result", "SQL100");
-        outputParams.put("p_customer_name", "UpdatedName");
-        outputParams.put("p_customer_address", "UpdatedAddress");
+        outputParams.put("p_customer_name", "Sinchana");
+        outputParams.put("p_customer_address", "Mulki");
         outputParams.put("p_customer_status", "Active");
         outputParams.put("p_customer_contact", BigDecimal.valueOf(1234567890L)); // Use BigDecimal
-        outputParams.put("p_username", "updatedUsername");
-        outputParams.put("p_password", "updatedPassword");
+        outputParams.put("p_username", "sinchana");
+        outputParams.put("p_password", "sinchana");
 
         when(jdbcTemplate.call(any(), any())).thenReturn(outputParams);
 
@@ -131,12 +131,12 @@ public class CustomerTesting {
         customer.setCustomerId(1L);
         Customer updatedCustomer = customerService.updateCustomer(customer);
 
-        assertEquals("UpdatedName", updatedCustomer.getCustomerName());
-        assertEquals("UpdatedAddress", updatedCustomer.getCustomerAddress());
+        assertEquals("Sinchana", updatedCustomer.getCustomerName());
+        assertEquals("Mulki", updatedCustomer.getCustomerAddress());
         assertEquals("Active", updatedCustomer.getCustomerStatus());
         assertEquals(1234567890L, updatedCustomer.getCustomerContact()); // Use Long value for comparison
-        assertEquals("updatedUsername", updatedCustomer.getUsername());
-        assertEquals("updatedPassword", updatedCustomer.getPassword());
+        assertEquals("sinchana", updatedCustomer.getUsername());
+        assertEquals("sinchana", updatedCustomer.getPassword());
     }
 
     @Test
@@ -183,7 +183,7 @@ public class CustomerTesting {
                 .thenThrow(new EmptyResultDataAccessException(1));
 
         assertThrows(UsernameNotFoundException.class, () -> {
-            customerService.updatePassword("nonExistingUser", "oldPassword", "newPassword", "newPassword");
+            customerService.updatePassword("sinchana", "sinch", "sinchana", "sinchana");
         });
     }
 
@@ -204,7 +204,7 @@ public class CustomerTesting {
                 .thenThrow(new EmptyResultDataAccessException(1));
 
         assertThrows(UsernameNotFoundException.class, () -> {
-            customerService.updatePassword("nonExistingUser", "oldPassword", "newPassword", "newPassword");
+            customerService.updatePassword("sinchana", "sinch", "sinchana", "sinchana");
         });
     }
 
@@ -221,7 +221,7 @@ public class CustomerTesting {
         when(jdbcTemplate.queryForObject(anyString(), any(Object[].class), eq(Integer.class))).thenReturn(4);
 
         assertThrows(MaxAttemptsException.class, () -> {
-            customerService.updatePassword("username", "wrongOldPassword", "newPassword", "newPassword");
+            customerService.updatePassword("sinchana", "wrongOldPassword", "sinchana", "sinchana");
         });
     }
 
@@ -230,11 +230,11 @@ public class CustomerTesting {
     void testMapRow() throws SQLException {
         // Create mock ResultSet data
         ResultSet mockResultSet = Mockito.mock(ResultSet.class);
-        when(mockResultSet.getString("CUSTOMER_NAME")).thenReturn("John Doe");
-        when(mockResultSet.getString("CUSTOMER_ADDRESS")).thenReturn("123 Main St");
+        when(mockResultSet.getString("CUSTOMER_NAME")).thenReturn("Sinchana");
+        when(mockResultSet.getString("CUSTOMER_ADDRESS")).thenReturn("Mulki");
         when(mockResultSet.getString("CUSTOMER_STATUS")).thenReturn("Active");
         when(mockResultSet.getLong("CUSTOMER_CONTACT")).thenReturn(1234567890L);
-        when(mockResultSet.getString("USERNAME")).thenReturn("johndoe");
+        when(mockResultSet.getString("USERNAME")).thenReturn("sinchana");
 
         // Create an instance of CustomerMapper
         CustomerService.CustomerMapper customerMapper = new CustomerService.CustomerMapper();
@@ -243,11 +243,11 @@ public class CustomerTesting {
         Customer customer = customerMapper.mapRow(mockResultSet, 1);
 
         // Verify the mapping
-        assertEquals("John Doe", customer.getCustomerName());
-        assertEquals("123 Main St", customer.getCustomerAddress());
+        assertEquals("Sinchana", customer.getCustomerName());
+        assertEquals("Mulki", customer.getCustomerAddress());
         assertEquals("Active", customer.getCustomerStatus());
         assertEquals(1234567890L, customer.getCustomerContact());
-        assertEquals("johndoe", customer.getUsername());
+        assertEquals("sinchana", customer.getUsername());
     }
 
 }

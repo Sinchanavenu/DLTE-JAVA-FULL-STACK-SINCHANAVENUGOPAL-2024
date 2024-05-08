@@ -28,9 +28,6 @@
             background-color: #182052;
             color: white;
             border-radius: 20px;
-            /*width: 45%;*/
-            /*margin-right: 30px;*/
-            /*margin-bottom: 20px;*/
             display: inline-block;
         }
 
@@ -95,8 +92,7 @@
                 // If no accounts are present, redirect to error page
                 if (accounts.length === 0) {
                     let errorMessage = "No active accounts found.";
-                    let errorCode="EXC002";
-                    window.location.href = "/web/error/?message=" + encodeURIComponent(errorMessage) + "&code=" +encodeURIComponent(errorCode);
+                    window.location.href = "/web/error/?message=" + encodeURIComponent(errorMessage);
                     return;
                 }
 

@@ -99,20 +99,6 @@ public class BeanValidationTest {
         assertEquals("customerContact", violation.getPropertyPath().toString());
     }
 
-    @Test
-    void testCustomerAddress2Validation() {
-        Customer customer = new Customer();
-        customer.setCustomerName("Sinchana");
-        customer.setCustomerAddress("12345");
-        customer.setCustomerStatus("Active");
-        customer.setCustomerContact(7338296738L);
-
-        Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
-        assertEquals(1, violations.size());
-        ConstraintViolation<Customer> violation = violations.iterator().next();
-        assertEquals("{EXB002}", violation.getMessage());
-        assertEquals("customerAddress", violation.getPropertyPath().toString());
-    }
 
     @Test
     void testCustomerStatus2Validation() {

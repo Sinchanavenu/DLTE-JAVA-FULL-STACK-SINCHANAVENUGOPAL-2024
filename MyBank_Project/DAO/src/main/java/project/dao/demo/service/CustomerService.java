@@ -85,7 +85,7 @@ public class CustomerService implements CustomerRepository {
             return updatedCustomer;
 
         }  else if ("SQL104".equals(result)) {
-            throw new ServerException("Internal server error");
+            throw new ServerException("server.error");
         } else {
             throw new ServerException("Unknown error occurred.");
         }

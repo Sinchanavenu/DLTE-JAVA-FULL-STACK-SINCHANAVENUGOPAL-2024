@@ -23,22 +23,22 @@ public class MyBankCustomerTest {
 
         // Set values
         customer.setCustomerId(1L);
-        customer.setCustomerName("John Doe");
-        customer.setCustomerAddress("123 Main St");
+        customer.setCustomerName("Sinchana");
+        customer.setCustomerAddress("Mulki");
         customer.setCustomerStatus("Active");
         customer.setCustomerContact(1234567890L);
-        customer.setUsername("john");
-        customer.setPassword("password");
+        customer.setUsername("sinch");
+        customer.setPassword("sinchana");
         customer.setAttempts(0);
 
         // Check values using getters
         assertEquals(1L, customer.getCustomerId());
-        assertEquals("John Doe", customer.getCustomerName());
-        assertEquals("123 Main St", customer.getCustomerAddress());
+        assertEquals("Sinchana", customer.getCustomerName());
+        assertEquals("Mulki", customer.getCustomerAddress());
         assertEquals("Active", customer.getCustomerStatus());
         assertEquals(1234567890L, customer.getCustomerContact());
-        assertEquals("john", customer.getUsername());
-        assertEquals("password", customer.getPassword());
+        assertEquals("sinch", customer.getUsername());
+        assertEquals("sinchana", customer.getPassword());
         assertEquals(0, customer.getAttempts());
     }
 

@@ -111,31 +111,6 @@ public class UpdationTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
-//    @Test
-//    void testGetCustomerList_Success() throws SQLSyntaxErrorException {
-//        // Mocking the getUser method to return a non-null value
-//        when(customerRest.getUser()).thenReturn("testUser");
-//
-//        // Mocking the customer details
-//        Customer mockCustomer = new Customer();
-//        mockCustomer.setCustomerId(123L);
-//        mockCustomer.setCustomerName("Test Customer");
-//        when(customerService.customerDetails("testUser")).thenReturn(mockCustomer);
-//
-//        // Test the getCustomerList method
-//        ResponseEntity<?> response = customerRest.getCustomerList();
-//
-//        assertEquals(HttpStatus.OK, response.getStatusCode());
-//
-//        // Verify the responseBody content
-//        @SuppressWarnings("unchecked")
-//        Map<String, Object> responseBody = (Map<String, Object>) response.getBody();
-//        assertEquals("Test Customer", responseBody.get("customerName"));
-//
-//        // Verify logger info is called
-//        verify(logger).info("Customer fetch success");
-//    }
-
 
 
     @Test

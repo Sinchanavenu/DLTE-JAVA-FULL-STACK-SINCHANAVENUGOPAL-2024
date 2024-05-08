@@ -104,10 +104,7 @@ public class AccountTest {
 
     @Test
     public void testFilterByStatus_Success() throws AccountException, ServerException, SQLSyntaxErrorException {
-        //Authentication authentication = mock(Authentication.class);
-        //SecurityContext securityContext = mock(SecurityContext.class);
-        //SecurityContextHolder.setContext(securityContext);
-        //when(securityContext.getAuthentication()).thenReturn(authentication);
+
         when(authentication.getName()).thenReturn("testUser");
 
         MyBankCustomer myBankCustomer = new MyBankCustomer();
@@ -138,11 +135,6 @@ public class AccountTest {
     public void testFilterByStatus_Succese() throws ServerException, SQLSyntaxErrorException {
         //Authentication authentication = mock(Authentication.class);
         when(authentication.getName()).thenReturn("user");
-
-
-        //SecurityContext securityContext = mock(SecurityContext.class);
-        //when(securityContext.getAuthentication()).thenReturn(authentication);
-        //SecurityContextHolder.setContext(securityContext);
 
         MyBankCustomer myBankCustomer = new MyBankCustomer();
         myBankCustomer.setCustomerId(1L);
@@ -179,13 +171,10 @@ public class AccountTest {
     @Test
     public void testFilterByStatus_AccountNotFounnd() throws AccountException {
 
-        // Authentication authentication = mock(Authentication.class);
-        when(authentication.getName()).thenReturn("suresh");
-        //SecurityContext securityContext = mock(SecurityContext.class);
-        //when(securityContext.getAuthentication()).thenReturn(authentication);
-        //SecurityContextHolder.setContext(securityContext);
+        when(authentication.getName()).thenReturn("sinch");
 
-        when(myBankCustomersService.findByUsername("suresh")).thenThrow(new AccountException("No active accounts to display"));
+
+        when(myBankCustomersService.findByUsername("sinch")).thenThrow(new AccountException("No active accounts to display"));
         FilterByStatusRequest request = new FilterByStatusRequest();
 
         assertThrows(AccountException.class, () -> soapPhase.filterStatus(request));

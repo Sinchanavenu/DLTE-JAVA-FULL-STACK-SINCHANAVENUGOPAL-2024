@@ -53,14 +53,14 @@ public class ApiTest {
     public void testSave() throws Exception {
         // Mock customer data
         MyBankCustomer customer = new MyBankCustomer();
-        customer.setUsername("testUser");
-        customer.setPassword("testPassword");
+        customer.setUsername("sinchana");
+        customer.setPassword("sinchana");
 
         // Mock the repository response
         lenient().when(customerService.signingUp(ArgumentMatchers.any(MyBankCustomer.class))).thenReturn(customer);
 
         // Mock the password encoder response
-        lenient().when(passwordEncoder.encode(ArgumentMatchers.anyString())).thenReturn("encodedPassword");
+        lenient().when(passwordEncoder.encode(ArgumentMatchers.anyString())).thenReturn("encodedsinchana");
 
         // Set up mockMvc
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
@@ -70,7 +70,6 @@ public class ApiTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(customer)))
                 .andExpect(MockMvcResultMatchers.status().isOk());
-        //.andExpect(MockMvcResultMatchers.content().json(asJsonString(customer)));
     }
 
     @Test

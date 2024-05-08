@@ -84,11 +84,11 @@ public class MvcTest {
     public void testCustomerNameEndpoint() throws Exception {
         // Mocking the service response
         MyBankCustomer mockCustomer = new MyBankCustomer();
-        mockCustomer.setCustomerName("John Doe");
+        mockCustomer.setCustomerName("Sinchana Venu");
         Mockito.when(myBankCustomerService.findByUsername(Mockito.anyString())).thenReturn(mockCustomer);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/web/name"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("John Doe"));
+                .andExpect(MockMvcResultMatchers.content().string("Sinchana Venu"));
     }
 }

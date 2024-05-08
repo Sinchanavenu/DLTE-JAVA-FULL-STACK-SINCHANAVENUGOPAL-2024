@@ -36,12 +36,12 @@ public class SignUpTest {
     @Test
     void testSigningUp() {
         MyBankCustomer myBankCustomers = new MyBankCustomer();
-        myBankCustomers.setCustomerName("Mahesh");
-        myBankCustomers.setCustomerAddress("Moodabidri");
+        myBankCustomers.setCustomerName("Sinchana");
+        myBankCustomers.setCustomerAddress("Mulki");
         myBankCustomers.setCustomerStatus("Active");
         myBankCustomers.setCustomerContact(1234567890L);
-        myBankCustomers.setUsername("mahesh");
-        myBankCustomers.setPassword("mahesh");
+        myBankCustomers.setUsername("sinch");
+        myBankCustomers.setPassword("sinchana");
 
         lenient().when(customerRepository.signingUp(any(MyBankCustomer.class))).thenReturn(myBankCustomers);
 
@@ -51,29 +51,29 @@ public class SignUpTest {
 //        System.out.println(savedCustomer.getPassword());
         // Assertions
         assertNotNull(savedCustomer);
-        assertEquals("mahesh", savedCustomer.getUsername());
+        assertEquals("sinch", savedCustomer.getUsername());
     }
 
     @Test
     void testFindByUsername() {
         List<MyBankCustomer> customerList = new ArrayList<>();
         MyBankCustomer customer = new MyBankCustomer();
-        customer.setUsername("mahesh");
+        customer.setUsername("sinch");
         customerList.add(customer);
 
         when(jdbcTemplate.query(anyString(), any(RowMapper.class)))
                 .thenReturn(customerList);
 
-        MyBankCustomer foundCustomer = myBankCustomersService.findByUsername("mahesh");
+        MyBankCustomer foundCustomer = myBankCustomersService.findByUsername("sinch");
 
-        assertEquals("mahesh", foundCustomer.getUsername());
+        assertEquals("sinch", foundCustomer.getUsername());
     }
 
 
     @Test
     void testLoadUserByUsername() {
         MyBankCustomer customer = new MyBankCustomer();
-        customer.setUsername("mahesh");
+        customer.setUsername("sinch");
 
 
         List<MyBankCustomer> customerList = new ArrayList<>();
@@ -82,33 +82,33 @@ public class SignUpTest {
         when(jdbcTemplate.query(anyString(), any(BeanPropertyRowMapper.class)))
                 .thenReturn(customerList);
 
-        UserDetails userDetails = myBankCustomersService.loadUserByUsername("mahesh");
+        UserDetails userDetails = myBankCustomersService.loadUserByUsername("sinch");
 
         assertNotNull(userDetails);
-        assertEquals("mahesh", userDetails.getUsername());
+        assertEquals("sinch", userDetails.getUsername());
     }
 
     @Test
     void testUpdateStatus(){
         MyBankCustomer myBankCustomers = new MyBankCustomer();
-        myBankCustomers.setUsername("mahesh");
+        myBankCustomers.setUsername("sinch");
         myBankCustomers.setCustomerStatus("active");
 
         myBankCustomersService.updateStatus(myBankCustomers);
 
-        verify(jdbcTemplate).update("update mybank_app_customer set customer_status = 'Inactive' where username = ?", "mahesh");
+        verify(jdbcTemplate).update("update mybank_app_customer set customer_status = 'Inactive' where username = ?", "sinch");
     }
 
     @Test
     void testUpdateAttempts() {
         MyBankCustomer myBankCustomers = new MyBankCustomer();
-        myBankCustomers.setUsername("johndoe");
+        myBankCustomers.setUsername("sinch");
         myBankCustomers.setAttempts(1);
 
 
         myBankCustomersService.updateAttempts(myBankCustomers);
 
-        verify(jdbcTemplate).update("update mybank_app_customer set attempts = ? where username = ?", 1, "johndoe");
+        verify(jdbcTemplate).update("update mybank_app_customer set attempts = ? where username = ?", 1, "sinch");
         // System.out.println(myBankCustomers.getAttempts());
     }
 }

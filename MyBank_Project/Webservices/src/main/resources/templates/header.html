@@ -54,11 +54,11 @@
                 $.ajax({
                     type: "GET",
                     url: "/web/name",
-                    dataType: 'text', // Expecting text response
+                    dataType: 'text',
                     contentType:"application/json;charset=utf-8",
 
                     success: function (response) {
-                        $('#Username').text("Welcome, " + response); // Display the name
+                        $('#Username').text("Welcome, " + response);
                     },
                     error: function (xhr, status, error) {
                         console.error(xhr.responseText);

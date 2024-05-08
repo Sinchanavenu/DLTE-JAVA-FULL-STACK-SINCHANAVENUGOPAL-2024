@@ -11,7 +11,7 @@ public class Customer {
     @Pattern(regexp = "^[a-zA-Z ]+$", message = "{EXB001}")
     private String customerName;
     @NotNull(message = "{EXB002}")
-    @Pattern(regexp = "^[a-zA-Z ]+$", message = "{EXB002}")
+    //@Pattern(regexp = "^[a-zA-Z ]+$", message = "{EXB002}")
     private String customerAddress;
     @NotNull(message = "{EXB003}")
     @Pattern(regexp = "^(?i)(Active|Inactive)$", message = "{EXB003}")
